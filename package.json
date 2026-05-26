@@ -20,7 +20,7 @@
     "react-dom": "^19.1.7"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.5.3",
+    "@commitlint/cli": "^21.0.1",
     "@commitlint/config-conventional": "^21.0.1",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
