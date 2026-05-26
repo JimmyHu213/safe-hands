@@ -10,3 +10,21 @@ Thumbs.db
 coverage/
 .nyc_output/
 docs/superpowers/
+
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# OpenNext
+/.open-next/
+
+# Wrangler / Cloudflare
+.wrangler/
+.dev.vars*
+!.dev.vars.example
+
+# Editor
+/.vscode/*
+!/.vscode/settings.json
