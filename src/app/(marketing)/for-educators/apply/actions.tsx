@@ -2,13 +2,13 @@
 
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
-import { educatorStep1Schema } from "@/lib/validation/schemas";
+import { educatorStep1Schema, educatorStep2Schema, availabilitySchema } from "@/lib/validation/schemas";
 import { bindings } from "@/lib/server/request-context";
 import { rateGuard } from "@/lib/server/rate-guard";
 import { db } from "@/lib/db/client";
-import { createDraftEducator } from "@/lib/db/queries/educators";
+import { createDraftEducator, updateEducatorStep2 } from "@/lib/db/queries/educators";
 import { issueResumeToken } from "@/lib/db/queries/resume-tokens";
-import { setWizardCookie } from "@/lib/auth/wizard-cookie";
+import { setWizardCookie, getWizardCookie } from "@/lib/auth/wizard-cookie";
 import { sendEmail } from "@/lib/email/client";
 import { renderEmail } from "@/lib/email/render";
 import EducatorStep1Resume from "@/lib/email/templates/EducatorStep1Resume";
@@ -61,4 +61,44 @@ export async function educatorStep1Action(
 	}
 
 	redirect("/for-educators/apply/step-2");
+}
+
+export async function educatorStep2Action(
+	_p: WizardActionState,
+	fd: FormData,
+): Promise<WizardActionState> {
+	const applicationId = await getWizardCookie();
+	if (!applicationId) return { ok: false, error: "Your session expired. Please restart your application." };
+
+	const avail = {
+		mon: fd.getAll("availability_mon") as ("am" | "pm")[],
+		tue: fd.getAll("availability_tue") as ("am" | "pm")[],
+		wed: fd.getAll("availability_wed") as ("am" | "pm")[],
+		thu: fd.getAll("availability_thu") as ("am" | "pm")[],
+		fri: fd.getAll("availability_fri") as ("am" | "pm")[],
+		sat: fd.getAll("availability_sat") as ("am" | "pm")[],
+		sun: fd.getAll("availability_sun") as ("am" | "pm")[],
+	};
+
+	const raw = {
+		qualificationLevel: fd.get("qualificationLevel"),
+		qualificationOther: fd.get("qualificationOther") ?? "",
+		yearsExperience: Number(fd.get("yearsExperience")),
+		specialNeedsExperience: fd.get("specialNeedsExperience") === "on",
+		specialNeedsNotes: fd.get("specialNeedsNotes") ?? "",
+		availability: availabilitySchema.parse(avail),
+		travelRadiusKm: Number(fd.get("travelRadiusKm")),
+		hasOwnTransport: fd.get("hasOwnTransport") === "on",
+	};
+
+	let parsed;
+	try {
+		parsed = educatorStep2Schema.parse(raw);
+	} catch {
+		return { ok: false, error: "Please check the required fields and try again." };
+	}
+
+	const env = bindings();
+	await updateEducatorStep2(db(env.DB), applicationId, parsed);
+	redirect("/for-educators/apply/step-3");
 }
