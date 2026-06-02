@@ -2,11 +2,16 @@
 
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
-import { educatorStep1Schema, educatorStep2Schema, availabilitySchema } from "@/lib/validation/schemas";
+import { educatorStep1Schema, educatorStep2Schema, educatorStep3Schema, availabilitySchema } from "@/lib/validation/schemas";
 import { bindings } from "@/lib/server/request-context";
 import { rateGuard } from "@/lib/server/rate-guard";
 import { db } from "@/lib/db/client";
-import { createDraftEducator, updateEducatorStep2 } from "@/lib/db/queries/educators";
+import {
+	createDraftEducator,
+	updateEducatorStep2,
+	listEducatorDocuments,
+	setStep3Complete,
+} from "@/lib/db/queries/educators";
 import { issueResumeToken } from "@/lib/db/queries/resume-tokens";
 import { setWizardCookie, getWizardCookie } from "@/lib/auth/wizard-cookie";
 import { sendEmail } from "@/lib/email/client";
@@ -101,4 +106,34 @@ export async function educatorStep2Action(
 	const env = bindings();
 	await updateEducatorStep2(db(env.DB), applicationId, parsed);
 	redirect("/for-educators/apply/step-3");
+}
+
+export async function educatorStep3Action(
+	_p: WizardActionState,
+	_fd: FormData,
+): Promise<WizardActionState> {
+	const applicationId = await getWizardCookie();
+	if (!applicationId) return { ok: false, error: "Your session expired." };
+
+	const env = bindings();
+	const docs = await listEducatorDocuments(db(env.DB), applicationId);
+	try {
+		educatorStep3Schema.parse({
+			documents: docs.map((d) => ({
+				docType: d.docType,
+				r2Key: d.r2Key,
+				originalFilename: d.originalFilename,
+				mimeType: d.mimeType,
+				sizeBytes: d.sizeBytes,
+			})),
+		});
+	} catch {
+		return {
+			ok: false,
+			error:
+				"Please upload all three mandatory documents (WWCC, First Aid HLTAID012, Cert III/Diploma).",
+		};
+	}
+	await setStep3Complete(db(env.DB), applicationId);
+	redirect("/for-educators/apply/step-4");
 }
