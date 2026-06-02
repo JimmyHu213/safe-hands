@@ -11,12 +11,17 @@ import {
 	updateEducatorStep2,
 	listEducatorDocuments,
 	setStep3Complete,
+	finalizeEducatorApplication,
+	getDraftById,
 } from "@/lib/db/queries/educators";
+import { presignGetUrl } from "@/lib/storage/r2";
 import { issueResumeToken } from "@/lib/db/queries/resume-tokens";
-import { setWizardCookie, getWizardCookie } from "@/lib/auth/wizard-cookie";
+import { setWizardCookie, getWizardCookie, clearWizardCookie } from "@/lib/auth/wizard-cookie";
 import { sendEmail } from "@/lib/email/client";
 import { renderEmail } from "@/lib/email/render";
 import EducatorStep1Resume from "@/lib/email/templates/EducatorStep1Resume";
+import EducatorSubmittedAck from "@/lib/email/templates/EducatorSubmittedAck";
+import EducatorSubmittedNotify from "@/lib/email/templates/EducatorSubmittedNotify";
 
 export type WizardActionState = { ok: boolean; error?: string };
 
@@ -136,4 +141,71 @@ export async function educatorStep3Action(
 	}
 	await setStep3Complete(db(env.DB), applicationId);
 	redirect("/for-educators/apply/step-4");
+}
+
+export async function educatorStep4Action(
+	_p: WizardActionState,
+	_fd: FormData,
+): Promise<WizardActionState> {
+	const applicationId = await getWizardCookie();
+	if (!applicationId) return { ok: false, error: "Your session expired." };
+
+	const env = bindings();
+	const app = await getDraftById(db(env.DB), applicationId);
+	if (!app) return { ok: false, error: "Draft not found." };
+
+	await finalizeEducatorApplication(db(env.DB), applicationId);
+
+	const docs = await listEducatorDocuments(db(env.DB), applicationId);
+	const docUrls = await Promise.all(
+		docs.map(async (d) => ({
+			docType: d.docType,
+			url: await presignGetUrl({
+				accountId: env.R2_ACCOUNT_ID,
+				accessKeyId: env.R2_ACCESS_KEY_ID,
+				secretAccessKey: env.R2_SECRET_ACCESS_KEY,
+				bucket: "safe-hands-educator-docs",
+				key: d.r2Key,
+				expiresInSeconds: 24 * 3600,
+			}),
+		})),
+	);
+
+	const resend = new Resend(env.RESEND_API_KEY);
+	const ack = await renderEmail(<EducatorSubmittedAck firstName={app.firstName} />);
+	const notify = await renderEmail(
+		<EducatorSubmittedNotify
+			firstName={app.firstName}
+			lastName={app.lastName}
+			email={app.email}
+			phone={app.phone}
+			suburb={app.suburb}
+			qualificationLevel={app.qualificationLevel ?? ""}
+			yearsExperience={app.yearsExperience ?? 0}
+			documents={docUrls}
+			adminLinkUrl={`${env.PUBLIC_SITE_URL}/admin/submissions/educator/${applicationId}`}
+		/>,
+	);
+
+	try {
+		await sendEmail({
+			client: resend,
+			from: env.RESEND_FROM_ADDRESS,
+			to: app.email,
+			subject: "Your Safe Hands application has been submitted",
+			...ack,
+		});
+		await sendEmail({
+			client: resend,
+			from: env.RESEND_FROM_ADDRESS,
+			to: env.ADMIN_EMAIL,
+			subject: `[Safe Hands] Educator application — ${app.firstName} ${app.lastName}`,
+			...notify,
+		});
+	} catch (err) {
+		console.error("educator submit email failed", err);
+	}
+
+	await clearWizardCookie();
+	redirect("/for-educators/apply/thank-you");
 }
