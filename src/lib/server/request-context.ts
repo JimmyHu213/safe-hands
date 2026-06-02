@@ -13,6 +13,7 @@ interface SecretsEnv {
 	R2_ACCOUNT_ID: string;
 	R2_ACCESS_KEY_ID: string;
 	R2_SECRET_ACCESS_KEY: string;
+	CRON_SECRET?: string;
 }
 
 export async function clientIp(): Promise<string> {
