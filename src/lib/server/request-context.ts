@@ -5,6 +5,10 @@ import { hashIp } from "@/lib/util/ip-hash";
 interface SecretsEnv {
 	TURNSTILE_SECRET_KEY: string;
 	IP_HASH_SALT_ROTATION: string;
+	RESEND_API_KEY: string;
+	RESEND_FROM_ADDRESS: string;
+	ADMIN_EMAIL: string;
+	PUBLIC_SITE_URL: string;
 }
 
 export async function clientIp(): Promise<string> {
