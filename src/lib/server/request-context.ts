@@ -9,6 +9,9 @@ interface SecretsEnv {
 	RESEND_FROM_ADDRESS: string;
 	ADMIN_EMAIL: string;
 	PUBLIC_SITE_URL: string;
+	R2_ACCOUNT_ID: string;
+	R2_ACCESS_KEY_ID: string;
+	R2_SECRET_ACCESS_KEY: string;
 }
 
 export async function clientIp(): Promise<string> {
