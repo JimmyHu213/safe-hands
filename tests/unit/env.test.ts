@@ -11,6 +11,9 @@ describe("envSchema", () => {
     SESSION_COOKIE_DOMAIN: "safehandsstaffing.com.au",
     IP_HASH_SALT_ROTATION: "base-salt-value-32-chars-or-more!",
     PUBLIC_SITE_URL: "https://safehandsstaffing.com.au",
+    R2_ACCOUNT_ID: "test_account_id",
+    R2_ACCESS_KEY_ID: "test_access_key",
+    R2_SECRET_ACCESS_KEY: "test_secret_key",
   };
 
   it("accepts a complete env block", () => {

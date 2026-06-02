@@ -10,6 +10,9 @@ export const envSchema = z.object({
   SESSION_COOKIE_DOMAIN: z.string().min(1),
   IP_HASH_SALT_ROTATION: z.string().min(32),
   PUBLIC_SITE_URL: z.string().url(),
+  R2_ACCOUNT_ID: z.string().min(1),
+  R2_ACCESS_KEY_ID: z.string().min(1),
+  R2_SECRET_ACCESS_KEY: z.string().min(1),
 });
 
 export type Env = z.infer<typeof envSchema>;
