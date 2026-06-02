@@ -63,7 +63,25 @@ npx wrangler d1 migrations apply safe-hands-db --remote         # apply to produ
 ```bash
 npx vitest run            # unit + integration tests
 npx tsc --noEmit          # typecheck
+npx playwright test       # end-to-end (page-render, a11y, intake flows)
 ```
+
+### Running E2E tests locally
+
+The Playwright intake-flow suite uses Cloudflare Turnstile's "always passes" **test keys** to bypass interactive challenges. Set these in your `.dev.vars` before running `npx playwright test`:
+
+```
+TURNSTILE_SITE_KEY=1x00000000000000000000AA
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+RESEND_API_KEY=re_test_<your_resend_test_key>
+RESEND_FROM_ADDRESS=onboarding@resend.dev
+ADMIN_EMAIL=<your-real-inbox-for-receiving-test-notifies>
+PUBLIC_SITE_URL=http://localhost:3100
+```
+
+The Resend test API key sends real emails to a sandbox — no production emails are dispatched. The page-render and a11y suites (Phase 2) do not require these.
+
+The educator wizard E2E test also requires the R2 bindings (`R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`) and an actual `EDUCATOR_DOCS` bucket — without them, the document-upload step will fail.
 
 ## Deploy
 
