@@ -89,4 +89,76 @@ The educator wizard E2E test also requires the R2 bindings (`R2_ACCOUNT_ID`, `R2
 npm run deploy            # opennextjs-cloudflare build + deploy
 ```
 
-See the Phase 4 plan for the full production deployment runbook.
+### First-time production setup
+
+1. **Enable R2** in the [Cloudflare dashboard](https://dash.cloudflare.com/) (one-time ToS acceptance), then create the two buckets:
+   ```bash
+   npx wrangler r2 bucket create safe-hands-educator-docs
+   npx wrangler r2 bucket create safe-hands-public-media
+   ```
+   Add them to `wrangler.jsonc` under `r2_buckets` with bindings `EDUCATOR_DOCS` and `PUBLIC_MEDIA`.
+
+2. **Apply migrations** to the production D1:
+   ```bash
+   npx wrangler d1 migrations apply safe-hands-db --remote
+   ```
+
+3. **Provision an R2 API token** (Cloudflare dashboard → R2 → Manage R2 API Tokens). Grants needed: Object Read & Write on both buckets. Capture the Access Key ID and Secret Access Key.
+
+4. **Verify Resend sending domain**: in the [Resend dashboard](https://resend.com/domains), add `mail.safehandsstaffing.com.au`. Add the SPF, DKIM, and DMARC DNS records Resend generates to Cloudflare DNS. Wait for verification.
+
+5. **Configure Turnstile**: in the [Cloudflare Turnstile dashboard](https://dash.cloudflare.com/?to=/:account/turnstile), create a site for `safehandsstaffing.com.au`. Capture the site key (public) and secret key.
+
+6. **Set all Worker secrets** (paste values when prompted):
+   ```bash
+   npx wrangler secret put ADMIN_EMAIL
+   npx wrangler secret put RESEND_API_KEY
+   npx wrangler secret put RESEND_FROM_ADDRESS
+   npx wrangler secret put TURNSTILE_SITE_KEY
+   npx wrangler secret put TURNSTILE_SECRET_KEY
+   npx wrangler secret put APP_LOGIN_URL          # leave empty to hide nav LOG IN
+   npx wrangler secret put SESSION_COOKIE_DOMAIN  # e.g. safehandsstaffing.com.au
+   npx wrangler secret put IP_HASH_SALT_ROTATION  # any 32+ char random string
+   npx wrangler secret put PUBLIC_SITE_URL        # https://safehandsstaffing.com.au
+   npx wrangler secret put R2_ACCOUNT_ID
+   npx wrangler secret put R2_ACCESS_KEY_ID
+   npx wrangler secret put R2_SECRET_ACCESS_KEY
+   npx wrangler secret put CRON_SECRET            # any 32+ char random string
+   ```
+
+7. **Deploy**:
+   ```bash
+   npm run deploy
+   ```
+
+8. **Add custom domain**: in the Worker overview → Custom Domains → add `safehandsstaffing.com.au` (Cloudflare proxy enabled).
+
+9. **Smoke test**: visit `https://safehandsstaffing.com.au/`. Submit a centre booking with your own email; confirm the founder receives the notify and the submitter receives the ack. Then visit `/admin/login`, enter `ADMIN_EMAIL`, follow the magic link, and verify the submission appears in the dashboard.
+
+### Subsequent deploys
+
+```bash
+# Generate + apply migration if the Drizzle schema changed:
+npx drizzle-kit generate
+npx wrangler d1 migrations apply safe-hands-db --remote
+
+# Then ship:
+npm run deploy
+```
+
+### Rollback
+
+```bash
+npx wrangler deployments list
+npx wrangler rollback <deployment-id>
+```
+
+## Performance audit
+
+Run on demand (skipped by default — Lighthouse requires Chromium with a remote-debugging port and breaks parallelism):
+
+```bash
+PERF=1 PLAYWRIGHT_PORT=3100 npx playwright test tests/e2e/perf-public.spec.ts --workers=1
+```
+
+Thresholds: performance ≥ 80, accessibility ≥ 95, best-practices ≥ 90, SEO ≥ 90.
