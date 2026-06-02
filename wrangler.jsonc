@@ -40,6 +40,12 @@
 			"database_id": "0b047549-3569-44b0-9a10-ad828431cd84",
 			"migrations_dir": "drizzle/migrations"
 		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "RATE_LIMITS",
+			"id": "544ec0ebd8cb4f8ebe65d4c53332e599"
+		}
 	]
 	/**
 	 * Smart Placement
