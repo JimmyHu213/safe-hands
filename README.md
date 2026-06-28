@@ -30,7 +30,7 @@ All env vars are validated via `src/lib/env.ts`. Copy `.dev.vars.example` to `.d
 | `RESEND_FROM_ADDRESS` | yes | Verified Resend sender (e.g. `no-reply@mail.safehandsstaffing.com.au`) |
 | `TURNSTILE_SITE_KEY` | yes | Cloudflare Turnstile site key (public) |
 | `TURNSTILE_SECRET_KEY` | yes | Cloudflare Turnstile secret key |
-| `APP_LOGIN_URL` | no | If set, the marketing nav shows a LOG IN button pointing here |
+| `APP_LOGIN_URL` | no | If set, the marketing nav and homepage hero show an "Access the app" CTA pointing here |
 | `SESSION_COOKIE_DOMAIN` | yes | Cookie `Domain=` attribute for `sh_admin_session` |
 | `IP_HASH_SALT_ROTATION` | yes | Base salt (≥32 chars) — daily-rotated for IP hashing |
 | `PUBLIC_SITE_URL` | yes | Public base URL used in transactional emails |
@@ -116,7 +116,7 @@ npm run deploy            # opennextjs-cloudflare build + deploy
    npx wrangler secret put RESEND_FROM_ADDRESS
    npx wrangler secret put TURNSTILE_SITE_KEY
    npx wrangler secret put TURNSTILE_SECRET_KEY
-   npx wrangler secret put APP_LOGIN_URL          # leave empty to hide nav LOG IN
+   npx wrangler secret put APP_LOGIN_URL          # leave empty to hide the "Access the app" CTA
    npx wrangler secret put SESSION_COOKIE_DOMAIN  # e.g. safehandsstaffing.com.au
    npx wrangler secret put IP_HASH_SALT_ROTATION  # any 32+ char random string
    npx wrangler secret put PUBLIC_SITE_URL        # https://safehandsstaffing.com.au

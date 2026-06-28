@@ -14,4 +14,17 @@ describe("Hero", () => {
     expect(screen.getByRole("link", { name: /family/i })).toHaveAttribute("href", "/for-families");
     expect(screen.getByRole("link", { name: /educator/i })).toHaveAttribute("href", "/for-educators");
   });
+
+  it("renders the Access the app CTA when appLoginUrl is set", () => {
+    render(<Hero appLoginUrl="https://app.safehandsstaffing.com.au" />);
+    expect(screen.getByRole("link", { name: /access the app/i })).toHaveAttribute(
+      "href",
+      "https://app.safehandsstaffing.com.au",
+    );
+  });
+
+  it("hides the Access the app CTA when appLoginUrl is empty", () => {
+    render(<Hero />);
+    expect(screen.queryByRole("link", { name: /access the app/i })).toBeNull();
+  });
 });

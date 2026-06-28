@@ -18,17 +18,17 @@ describe("Header", () => {
 		expect(link).toHaveAttribute("href", expect.stringMatching(/^tel:/));
 	});
 
-	it("renders the LOG IN button when appLoginUrl is set", () => {
+	it("renders the Access the app button when appLoginUrl is set", () => {
 		render(<Header appLoginUrl="https://app.safehandsstaffing.com.au" />);
-		expect(screen.getByRole("link", { name: /log in/i })).toHaveAttribute(
+		expect(screen.getByRole("link", { name: /access the app/i })).toHaveAttribute(
 			"href",
 			"https://app.safehandsstaffing.com.au",
 		);
 	});
 
-	it("hides the LOG IN button when appLoginUrl is empty", () => {
+	it("hides the Access the app button when appLoginUrl is empty", () => {
 		render(<Header appLoginUrl="" />);
-		expect(screen.queryByRole("link", { name: /log in/i })).toBeNull();
+		expect(screen.queryByRole("link", { name: /access the app/i })).toBeNull();
 	});
 
 	it("renders the three audience nav links", () => {

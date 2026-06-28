@@ -4,9 +4,10 @@ import { CtaBand } from "@/components/marketing/CtaBand";
 import { SectionHeading } from "@/components/marketing/SectionHeading";
 
 export default function Home() {
+  const appLoginUrl = process.env.APP_LOGIN_URL ?? "";
   return (
     <>
-      <Hero />
+      <Hero appLoginUrl={appLoginUrl} />
       <TrustBand />
       <section className="px-4 py-16">
         <SectionHeading

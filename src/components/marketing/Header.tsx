@@ -46,9 +46,9 @@ export function Header({ appLoginUrl }: HeaderProps) {
 					{appLoginUrl ? (
 						<a
 							href={appLoginUrl}
-							className="rounded-md border px-3 py-1.5 text-sm font-medium hover:bg-slate-50"
+							className="rounded-md bg-slate-900 px-3 py-1.5 text-sm font-medium text-white hover:bg-slate-800"
 						>
-							Log in
+							Access the app
 						</a>
 					) : null}
 				</div>
