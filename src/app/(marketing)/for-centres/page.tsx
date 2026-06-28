@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FOR_CENTRES, SITE } from "@/lib/cms/content";
+import { PageBanner } from "@/components/marketing/PageBanner";
 
 export default function ForCentresPage() {
   return (
@@ -9,6 +10,7 @@ export default function ForCentresPage() {
           <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">For Centres</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">{FOR_CENTRES.h1}</h1>
           <p className="mt-4 text-lg text-slate-700">{FOR_CENTRES.lede}</p>
+          <PageBanner src={FOR_CENTRES.image.src} alt={FOR_CENTRES.image.alt} />
         </div>
       </section>
 

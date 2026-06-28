@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FOR_EDUCATORS } from "@/lib/cms/content";
+import { PageBanner } from "@/components/marketing/PageBanner";
 
 export default function ForEducatorsPage() {
   return (
@@ -9,6 +10,7 @@ export default function ForEducatorsPage() {
           <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">For Educators</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">{FOR_EDUCATORS.h1}</h1>
           <p className="mt-4 text-lg text-slate-700">{FOR_EDUCATORS.lede}</p>
+          <PageBanner src={FOR_EDUCATORS.image.src} alt={FOR_EDUCATORS.image.alt} />
         </div>
       </section>
 

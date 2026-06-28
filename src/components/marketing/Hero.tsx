@@ -1,5 +1,6 @@
 import { HOME } from "@/lib/cms/content";
 import { AudienceCards } from "./AudienceCards";
+import { PageBanner } from "./PageBanner";
 
 export function Hero({ appLoginUrl }: { appLoginUrl?: string }) {
   return (
@@ -20,6 +21,7 @@ export function Hero({ appLoginUrl }: { appLoginUrl?: string }) {
           </div>
         ) : null}
       </div>
+      <PageBanner src={HOME.heroImage.src} alt={HOME.heroImage.alt} priority />
       <AudienceCards />
     </section>
   );

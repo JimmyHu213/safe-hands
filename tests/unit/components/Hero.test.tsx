@@ -8,6 +8,11 @@ describe("Hero", () => {
     expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
   });
 
+  it("renders the hero banner image", () => {
+    render(<Hero />);
+    expect(screen.getByRole("img")).toBeInTheDocument();
+  });
+
   it("renders three audience cards as links", () => {
     render(<Hero />);
     expect(screen.getByRole("link", { name: /centre/i })).toHaveAttribute("href", "/for-centres");

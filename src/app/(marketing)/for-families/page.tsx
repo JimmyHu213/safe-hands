@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FOR_FAMILIES, SITE } from "@/lib/cms/content";
+import { PageBanner } from "@/components/marketing/PageBanner";
 
 export default function ForFamiliesPage() {
   return (
@@ -9,6 +10,7 @@ export default function ForFamiliesPage() {
           <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">For Families</p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight">{FOR_FAMILIES.h1}</h1>
           <p className="mt-4 text-lg text-slate-700">{FOR_FAMILIES.lede}</p>
+          <PageBanner src={FOR_FAMILIES.image.src} alt={FOR_FAMILIES.image.alt} />
         </div>
       </section>
 
