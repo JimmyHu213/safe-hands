@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Hanken_Grotesk, Mulish } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-	variable: "--font-geist-sans",
+const hanken = Hanken_Grotesk({
+	variable: "--font-hanken",
+	subsets: ["latin"],
+});
+
+const mulish = Mulish({
+	variable: "--font-mulish",
 	subsets: ["latin"],
 });
 
@@ -23,11 +28,12 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
+		<html lang="en" className={`${mulish.variable} ${hanken.variable} ${geistMono.variable}`}>
 			<head>
-				<link rel="icon" href="/favicon.svg" type="image/svg+xml"></link>
+				<link rel="icon" href="/brand/safehands-icon-32.png" type="image/png" sizes="32x32"></link>
+				<link rel="apple-touch-icon" href="/brand/safehands-icon-192.png"></link>
 			</head>
-			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+			<body className="antialiased">{children}</body>
 		</html>
 	);
 }

@@ -130,3 +130,219 @@ export const COMPLIANCE = {
 		"WHS Act 2011 (NSW)",
 	],
 };
+
+// Landing-page copy ported 1:1 from the Figma design (reference/Safe Hand
+// Website - Figma Import.html), localised: Safe Hands, AU spelling, real
+// contact details. Stats and testimonials are the design's placeholder
+// content — replace with real figures before launch.
+export const LANDING = {
+	hero: {
+		eyebrow: "Childcare staffing",
+		h1: "Trusted childcare staff, ready when you need them",
+		lede:
+			"Safe Hands matches families and childcare centres with vetted, qualified, and genuinely caring childcare staff — often within 48 hours.",
+		chips: [
+			{
+				key: "family" as const,
+				label: "Looking for an Educator",
+				hint:
+					"Vetted, local educators matched to your family. Meet and message them before you ever confirm a booking.",
+				ctaLabel: "Request an Educator",
+				ctaHref: "/for-families/request",
+			},
+			{
+				key: "facility" as const,
+				label: "Care Facility",
+				hint:
+					"Qualified relief and permanent staff, pre-screened to your standards and ratio-compliant — often placed within 48 hours.",
+				ctaLabel: "Staff my Centre",
+				ctaHref: "/for-centres/request",
+			},
+			{
+				key: "educator" as const,
+				label: "Educator Professional",
+				hint:
+					"Flexible hours, fair and transparent pay, and a real team behind you. Build a career caring for children — on your terms.",
+				ctaLabel: "Join as an Educator",
+				ctaHref: "/for-educators/apply",
+			},
+		],
+		rating: { score: "4.9", note: "8,000+ families", initials: ["MR", "DO", "PS"] },
+	},
+	stats: [
+		{ value: "2,400+", label: "vetted educators nationwide", tone: "blush" as const },
+		{ value: "100%", label: "background-checked & verified", tone: "teal" as const },
+		{ value: "48 hr", label: "average placement time", tone: "navy" as const },
+		{ value: "8,000+", label: "families & centres served", tone: "blush" as const },
+	],
+	how: {
+		eyebrow: "How it works",
+		title: "Childcare cover in four simple steps",
+		lede:
+			"No endless searching, no guesswork. Tell us what you need and we handle the rest — with a real person behind every match.",
+		steps: [
+			{
+				title: "Tell us your needs",
+				body: "Share your schedule, the ages of the children, and any special requirements — in just a few minutes.",
+			},
+			{
+				title: "We match a vetted educator",
+				body: "Our team hand-picks qualified educators whose skills and warmth fit your family or centre.",
+			},
+			{
+				title: "Meet & confirm",
+				body: "Chat or meet your educator, read their verified profile, then confirm the booking with a single tap.",
+			},
+			{
+				title: "Ongoing support",
+				body: "Backup cover, regular check-ins, and a dedicated support team — there for you long after day one.",
+			},
+		],
+	},
+	why: {
+		eyebrow: "Why Safe Hands",
+		title: "Care you can trust, without the worry",
+		lede:
+			"Every part of Safe Hands is built around one promise: the people we send are people you'd happily welcome into your home or facility.",
+		cards: [
+			{
+				title: "Rigorous vetting",
+				body: "Multi-point background checks, identity and right-to-work verification on every single educator — no exceptions.",
+			},
+			{
+				title: "Qualified & trained",
+				body: "Paediatric first aid, safeguarding, and early-years training come as standard — and we keep records current.",
+			},
+			{
+				title: "Compassionate care",
+				body: "We match for warmth and personality, not just availability — because children thrive with people who truly care.",
+			},
+			{
+				title: "Flexible booking",
+				body: "One-off, recurring, or last-minute emergency cover — arrange exactly the care you need, in minutes.",
+			},
+			{
+				title: "Reliable backup cover",
+				body: "If an educator falls ill, we arrange a trusted, pre-vetted replacement fast — so you're never left scrambling.",
+			},
+			{
+				title: "Transparent pricing",
+				body: "Clear, upfront pricing and honest reviews from real families and centres.",
+			},
+		],
+	},
+	audience: {
+		eyebrow: "One platform, three sides",
+		title: "Built for every side of childcare",
+		lede:
+			"Whether you're a family, a childcare centre, or an educator, Safe Hands is designed around what you need most.",
+		cards: [
+			{
+				key: "educator" as const,
+				title: "For Educators",
+				sub: "Rewarding work, on your terms.",
+				bullets: [
+					"Choose the families, centres & hours that suit you",
+					"Fair, transparent pay — every time",
+					"Free training and a real team behind you",
+				],
+				ctaLabel: "Join as an Educator",
+				ctaHref: "/for-educators/apply",
+				featured: false,
+			},
+			{
+				key: "family" as const,
+				title: "For Families",
+				sub: "Care you can leave the house for.",
+				bullets: [
+					"Vetted, local educators matched to your family",
+					"Flexible & last-minute cover when life happens",
+					"Meet and message your educator before you book",
+				],
+				ctaLabel: "Request an Educator",
+				ctaHref: "/for-families/request",
+				featured: true,
+			},
+			{
+				key: "centre" as const,
+				title: "For Childcare Centres",
+				sub: "Fully-staffed, every single day.",
+				bullets: [
+					"Qualified relief & permanent staff on demand",
+					"Stay ratio-compliant, even at short notice",
+					"Pre-screened to your exact standards",
+				],
+				ctaLabel: "Staff my centre",
+				ctaHref: "/for-centres/request",
+				featured: false,
+			},
+		],
+	},
+	testimonials: {
+		eyebrow: "Loved by all three sides",
+		title: "Real people, real peace of mind",
+		quotes: [
+			{
+				quote:
+					"Within two days we had an educator who felt like family. I finally stopped worrying every time I left for work.",
+				initials: "MR",
+				name: "Maya R.",
+				role: "Parent of two · Families",
+			},
+			{
+				quote:
+					"Safe Hands fills our ratios with qualified people I'd actually hire myself. It's taken the panic out of staffing.",
+				initials: "DO",
+				name: "Daniel O.",
+				role: "Nursery Manager · Centres",
+			},
+			{
+				quote:
+					"I pick the families and hours that work for me — and there's always someone from the team if I need support.",
+				initials: "PS",
+				name: "Priya S.",
+				role: "Early-Years Educator · Educators",
+			},
+		],
+	},
+	trust: {
+		eyebrow: "Trust & safety",
+		title: "Safety isn't a feature. It's the whole point.",
+		lede:
+			"Before any educator joins Safe Hands, they pass a five-stage screening process — and we keep checking long after they're approved.",
+		cards: [
+			{
+				title: "Identity & right to work",
+				body: "Government ID and right-to-work confirmed before any profile goes live.",
+			},
+			{
+				title: "Enhanced background checks",
+				body: "Enhanced criminal record and child-safeguarding checks on every educator.",
+			},
+			{
+				title: "References & history",
+				body: "We verify work history and speak to references in person.",
+			},
+			{
+				title: "Qualifications verified",
+				body: "First aid, safeguarding and childcare credentials checked at the source.",
+			},
+			{
+				title: "Ongoing training",
+				body: "Regular re-checks, refreshed training and post-placement check-ins.",
+			},
+		],
+	},
+	request: {
+		title: "Find childcare you can trust",
+		body:
+			"Tell us what you need and we'll match a vetted educator you'll be glad to welcome in — usually within 48 hours.",
+		primary: { label: "Request an Educator", href: "/for-families/request" },
+		secondary: { label: "Talk to our team", href: "/contact" },
+		note: "No obligation · Free to request · Every educator fully vetted",
+	},
+	footer: {
+		mission:
+			"On a mission to make trustworthy childcare simple to find — for every family, centre, and educator.",
+	},
+};

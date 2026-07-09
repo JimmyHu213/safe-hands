@@ -1,7 +1,7 @@
 export function AcknowledgementOfCountry() {
 	return (
 		<aside
-			className="bg-slate-50 px-4 py-6 text-sm text-slate-700"
+			className="bg-teal-100 px-4 py-6 text-sm text-teal-900"
 			aria-label="Acknowledgement of Country"
 		>
 			<p className="mx-auto max-w-3xl">
