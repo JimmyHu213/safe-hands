@@ -44,7 +44,7 @@ The design is a **single landing page** with sections `#top` (hero), stats,
 | Reference mechanism | Conversion |
 |:---|:---|
 | `style-hover="…"` attributes | CSS hover rules in a companion stylesheet `src/app/brand.css` (imported by the root layout), one class per interactive element |
-| `data-reveal` / `data-delay` scroll-in | small client hook (IntersectionObserver adds `.is-revealed`; CSS transition) used via a `Reveal` wrapper or data attributes |
+| `data-reveal` / `data-delay` scroll-in | dropped — the reference's own logic sets `animate = false` ("static for Figma import"), so verbatim conversion renders sections static |
 | `<image-slot>` hero photo | `next/image` with the founder-supplied photo (`reference/PHOTO-2026-06-29-21-07-04.jpg` → `public/`) |
 | Google-font `@font-face` payloads | existing `next/font` setup |
 | dc-runtime palette props (coastal/blue/cream) | not converted — single palette via `--sh-*` variables |
@@ -83,9 +83,9 @@ only content differing. No new clean-room layouts.
 
 ## Header / Footer
 
-Converted from the reference. Adds a mobile menu (reference has desktop nav
-only; currently nav is hidden on mobile) using the reference's visual tokens.
-Root metadata fixed (currently "Create Next App").
+Converted from the reference, including its own mobile menu (`sc-if
+mobile`/`menuOpen` conditionals, breakpoint 880px) and scroll-shrink pill
+bar. Root metadata fixed (currently "Create Next App").
 
 ## Testing / verification
 
