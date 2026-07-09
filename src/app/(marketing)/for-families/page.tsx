@@ -1,0 +1,54 @@
+import Link from "next/link";
+import { FOR_FAMILIES, SITE } from "@/lib/cms/content";
+import { PageBanner } from "@/components/marketing/PageBanner";
+
+export default function ForFamiliesPage() {
+  return (
+    <>
+      <section className="border-b bg-slate-50 px-4 py-16">
+        <div className="mx-auto max-w-3xl">
+          <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">For Families</p>
+          <h1 className="mt-3 text-4xl font-semibold tracking-tight">{FOR_FAMILIES.h1}</h1>
+          <p className="mt-4 text-lg text-slate-700">{FOR_FAMILIES.lede}</p>
+          <PageBanner src={FOR_FAMILIES.image.src} alt={FOR_FAMILIES.image.alt} />
+        </div>
+      </section>
+
+      <section className="px-4 py-12">
+        <div className="mx-auto max-w-3xl">
+          <ul className="space-y-3 text-base text-slate-800">
+            {FOR_FAMILIES.bullets.map((b) => (
+              <li key={b} className="flex gap-2">
+                <span aria-hidden>•</span>
+                <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="bg-slate-900 px-4 py-12 text-white">
+        <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
+          <h2 className="text-2xl font-semibold md:text-3xl">Request care</h2>
+          <p className="text-slate-200">
+            Tell us about the shift you need and your suburb. We will call you back within 4 hours
+            during business hours.
+          </p>
+          <Link
+            href="/for-families/request"
+            className="mt-2 rounded-md bg-white px-5 py-2 text-sm font-medium text-slate-900"
+          >
+            Request care →
+          </Link>
+          <p className="mt-4 text-sm text-slate-300">
+            Or call us on{" "}
+            <a href={`tel:${SITE.phoneTel}`} className="underline">
+              {SITE.phone}
+            </a>
+            .
+          </p>
+        </div>
+      </section>
+    </>
+  );
+}
