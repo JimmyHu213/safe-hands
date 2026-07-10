@@ -27,7 +27,7 @@ html {
 
 /* Hover rules appended per component during conversion (rule 3). */
 .sh-header-nav-link:hover {
-	color: var(--sh-teal, #2f8f86);
+	color: var(--sh-muted, #456C6D);
 }
 .sh-header-cta:hover {
 	transform: translateY(-2px);

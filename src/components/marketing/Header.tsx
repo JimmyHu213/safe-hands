@@ -25,6 +25,8 @@ export function Header({ appLoginUrl }: HeaderProps) {
 	const [menuOpen, setMenuOpen] = useState(false);
 	const menuOpenRef = useRef(menuOpen);
 	menuOpenRef.current = menuOpen;
+	const isMobileRef = useRef(isMobile);
+	isMobileRef.current = isMobile;
 
 	// Scroll pill: transparent bar -> floating rounded pill, mirroring
 	// logic-x-dc.js's onScroll (imperative style mutation on barRef).
@@ -68,10 +70,8 @@ export function Header({ appLoginUrl }: HeaderProps) {
 	useEffect(() => {
 		const onResize = () => {
 			const m = window.innerWidth < 880;
-			setIsMobile((prev) => {
-				if (m !== prev) setMenuOpen(false);
-				return m;
-			});
+			if (m !== isMobileRef.current) setMenuOpen(false);
+			setIsMobile(m);
 		};
 		onResize();
 		window.addEventListener("resize", onResize);

@@ -14,39 +14,10 @@ export const SITE = {
 };
 
 export const HOME = {
-	heroH1: "Reliable, qualified, compassionate childcare staff.",
-	heroLede:
-		"Safe Hands supplies fully-compliant educators to NSW childcare centres, OSHC programs, and private families — for casual relief, short-term cover, and emergency shifts.",
 	heroImage: {
 		src: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=1600&q=80",
 		alt: "Children's picture books, alphabet blocks and coloured pencils arranged on a desk",
 	},
-	audiences: [
-		{
-			key: "centre" as const,
-			title: "I'm a Centre",
-			sub: "Same-day ratio cover. Compliance you can audit.",
-			href: "/for-centres",
-		},
-		{
-			key: "family" as const,
-			title: "I'm a Family",
-			sub: "Vetted in-home educators when you need them.",
-			href: "/for-families",
-		},
-		{
-			key: "educator" as const,
-			title: "I'm an Educator",
-			sub: "Flexible shifts. Award-rate pay. Real support.",
-			href: "/for-educators",
-		},
-	],
-	trustBadges: [
-		{ label: "WWCC tracked", note: "Working With Children Check verified" },
-		{ label: "NSW Child Safe Standards", note: "Aligned to the OCG 10 standards" },
-		{ label: "NQF aligned", note: "National Quality Framework practice" },
-		{ label: "ASIC registered", note: "Pty Ltd, NSW" },
-	],
 };
 
 export const FOR_CENTRES = {
@@ -155,7 +126,6 @@ export const LANDING = {
 				ctaHref: "/for-educators/apply",
 			},
 		],
-		rating: { score: "4.9", note: "8,000+ families", initials: ["MR", "DO", "PS"] },
 	},
 	stats: [
 		{ value: "2,400+", label: "vetted educators nationwide", tone: "blush" as const },
