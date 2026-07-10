@@ -1,62 +1,124 @@
 import { SITE } from "@/lib/cms/content";
+import { PageHero } from "@/components/marketing/PageHero";
+
+function ContactIconPhone() {
+	return (
+		<svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+			<path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"></path>
+		</svg>
+	);
+}
+
+function ContactIconMail() {
+	return (
+		<svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+			<rect x="3.5" y="5" width="17" height="14" rx="2.5"></rect>
+			<path d="M4.5 6.5l7.5 6 7.5-6"></path>
+		</svg>
+	);
+}
+
+function ContactIconClock() {
+	return (
+		<svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+			<circle cx="12" cy="12" r="8.5"></circle>
+			<path d="M12 7.5V12l3.2 2"></path>
+		</svg>
+	);
+}
+
+const CONTACT_CARDS = [
+	{
+		Icon: ContactIconPhone,
+		title: "Phone",
+		body: "For centres and families needing a shift filled — we answer the phone.",
+		content: (
+			<a href={`tel:${SITE.phoneTel}`} className="sh-hero-cta" style={{ color: "var(--sh-deep,#1d4b47)", fontWeight: 700 }}>
+				{SITE.phone}
+			</a>
+		),
+	},
+	{
+		Icon: ContactIconMail,
+		title: "Email",
+		body: "Bookings, recruitment, or general questions — write to the right inbox.",
+		content: (
+			<div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+				<a href={`mailto:${SITE.emailBookings}`} style={{ color: "var(--sh-deep,#1d4b47)", fontWeight: 700 }}>
+					{SITE.emailBookings}
+				</a>
+				<a href={`mailto:${SITE.emailRecruitment}`} style={{ color: "var(--sh-deep,#1d4b47)", fontWeight: 700 }}>
+					{SITE.emailRecruitment}
+				</a>
+			</div>
+		),
+	},
+	{
+		Icon: ContactIconClock,
+		title: "Hours",
+		body: `Service area: ${SITE.serviceArea}.`,
+		content: <p style={{ margin: 0, color: "var(--sh-ink,#20413e)", fontWeight: 600 }}>{SITE.hours}</p>,
+	},
+];
 
 export default function ContactPage() {
 	return (
 		<>
-			<section className="border-b bg-slate-50 px-4 py-16">
-				<div className="mx-auto max-w-3xl">
-					<p className="text-sm font-semibold uppercase tracking-wide text-slate-500">Contact</p>
-					<h1 className="mt-3 text-4xl font-semibold tracking-tight">Get in touch.</h1>
-					<p className="mt-4 text-lg text-slate-700">
-						We answer the phone. For bookings, recruitment, or general questions — use the channel
-						below that suits you.
-					</p>
-				</div>
-			</section>
-
-			<section className="px-4 py-12">
-				<div className="mx-auto grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-2">
-					<div className="rounded-lg border p-6">
-						<h2 className="font-semibold">Bookings</h2>
-						<p className="mt-2 text-sm text-slate-600">
-							For centres and families needing a shift filled.
-						</p>
-						<p className="mt-4 text-sm">
-							Phone:{" "}
-							<a href={`tel:${SITE.phoneTel}`} className="underline">
-								{SITE.phone}
-							</a>
-						</p>
-						<p className="text-sm">
-							Email:{" "}
-							<a href={`mailto:${SITE.emailBookings}`} className="underline">
-								{SITE.emailBookings}
-							</a>
-						</p>
-					</div>
-					<div className="rounded-lg border p-6">
-						<h2 className="font-semibold">Recruitment</h2>
-						<p className="mt-2 text-sm text-slate-600">
-							For educators interested in joining our bench.
-						</p>
-						<p className="mt-4 text-sm">
-							Email:{" "}
-							<a href={`mailto:${SITE.emailRecruitment}`} className="underline">
-								{SITE.emailRecruitment}
-							</a>
-						</p>
-						<p className="text-sm">
-							Or start your application:{" "}
-							<a href="/for-educators/apply" className="underline">
-								/for-educators/apply
-							</a>
-						</p>
-					</div>
-					<div className="rounded-lg border p-6 md:col-span-2">
-						<h2 className="font-semibold">Hours</h2>
-						<p className="mt-2 text-sm text-slate-700">{SITE.hours}</p>
-						<p className="mt-2 text-sm text-slate-700">Service area: {SITE.serviceArea}</p>
-					</div>
+			<PageHero
+				eyebrow="Contact"
+				title="Get in touch."
+				lede="We answer the phone. For bookings, recruitment, or general questions — use the channel below that suits you."
+			/>
+			<section style={{ padding: "clamp(48px,7vw,80px) 22px", maxWidth: 1080, margin: "0 auto" }}>
+				<div
+					style={{
+						display: "grid",
+						gridTemplateColumns: "repeat(auto-fit,minmax(290px,1fr))",
+						gap: 22,
+					}}
+				>
+					{CONTACT_CARDS.map(({ Icon, title, body, content }) => (
+						<div
+							key={title}
+							className="sh-why-card"
+							style={{
+								background: "#fff",
+								border: "1px solid rgba(36,91,86,.07)",
+								borderRadius: 22,
+								padding: "30px 28px",
+								boxShadow: "0 2px 14px rgba(36,91,86,.05)",
+								transition: "transform .25s ease,box-shadow .25s ease",
+							}}
+						>
+							<span
+								style={{
+									display: "inline-flex",
+									alignItems: "center",
+									justifyContent: "center",
+									width: 56,
+									height: 56,
+									borderRadius: 16,
+									background: "var(--sh-tint,#e6f2ef)",
+									color: "var(--sh-teal,#2f8f86)",
+								}}
+							>
+								<Icon />
+							</span>
+							<h2
+								style={{
+									fontFamily: "'Hanken Grotesk',sans-serif",
+									fontWeight: 700,
+									fontSize: "1.24rem",
+									color: "var(--sh-deep,#245b56)",
+									margin: "18px 0 8px",
+								}}
+							>
+								{title}
+							</h2>
+							<p style={{ color: "var(--sh-muted,#5f726f)", lineHeight: 1.55, margin: "0 0 16px" }}>{body}</p>
+							{content}
+						</div>
+					))}
 				</div>
 			</section>
 		</>

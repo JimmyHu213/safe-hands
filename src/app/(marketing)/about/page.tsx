@@ -1,36 +1,53 @@
 import { ABOUT } from "@/lib/cms/content";
+import { PageHero } from "@/components/marketing/PageHero";
+import { RequestCta } from "@/components/marketing/RequestCta";
 
 export default function AboutPage() {
 	return (
 		<>
-			<section className="border-b bg-slate-50 px-4 py-16">
-				<div className="mx-auto max-w-3xl">
-					<p className="text-sm font-semibold uppercase tracking-wide text-slate-500">About</p>
-					<h1 className="mt-3 text-4xl font-semibold tracking-tight">{ABOUT.h1}</h1>
-				</div>
-			</section>
-			<section className="px-4 py-12">
-				<div className="mx-auto max-w-3xl space-y-4 text-base text-slate-800">
+			<PageHero eyebrow="About" title={ABOUT.h1} />
+			<section style={{ padding: "clamp(48px,7vw,80px) 22px", maxWidth: 1080, margin: "0 auto" }}>
+				<div style={{ maxWidth: 720 }}>
 					{ABOUT.paragraphs.map((p, i) => (
-						<p key={i}>{p}</p>
+						<p
+							key={i}
+							style={{
+								fontSize: "clamp(1.04rem,1.4vw,1.16rem)",
+								lineHeight: 1.6,
+								color: "var(--sh-muted,#5f726f)",
+								margin: i === 0 ? 0 : "16px 0 0",
+							}}
+						>
+							{p}
+						</p>
+					))}
+				</div>
+				<div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 32 }}>
+					{ABOUT.values.map((value) => (
+						<span
+							key={value}
+							style={{
+								display: "inline-flex",
+								alignItems: "center",
+								gap: 8,
+								fontFamily: "'Hanken Grotesk',sans-serif",
+								fontWeight: 700,
+								fontSize: ".78rem",
+								letterSpacing: ".13em",
+								textTransform: "uppercase",
+								color: "var(--sh-muted,#5f726f)",
+								background: "var(--sh-tint,#e6f2ef)",
+								border: "1px solid rgba(36,91,86,.08)",
+								padding: "8px 15px",
+								borderRadius: 999,
+							}}
+						>
+							{value}
+						</span>
 					))}
 				</div>
 			</section>
-			<section className="bg-slate-50 px-4 py-12">
-				<div className="mx-auto max-w-3xl">
-					<h2 className="text-xl font-semibold">Our values</h2>
-					<ul className="mt-4 flex flex-wrap gap-2">
-						{ABOUT.values.map((v) => (
-							<li
-								key={v}
-								className="rounded-full border bg-white px-3 py-1 text-sm text-slate-700"
-							>
-								{v}
-							</li>
-						))}
-					</ul>
-				</div>
-			</section>
+			<RequestCta />
 		</>
 	);
 }
