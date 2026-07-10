@@ -23,6 +23,6 @@ for (const p of PAGES) {
 test("home page has three audience cards", async ({ page }) => {
 	await page.goto("/");
 	await expect(page.getByRole("link", { name: /centre/i }).first()).toBeVisible();
-	await expect(page.getByRole("link", { name: /family/i }).first()).toBeVisible();
+	await expect(page.getByRole("link", { name: /famil/i }).first()).toBeVisible();
 	await expect(page.getByRole("link", { name: /educator/i }).first()).toBeVisible();
 });

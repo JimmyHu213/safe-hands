@@ -19,7 +19,7 @@ const TESTIMONIAL_STYLES = [
 		iconFill: "var(--sh-accent,#f4a93a)",
 		ghost: true,
 		avatarBg: "var(--sh-tint,#e6f2ef)",
-		avatarColor: "var(--sh-teal,#2f8f86)",
+		avatarColor: "var(--sh-muted,#5f726f)",
 	},
 	{
 		iconFill: "var(--sh-teal,#2f8f86)",
@@ -31,7 +31,7 @@ const TESTIMONIAL_STYLES = [
 		iconFill: "var(--sh-accent,#f4a93a)",
 		ghost: false,
 		avatarBg: "var(--sh-accent-soft,#fce3bb)",
-		avatarColor: "var(--sh-accent-dark,#e0902a)",
+		avatarColor: "var(--sh-ink,#20413e)",
 	},
 ];
 

@@ -90,7 +90,7 @@ export function HowItWorks() {
 							fontSize: ".78rem",
 							letterSpacing: ".13em",
 							textTransform: "uppercase",
-							color: "var(--sh-teal,#2f8f86)",
+							color: "var(--sh-muted,#5f726f)",
 						}}
 					>
 						{how.eyebrow}
@@ -141,6 +141,8 @@ export function HowItWorks() {
 								}}
 							>
 								<span
+									aria-hidden="true"
+									className="sh-decorative-numeral"
 									style={{
 										position: "absolute",
 										top: 22,

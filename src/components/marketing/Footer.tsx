@@ -170,7 +170,7 @@ export function Footer() {
 								</li>
 							</ul>
 						</div>
-						<div>
+						<div style={{ maxWidth: 220 }}>
 							<h4
 								style={{
 									fontFamily: "'Hanken Grotesk',sans-serif",

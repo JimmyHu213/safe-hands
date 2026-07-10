@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { LANDING } from "@/lib/cms/content";
+import { HOME, LANDING } from "@/lib/cms/content";
 
 type HeroTab = "carer" | "facility" | "care";
 
@@ -166,7 +166,7 @@ export function Hero() {
 						borderRadius: "50%",
 						border: "2px solid #fff",
 						background: "var(--sh-teal,#2f8f86)",
-						color: "#fff",
+						color: "var(--sh-ink,#20413e)",
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "center",
@@ -184,7 +184,7 @@ export function Hero() {
 						borderRadius: "50%",
 						border: "2px solid #fff",
 						background: "var(--sh-accent,#f4a93a)",
-						color: "#fff",
+						color: "var(--sh-ink,#20413e)",
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "center",
@@ -345,7 +345,7 @@ export function Hero() {
 			}}
 		>
 			<div style={{ position: "absolute", inset: 0 }}>
-				<Image src="/brand/hero.jpg" alt="Educator caring for a child" fill priority style={{ objectFit: "cover" }} />
+				<Image src={HOME.heroImage.src} alt={HOME.heroImage.alt} fill priority style={{ objectFit: "cover" }} />
 			</div>
 			<div
 				aria-hidden="true"

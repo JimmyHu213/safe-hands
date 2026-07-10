@@ -2,7 +2,7 @@ import { LANDING } from "@/lib/cms/content";
 
 const STAT_COLOR: Record<(typeof LANDING.stats)[number]["tone"], string> = {
 	blush: "var(--sh-accent-dark,#e0902a)",
-	teal: "var(--sh-teal,#2f8f86)",
+	teal: "var(--sh-muted,#5f726f)",
 	navy: "var(--sh-deep,#245b56)",
 };
 
