@@ -1,47 +1,150 @@
 import Link from "next/link";
 import { FOR_EDUCATORS } from "@/lib/cms/content";
-import { PageBanner } from "@/components/marketing/PageBanner";
+import { PageHero } from "@/components/marketing/PageHero";
+
+function BenefitIconCheck() {
+	return (
+		<svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+			<circle cx="12" cy="12" r="8.5"></circle>
+			<path d="M8.5 12.3l2.4 2.4 4.6-4.9"></path>
+		</svg>
+	);
+}
+
+function ArrowIcon() {
+	return (
+		<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+			<path d="M5 12h14"></path>
+			<path d="M13 6l6 6-6 6"></path>
+		</svg>
+	);
+}
 
 export default function ForEducatorsPage() {
-  return (
-    <>
-      <section className="border-b bg-slate-50 px-4 py-16">
-        <div className="mx-auto max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">For Educators</p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight">{FOR_EDUCATORS.h1}</h1>
-          <p className="mt-4 text-lg text-slate-700">{FOR_EDUCATORS.lede}</p>
-          <PageBanner src={FOR_EDUCATORS.image.src} alt={FOR_EDUCATORS.image.alt} />
-        </div>
-      </section>
+	return (
+		<>
+			<PageHero eyebrow="For Educators" title={FOR_EDUCATORS.h1} lede={FOR_EDUCATORS.lede} />
 
-      <section className="px-4 py-12">
-        <div className="mx-auto max-w-3xl">
-          <ul className="space-y-3 text-base text-slate-800">
-            {FOR_EDUCATORS.bullets.map((b) => (
-              <li key={b} className="flex gap-2">
-                <span aria-hidden>•</span>
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+			<section style={{ padding: "clamp(48px,7vw,80px) 22px", maxWidth: 1080, margin: "0 auto" }}>
+				<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(290px,1fr))", gap: 22 }}>
+					{FOR_EDUCATORS.bullets.map((b) => (
+						<div
+							key={b}
+							className="sh-why-card"
+							style={{
+								background: "#fff",
+								border: "1px solid rgba(36,91,86,.07)",
+								borderRadius: 22,
+								padding: "30px 28px",
+								boxShadow: "0 2px 14px rgba(36,91,86,.05)",
+								transition: "transform .25s ease,box-shadow .25s ease",
+							}}
+						>
+							<span
+								style={{
+									display: "inline-flex",
+									alignItems: "center",
+									justifyContent: "center",
+									width: 56,
+									height: 56,
+									borderRadius: 16,
+									background: "var(--sh-tint,#e6f2ef)",
+									color: "var(--sh-teal,#2f8f86)",
+								}}
+							>
+								<BenefitIconCheck />
+							</span>
+							<p style={{ color: "var(--sh-ink,#20413e)", lineHeight: 1.55, margin: "18px 0 0", fontWeight: 600 }}>{b}</p>
+						</div>
+					))}
+				</div>
+			</section>
 
-      <section className="bg-slate-900 px-4 py-12 text-white">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
-          <h2 className="text-2xl font-semibold md:text-3xl">Join the bench</h2>
-          <p className="text-slate-200">
-            Tell us about your qualifications, where you can travel, and when you can work. Step
-            through at your own pace — we will email you a link to resume any time.
-          </p>
-          <Link
-            href="/for-educators/apply"
-            className="mt-2 rounded-md bg-white px-5 py-2 text-sm font-medium text-slate-900"
-          >
-            Start your application →
-          </Link>
-        </div>
-      </section>
-    </>
-  );
+			<section style={{ padding: "clamp(28px,4vw,56px) 22px clamp(60px,8vw,90px)" }}>
+				<div
+					style={{
+						maxWidth: 1080,
+						margin: "0 auto",
+						position: "relative",
+						overflow: "hidden",
+						borderRadius: 32,
+						background: "linear-gradient(130deg,var(--sh-deep,#245b56) 0%, var(--sh-teal,#2f8f86) 100%)",
+						padding: "clamp(40px,6vw,72px) clamp(28px,5vw,64px)",
+						textAlign: "center",
+					}}
+				>
+					<div
+						aria-hidden="true"
+						style={{ position: "absolute", top: -70, left: -50, width: 240, height: 240, borderRadius: "50%", background: "rgba(255,255,255,.07)" }}
+					></div>
+					<div
+						aria-hidden="true"
+						style={{
+							position: "absolute",
+							bottom: -90,
+							right: -40,
+							width: 260,
+							height: 260,
+							borderRadius: "50%",
+							background: "var(--sh-accent,#f4a93a)",
+							opacity: 0.18,
+						}}
+					></div>
+					<div style={{ position: "relative" }}>
+						<h2
+							style={{
+								fontFamily: "'Hanken Grotesk',sans-serif",
+								fontWeight: 800,
+								fontSize: "clamp(2rem,4vw,3.2rem)",
+								lineHeight: 1.06,
+								letterSpacing: "-.025em",
+								color: "#fff",
+								margin: 0,
+								textWrap: "balance",
+							}}
+						>
+							Join the bench
+						</h2>
+						<p
+							style={{
+								fontSize: "clamp(1.06rem,1.5vw,1.22rem)",
+								lineHeight: 1.55,
+								color: "rgba(255,255,255,.85)",
+								margin: "18px auto 0",
+								maxWidth: 540,
+							}}
+						>
+							Tell us about your qualifications, where you can travel, and when you can work. Step through at
+							your own pace — we will email you a link to resume any time.
+						</p>
+						<div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center", marginTop: 34 }}>
+							<Link
+								href="/for-educators/apply"
+								className="sh-request-cta-primary"
+								style={{
+									display: "inline-flex",
+									alignItems: "center",
+									justifyContent: "center",
+									gap: 9,
+									background: "var(--sh-accent,#f4a93a)",
+									color: "var(--sh-accent-ink,#3a2a08)",
+									fontFamily: "'Hanken Grotesk',sans-serif",
+									fontWeight: 800,
+									fontSize: "1.08rem",
+									padding: "17px 32px",
+									borderRadius: 999,
+									textDecoration: "none",
+									boxShadow: "0 14px 30px rgba(0,0,0,.18)",
+									transition: "transform .2s ease,box-shadow .2s ease",
+								}}
+							>
+								Start your application
+								<ArrowIcon />
+							</Link>
+						</div>
+					</div>
+				</div>
+			</section>
+		</>
+	);
 }
