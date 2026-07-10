@@ -14,7 +14,7 @@ export function WizardProgress({ current }: { current: 1 | 2 | 3 | 4 }) {
 				// step label text below always uses a readable ink/deep/muted token.
 				const fill =
 					state === "done"
-						? "var(--sh-teal,#84B0B1)"
+						? "var(--sh-deep,#1A3B5E)"
 						: state === "current"
 							? "var(--sh-deep,#1A3B5E)"
 							: "rgba(36,91,86,.18)";
@@ -33,7 +33,7 @@ export function WizardProgress({ current }: { current: 1 | 2 | 3 | 4 }) {
 								fontWeight: 800,
 								fontSize: ".78rem",
 								background: fill,
-								color: state === "todo" ? "var(--sh-muted,#456C6D)" : "#fff",
+								color: state === "todo" ? "var(--sh-deep,#1A3B5E)" : "#fff",
 							}}
 							aria-current={state === "current" ? "step" : undefined}
 						>
