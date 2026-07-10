@@ -75,3 +75,47 @@ html {
 .sh-faq-accordion [data-slot="accordion-trigger-icon"] {
 	color: var(--sh-teal, #2f8f86);
 }
+
+/* Intake forms (Task 12): field/label/button tokens derived from the
+   reference's card/button styles (the reference has no form inputs). */
+.sh-field {
+	width: 100%;
+	border: 1px solid rgba(36, 91, 86, 0.18);
+	border-radius: 12px;
+	background: #fff;
+	padding: 12px 14px;
+	font-size: 1rem;
+	color: var(--sh-ink, #193048);
+}
+.sh-field:focus {
+	outline: 2px solid var(--sh-teal, #84B0B1);
+	outline-offset: 1px;
+	border-color: var(--sh-teal, #84B0B1);
+}
+.sh-label {
+	font-family: "Hanken Grotesk", sans-serif;
+	font-weight: 700;
+	font-size: 0.92rem;
+	color: var(--sh-deep, #1A3B5E);
+}
+.sh-btn-accent {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 9px;
+	background: var(--sh-accent, #E4B1AE);
+	color: var(--sh-accent-ink, #112131);
+	font-family: "Hanken Grotesk", sans-serif;
+	font-weight: 800;
+	font-size: 1.08rem;
+	padding: 17px 32px;
+	border-radius: 999px;
+	border: 0;
+	cursor: pointer;
+	box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.sh-btn-accent:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 20px 38px rgba(0, 0, 0, 0.26);
+}

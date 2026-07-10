@@ -22,9 +22,9 @@ export function CentreRequestForm({ siteKey }: { siteKey: string }) {
 			<Field name="contactPhone" label="Phone" type="tel" required />
 			<Field name="suburb" label="Suburb" required />
 			<Field name="postcode" label="Postcode" required pattern="\d{4}" inputMode="numeric" />
-			<label className="flex flex-col gap-1 text-sm">
-				<span className="font-medium">Role needed</span>
-				<select name="roleNeeded" required className="rounded-md border px-3 py-2">
+			<label className="flex flex-col gap-1">
+				<span className="sh-label">Role needed</span>
+				<select name="roleNeeded" required className="sh-field">
 					{ROLE_OPTIONS.map((o) => (
 						<option key={o.value} value={o.value}>{o.label}</option>
 					))}
@@ -37,9 +37,9 @@ export function CentreRequestForm({ siteKey }: { siteKey: string }) {
 				<input type="checkbox" name="specialNeedsFlag" />
 				Educator should have special-needs / behavioural-support experience
 			</label>
-			<label className="md:col-span-2 flex flex-col gap-1 text-sm">
-				<span className="font-medium">Notes (optional, max 2000 chars)</span>
-				<textarea name="notes" maxLength={2000} rows={4} className="rounded-md border px-3 py-2" />
+			<label className="md:col-span-2 flex flex-col gap-1">
+				<span className="sh-label">Notes (optional, max 2000 chars)</span>
+				<textarea name="notes" maxLength={2000} rows={4} className="sh-field" />
 			</label>
 			<label className="md:col-span-2 flex items-center gap-2 text-sm">
 				<input type="checkbox" name="privacyConsent" required />
@@ -51,7 +51,7 @@ export function CentreRequestForm({ siteKey }: { siteKey: string }) {
 				<button
 					type="submit"
 					disabled={pending}
-					className="rounded-md bg-slate-900 px-5 py-2 text-sm font-medium text-white disabled:opacity-60"
+					className="sh-btn-accent disabled:opacity-60"
 				>
 					{pending ? "Submitting…" : "Submit request"}
 				</button>
@@ -71,8 +71,8 @@ function Field(props: {
 	min?: string;
 }) {
 	return (
-		<label className="flex flex-col gap-1 text-sm">
-			<span className="font-medium">{props.label}{props.required ? " *" : ""}</span>
+		<label className="flex flex-col gap-1">
+			<span className="sh-label">{props.label}{props.required ? " *" : ""}</span>
 			<input
 				name={props.name}
 				type={props.type ?? "text"}
@@ -81,7 +81,7 @@ function Field(props: {
 				inputMode={props.inputMode}
 				step={props.step}
 				min={props.min}
-				className="rounded-md border px-3 py-2"
+				className="sh-field"
 			/>
 		</label>
 	);
