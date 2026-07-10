@@ -40,3 +40,14 @@ html {
 .sh-hero-watch:hover {
 	transform: scale(1.06);
 }
+.sh-why-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 24px 42px rgba(36, 91, 86, 0.12);
+}
+.sh-audience-cta:hover {
+	transform: translateY(-2px);
+}
+.sh-audience-cta-outline:hover {
+	transform: translateY(-2px);
+	border-color: var(--sh-teal, #2f8f86);
+}
