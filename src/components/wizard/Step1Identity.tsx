@@ -15,7 +15,7 @@ export function Step1Identity({ siteKey }: { siteKey: string }) {
 			<Field name="phone" label="Phone" type="tel" required />
 			<Field name="suburb" label="Suburb" required />
 			<Field name="postcode" label="Postcode" required pattern="\d{4}" />
-			<label className="md:col-span-2 flex items-center gap-2 text-sm">
+			<label className="md:col-span-2 flex items-center gap-2 text-sm" style={{ color: "var(--sh-ink,#193048)" }}>
 				<input type="checkbox" name="privacyConsent" required />
 				I have read and agree to the <a href="/legal/privacy" className="underline">Privacy Policy</a>.
 			</label>
@@ -25,7 +25,7 @@ export function Step1Identity({ siteKey }: { siteKey: string }) {
 				<button
 					type="submit"
 					disabled={pending}
-					className="rounded-md bg-slate-900 px-5 py-2 text-sm font-medium text-white disabled:opacity-60"
+					className="sh-btn-accent disabled:opacity-60"
 				>
 					{pending ? "Saving…" : "Save and continue"}
 				</button>
@@ -36,14 +36,14 @@ export function Step1Identity({ siteKey }: { siteKey: string }) {
 
 function Field(props: { name: string; label: string; type?: string; required?: boolean; pattern?: string }) {
 	return (
-		<label className="flex flex-col gap-1 text-sm">
-			<span className="font-medium">{props.label}{props.required ? " *" : ""}</span>
+		<label className="flex flex-col gap-1">
+			<span className="sh-label">{props.label}{props.required ? " *" : ""}</span>
 			<input
 				name={props.name}
 				type={props.type ?? "text"}
 				required={props.required}
 				pattern={props.pattern}
-				className="rounded-md border px-3 py-2"
+				className="sh-field"
 			/>
 		</label>
 	);

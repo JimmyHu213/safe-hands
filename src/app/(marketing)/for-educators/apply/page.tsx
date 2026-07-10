@@ -1,18 +1,28 @@
 import { WizardProgress } from "@/components/wizard/WizardProgress";
 import { Step1Identity } from "@/components/wizard/Step1Identity";
+import { PageHero } from "@/components/marketing/PageHero";
 
 export default function ApplyStep1Page() {
 	const siteKey = process.env.TURNSTILE_SITE_KEY ?? "";
 	return (
-		<section className="px-4 py-12">
-			<div className="mx-auto max-w-3xl">
-				<h1 className="text-3xl font-semibold tracking-tight">Educator application</h1>
-				<p className="mt-2 text-slate-700">Step 1 of 4 — identity & consent</p>
-				<div className="mt-6"><WizardProgress current={1} /></div>
-				<div className="mt-8 rounded-lg border bg-white p-6">
-					<Step1Identity siteKey={siteKey} />
+		<>
+			<PageHero eyebrow="For Educators" title="Educator application" lede="Step 1 of 4 — identity & consent" />
+			<section style={{ background: "var(--sh-tint,#EAF0F1)", padding: "clamp(48px,7vw,80px) 22px" }}>
+				<div style={{ maxWidth: 780, margin: "0 auto" }}>
+					<div style={{ marginBottom: 28 }}><WizardProgress current={1} /></div>
+					<div
+						style={{
+							background: "#fff",
+							border: "1px solid rgba(36,91,86,.07)",
+							borderRadius: 22,
+							boxShadow: "0 2px 14px rgba(36,91,86,.05)",
+							padding: "clamp(24px,4vw,40px)",
+						}}
+					>
+						<Step1Identity siteKey={siteKey} />
+					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		</>
 	);
 }
