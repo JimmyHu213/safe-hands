@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { LANDING, SITE } from "@/lib/cms/content";
 import { AcknowledgementOfCountry } from "./AcknowledgementOfCountry";
@@ -29,18 +30,17 @@ export function Footer() {
 				<div style={{ display: "flex", flexWrap: "wrap", gap: "clamp(40px,6vw,80px)", justifyContent: "space-between" }}>
 					<div style={{ maxWidth: 360, flex: "1 1 280px" }}>
 						<div style={{ display: "flex", alignItems: "center", gap: 11 }}>
-							<svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-								<path
-									d="M5 21c0 8 7 13 15 13s15-5 15-13"
-									stroke="var(--sh-soft,#7cc4b8)"
-									strokeWidth="3.3"
-									strokeLinecap="round"
-								></path>
-								<path
-									d="M20 9.5c-1.7-2.8-6-2.7-7.4.5-1 2.3.3 4.7 7.4 9.5 7.1-4.8 8.4-7.2 7.4-9.5-1.4-3.2-5.7-3.3-7.4-.5z"
-									fill="var(--sh-accent,#f4a93a)"
-								></path>
-							</svg>
+							<span
+								aria-hidden="true"
+								style={{
+									display: "inline-flex",
+									background: "#fff",
+									borderRadius: 9,
+									padding: 4,
+								}}
+							>
+								<Image src="/brand/safehands-icon-192.png" alt="" width={26} height={26} />
+							</span>
 							<span style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}>
 								<span
 									style={{

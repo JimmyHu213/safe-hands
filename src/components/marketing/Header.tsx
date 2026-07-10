@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { SITE } from "@/lib/cms/content";
@@ -117,18 +118,13 @@ export function Header({ appLoginUrl }: HeaderProps) {
 							flexShrink: 0,
 						}}
 					>
-						<svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-							<path
-								d="M5 21c0 8 7 13 15 13s15-5 15-13"
-								stroke="var(--sh-teal,#2f8f86)"
-								strokeWidth="3.3"
-								strokeLinecap="round"
-							></path>
-							<path
-								d="M20 9.5c-1.7-2.8-6-2.7-7.4.5-1 2.3.3 4.7 7.4 9.5 7.1-4.8 8.4-7.2 7.4-9.5-1.4-3.2-5.7-3.3-7.4-.5z"
-								fill="var(--sh-accent,#f4a93a)"
-							></path>
-						</svg>
+						<Image
+							src="/brand/safehands-icon-192.png"
+							alt=""
+							width={36}
+							height={36}
+							aria-hidden="true"
+						/>
 						<span style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}>
 							<span
 								style={{
