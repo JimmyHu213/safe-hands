@@ -68,3 +68,10 @@ html {
 .sh-footer-bottom-link:hover {
 	color: #fff;
 }
+
+/* FAQ accordion (Task 11): expand/collapse chevron is decorative, teal is
+   fine here — the shadcn accordion primitive sets its own icon colour via a
+   text-muted-foreground utility, so it needs a targeted override. */
+.sh-faq-accordion [data-slot="accordion-trigger-icon"] {
+	color: var(--sh-teal, #2f8f86);
+}
