@@ -30,7 +30,7 @@ const TESTIMONIAL_STYLES = [
 	{
 		iconFill: "var(--sh-accent,#f4a93a)",
 		ghost: false,
-		avatarBg: "var(--sh-accent-soft,#fce3bb)",
+		avatarBg: "var(--sh-lavender,#B5B3C1)",
 		avatarColor: "var(--sh-ink,#20413e)",
 	},
 ];

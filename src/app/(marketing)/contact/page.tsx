@@ -33,7 +33,7 @@ const CONTACT_CARDS = [
 		title: "Phone",
 		body: "For centres and families needing a shift filled — we answer the phone.",
 		content: (
-			<a href={`tel:${SITE.phoneTel}`} className="sh-hero-cta" style={{ color: "var(--sh-deep,#1d4b47)", fontWeight: 700 }}>
+			<a href={`tel:${SITE.phoneTel}`} style={{ color: "var(--sh-deep,#1d4b47)", fontWeight: 700 }}>
 				{SITE.phone}
 			</a>
 		),

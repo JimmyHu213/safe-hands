@@ -82,7 +82,7 @@ export function Hero() {
 		position: "absolute",
 		background: "var(--sh-accent, #f4a93a)",
 		borderRadius: 999,
-		boxShadow: "0 6px 14px rgba(244,169,58,.32)",
+		boxShadow: "0 6px 14px rgba(228,177,174,.5)",
 		transition:
 			"left .32s cubic-bezier(.4,0,.2,1),width .32s cubic-bezier(.4,0,.2,1),top .3s ease,height .3s ease",
 		zIndex: 0,
@@ -202,8 +202,8 @@ export function Hero() {
 						height: avatarSize,
 						borderRadius: "50%",
 						border: "2px solid #fff",
-						background: "var(--sh-deep,#245b56)",
-						color: "#fff",
+						background: "var(--sh-lavender,#B5B3C1)",
+						color: "var(--sh-ink,#20413e)",
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "center",
@@ -266,7 +266,7 @@ export function Hero() {
 				WebkitBackdropFilter: "blur(14px) saturate(165%)",
 				border: "1px solid rgba(255,255,255,.7)",
 				boxShadow:
-					"inset 0 1px 12px rgba(255,255,255,.65), inset 0 -10px 22px rgba(244,169,58,.18), 0 18px 42px rgba(36,91,86,.22)",
+					"inset 0 1px 12px rgba(255,255,255,.65), inset 0 -10px 22px rgba(228,177,174,.28), 0 18px 42px rgba(36,91,86,.22)",
 				animation: "sh-bubble-b 7.4s ease-in-out infinite",
 			}}
 		>
@@ -310,7 +310,7 @@ export function Hero() {
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "center",
-						boxShadow: "0 8px 18px rgba(244,169,58,.42)",
+						boxShadow: "0 8px 18px rgba(228,177,174,.55)",
 					}}
 				>
 					<svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -512,15 +512,15 @@ export function Hero() {
 								alignItems: "center",
 								justifyContent: "center",
 								gap: 9,
-								background: "var(--sh-accent,#f4a93a)",
-								color: "var(--sh-accent-ink,#3a2a08)",
+								background: "var(--sh-btn-primary,#1A3B5E)",
+								color: "#fff",
 								fontFamily: "'Hanken Grotesk',sans-serif",
 								fontWeight: 800,
 								fontSize: "1.04rem",
 								padding: "14px 26px",
 								borderRadius: 999,
 								textDecoration: "none",
-								boxShadow: "0 12px 26px rgba(244,169,58,.34)",
+								boxShadow: "0 12px 26px rgba(26,59,94,.3)",
 								transition: "transform .2s ease,box-shadow .2s ease",
 							}}
 						>
