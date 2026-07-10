@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist_Mono, Hanken_Grotesk, Mulish } from "next/font/google";
 import "./globals.css";
+import "./brand.css";
 
 const hanken = Hanken_Grotesk({
 	variable: "--font-hanken",

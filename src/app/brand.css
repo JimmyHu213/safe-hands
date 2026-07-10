@@ -1,0 +1,28 @@
+/* Brand variables consumed by the converted reference markup (var(--sh-*)).
+   Values = Safe Hands brand mapping of the reference coastal/amber palette. */
+:root {
+	--sh-deep: #1A3B5E;        /* navy-800  (ref coastal deep  #245b56) */
+	--sh-teal: #84B0B1;        /* teal-400  (ref teal          #2f8f86) */
+	--sh-soft: #B6CDCD;        /* teal-300  (ref soft          #7cc4b8) */
+	--sh-tint: #EAF0F1;        /* teal-100  (ref tint          #e6f2ef) */
+	--sh-cream: #FBF4F4;       /* blush-50  (ref cream         #fbf7f1) */
+	--sh-ink: #193048;         /* navy-900  (ref ink           #20413e) */
+	--sh-muted: #456C6D;       /* teal-700  (ref muted         #5f726f) */
+	--sh-accent: #E4B1AE;      /* blush-300 (ref amber         #f4a93a) */
+	--sh-accent-dark: #D17A75; /* blush-400 (ref amber-dark    #e0902a) */
+	--sh-accent-soft: #F5E6E6; /* blush-100 (ref amber-soft    #fce3bb) */
+	--sh-accent-ink: #112131;  /* navy-950  (ref accent-ink    #3a2a08) */
+}
+
+/* Verbatim from reference base-style.css (second <style> block) */
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 90px;
+}
+@keyframes sh-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-13px); } }
+@keyframes sh-float-b { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(11px); } }
+@keyframes sh-drift { 0%, 100% { transform: translate(0, 0) rotate(0); } 50% { transform: translate(0, -10px) rotate(4deg); } }
+@keyframes sh-bubble { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-13px) rotate(1.6deg); } }
+@keyframes sh-bubble-b { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-17px) rotate(-2deg); } }
+
+/* Hover rules appended per component during conversion (rule 3). */
