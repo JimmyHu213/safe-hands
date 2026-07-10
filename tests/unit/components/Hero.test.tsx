@@ -11,8 +11,8 @@ describe("Hero", () => {
 	});
 
 	it("renders the hero image", () => {
-		render(<Hero />);
-		expect(screen.getByRole("img")).toBeInTheDocument();
+		const { container } = render(<Hero />);
+		expect(container.querySelector("img")).toBeInTheDocument();
 	});
 
 	it("renders three tabs in a tablist", () => {

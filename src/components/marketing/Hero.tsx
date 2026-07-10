@@ -345,7 +345,7 @@ export function Hero() {
 			}}
 		>
 			<div style={{ position: "absolute", inset: 0 }}>
-				<Image src={HOME.heroImage.src} alt={HOME.heroImage.alt} fill priority style={{ objectFit: "cover" }} />
+				<Image src={HOME.heroImage.src} alt="" fill priority style={{ objectFit: "cover" }} />
 			</div>
 			<div
 				aria-hidden="true"
@@ -390,7 +390,7 @@ export function Hero() {
 						fontSize: ".78rem",
 						letterSpacing: ".13em",
 						textTransform: "uppercase",
-						color: "var(--sh-teal,#2f8f86)",
+						color: "var(--sh-muted,#5f726f)",
 						background: "rgba(255,255,255,.62)",
 						backdropFilter: "blur(6px)",
 						WebkitBackdropFilter: "blur(6px)",

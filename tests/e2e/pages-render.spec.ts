@@ -22,7 +22,8 @@ for (const p of PAGES) {
 
 test("home page has three audience cards", async ({ page }) => {
 	await page.goto("/");
-	await expect(page.getByRole("link", { name: /centre/i }).first()).toBeVisible();
-	await expect(page.getByRole("link", { name: /famil/i }).first()).toBeVisible();
-	await expect(page.getByRole("link", { name: /educator/i }).first()).toBeVisible();
+	const audience = page.locator("#audience");
+	await expect(audience.getByRole("link", { name: /staff my centre/i })).toBeVisible();
+	await expect(audience.getByRole("link", { name: /request an educator/i })).toBeVisible();
+	await expect(audience.getByRole("link", { name: /join as an educator/i })).toBeVisible();
 });
