@@ -1,40 +1,129 @@
 import { LANDING } from "@/lib/cms/content";
-import { SectionHeading } from "./SectionHeading";
 
-const AVATAR_TONES = ["bg-blush-200/80 text-blush-700", "bg-teal-300/70 text-teal-900", "bg-lavender-200/80 text-lavender-700"];
+function TestimonialQuoteIcon({ fill, ghost = false }: { fill: string; ghost?: boolean }) {
+	return (
+		<svg width="34" height="34" viewBox="0 0 24 24" fill={fill} aria-hidden="true">
+			{ghost ? (
+				<path
+					d="M10 7H6a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2v3H5v-2H4M20 7h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2v3h-3v-2h-1"
+					opacity={0}
+				></path>
+			) : null}
+			<path d="M9.5 6C6.5 6 4 8.5 4 11.5S6.2 17 9 17v-3.5c-1 0-1.8-.8-1.8-1.8 0-1 .8-1.7 1.8-1.7.3 0 .6 0 .8.1V6.1C9.7 6 9.6 6 9.5 6zm9 0c-3 0-5.5 2.5-5.5 5.5S15.2 17 18 17v-3.5c-1 0-1.8-.8-1.8-1.8 0-1 .8-1.7 1.8-1.7.3 0 .6 0 .8.1V6.1c-.1-.1-.2-.1-.3-.1z"></path>
+		</svg>
+	);
+}
+
+const TESTIMONIAL_STYLES = [
+	{
+		iconFill: "var(--sh-accent,#f4a93a)",
+		ghost: true,
+		avatarBg: "var(--sh-tint,#e6f2ef)",
+		avatarColor: "var(--sh-teal,#2f8f86)",
+	},
+	{
+		iconFill: "var(--sh-teal,#2f8f86)",
+		ghost: false,
+		avatarBg: "var(--sh-tint,#e6f2ef)",
+		avatarColor: "var(--sh-deep,#245b56)",
+	},
+	{
+		iconFill: "var(--sh-accent,#f4a93a)",
+		ghost: false,
+		avatarBg: "var(--sh-accent-soft,#fce3bb)",
+		avatarColor: "var(--sh-accent-dark,#e0902a)",
+	},
+];
 
 export function Testimonials() {
 	const { testimonials } = LANDING;
 	return (
-		<section id="testimonials" className="bg-navy-900 px-4 py-20">
-			<SectionHeading
-				dark
-				eyebrow={testimonials.eyebrow}
-				title={testimonials.title}
-			/>
-			<div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-5 md:grid-cols-3">
-				{testimonials.quotes.map((t, i) => (
-					<figure key={t.name} className="rounded-2xl bg-white p-6 shadow-md">
-						<p aria-hidden="true" className="font-heading text-4xl font-extrabold leading-none text-blush-300">
-							&ldquo;
-						</p>
-						<blockquote className="mt-2 text-sm text-slate-600">
-							&ldquo;{t.quote}&rdquo;
-						</blockquote>
-						<figcaption className="mt-5 flex items-center gap-3">
-							<span
-								aria-hidden="true"
-								className={`flex h-10 w-10 items-center justify-center rounded-full text-xs font-bold ${AVATAR_TONES[i]}`}
+		<section
+			id="testimonials"
+			style={{ padding: "clamp(64px,9vw,116px) 0", background: "var(--sh-deep,#245b56)", position: "relative", overflow: "hidden" }}
+		>
+			<div
+				aria-hidden="true"
+				style={{ position: "absolute", top: -90, right: -70, width: 300, height: 300, borderRadius: "50%", background: "rgba(255,255,255,.05)" }}
+			></div>
+			<div style={{ maxWidth: 1180, margin: "0 auto", padding: "0 22px", position: "relative" }}>
+				<div style={{ maxWidth: 660 }}>
+					<span
+						style={{
+							display: "inline-block",
+							fontFamily: "'Hanken Grotesk',sans-serif",
+							fontWeight: 700,
+							fontSize: ".78rem",
+							letterSpacing: ".13em",
+							textTransform: "uppercase",
+							color: "var(--sh-soft,#7cc4b8)",
+						}}
+					>
+						{testimonials.eyebrow}
+					</span>
+					<h2
+						style={{
+							fontFamily: "'Hanken Grotesk',sans-serif",
+							fontWeight: 800,
+							fontSize: "clamp(1.9rem,3.6vw,2.8rem)",
+							lineHeight: 1.08,
+							letterSpacing: "-.022em",
+							color: "#fff",
+							margin: "14px 0 0",
+						}}
+					>
+						{testimonials.title}
+					</h2>
+				</div>
+				<div
+					style={{
+						display: "grid",
+						gridTemplateColumns: "repeat(auto-fit,minmax(290px,1fr))",
+						gap: 22,
+						marginTop: 46,
+					}}
+				>
+					{testimonials.quotes.map((t, i) => {
+						const { iconFill, ghost, avatarBg, avatarColor } = TESTIMONIAL_STYLES[i];
+						return (
+							<figure
+								key={t.name}
+								style={{ background: "#fff", borderRadius: 22, padding: "30px 28px", margin: 0, display: "flex", flexDirection: "column" }}
 							>
-								{t.initials}
-							</span>
-							<span>
-								<span className="block text-sm font-bold text-navy-900">{t.name}</span>
-								<span className="block text-xs text-slate-500">{t.role}</span>
-							</span>
-						</figcaption>
-					</figure>
-				))}
+								<TestimonialQuoteIcon fill={iconFill} ghost={ghost} />
+								<blockquote
+									style={{ margin: "16px 0 0", fontSize: "1.12rem", lineHeight: 1.55, color: "var(--sh-ink,#20413e)", fontWeight: 500 }}
+								>
+									&ldquo;{t.quote}&rdquo;
+								</blockquote>
+								<figcaption style={{ marginTop: "auto", paddingTop: 22, display: "flex", alignItems: "center", gap: 13 }}>
+									<span
+										style={{
+											display: "inline-flex",
+											width: 46,
+											height: 46,
+											borderRadius: "50%",
+											background: avatarBg,
+											color: avatarColor,
+											alignItems: "center",
+											justifyContent: "center",
+											fontFamily: "'Hanken Grotesk',sans-serif",
+											fontWeight: 800,
+										}}
+									>
+										{t.initials}
+									</span>
+									<span>
+										<span style={{ display: "block", fontFamily: "'Hanken Grotesk',sans-serif", fontWeight: 700, color: "var(--sh-deep,#245b56)" }}>
+											{t.name}
+										</span>
+										<span style={{ display: "block", color: "var(--sh-muted,#5f726f)", fontSize: ".9rem" }}>{t.role}</span>
+									</span>
+								</figcaption>
+							</figure>
+						);
+					})}
+				</div>
 			</div>
 		</section>
 	);
