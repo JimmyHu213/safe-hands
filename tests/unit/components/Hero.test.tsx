@@ -7,7 +7,7 @@ import { LANDING } from "@/lib/cms/content";
 describe("Hero", () => {
 	it("renders the H1 from content module", () => {
 		render(<Hero />);
-		expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(LANDING.hero.h1);
+		expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(/trusted childcare staff/i);
 	});
 
 	it("renders the hero image", () => {
@@ -15,10 +15,12 @@ describe("Hero", () => {
 		expect(screen.getByRole("img")).toBeInTheDocument();
 	});
 
-	it("renders the three audience chips", () => {
+	it("renders three tabs in a tablist", () => {
 		render(<Hero />);
+		expect(screen.getByRole("tablist", { name: /i am a/i })).toBeInTheDocument();
+		expect(screen.getAllByRole("tab")).toHaveLength(3);
 		for (const chip of LANDING.hero.chips) {
-			expect(screen.getByRole("button", { name: chip.label })).toBeInTheDocument();
+			expect(screen.getByRole("tab", { name: chip.label })).toBeInTheDocument();
 		}
 	});
 
@@ -30,10 +32,10 @@ describe("Hero", () => {
 		);
 	});
 
-	it("switches hint and CTA when a chip is clicked", async () => {
+	it("swaps hint and CTA when a tab is clicked", async () => {
 		const user = userEvent.setup();
 		render(<Hero />);
-		await user.click(screen.getByRole("button", { name: "Educator Professional" }));
+		await user.click(screen.getByRole("tab", { name: "Educator Professional" }));
 		expect(screen.getByRole("link", { name: /join as an educator/i })).toHaveAttribute(
 			"href",
 			"/for-educators/apply",

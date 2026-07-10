@@ -1,109 +1,574 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Play, Star } from "lucide-react";
-import { HOME, LANDING } from "@/lib/cms/content";
-import { Wave } from "./Wave";
+import { LANDING } from "@/lib/cms/content";
 
-const TILE_TONES = ["bg-lavender-200/70", "bg-blush-200/80", "bg-teal-300/70"];
+type HeroTab = "carer" | "facility" | "care";
+
+// Reference DOM order (source: section-00-top.html) maps to LANDING.hero.chips
+// by chip key — button copy is identical between the reference and LANDING,
+// only "Staff my Center" -> "Staff my Centre" (AU spelling) differs, so we
+// keep LANDING's localised chip as the source of label/hint/CTA text.
+const TAB_ORDER: { tab: HeroTab; chipKey: (typeof LANDING.hero.chips)[number]["key"] }[] = [
+	{ tab: "carer", chipKey: "educator" },
+	{ tab: "facility", chipKey: "facility" },
+	{ tab: "care", chipKey: "family" },
+];
+
+interface TabRect {
+	left: number;
+	top: number;
+	width: number;
+	height: number;
+}
 
 export function Hero() {
-	const { hero } = LANDING;
-	const [active, setActive] = useState(0);
-	const chip = hero.chips[active];
+	const rootRef = useRef<HTMLElement>(null);
+	const tablistRef = useRef<HTMLDivElement>(null);
+	const panelRef = useRef<HTMLDivElement>(null);
+
+	const [heroTab, setHeroTab] = useState<HeroTab>("care");
+	const [isMobile, setIsMobile] = useState(false);
+	const [tabCenters, setTabCenters] = useState<number[] | null>(null);
+	const [tabRects, setTabRects] = useState<TabRect[] | null>(null);
+
+	// measureTabs(): re-measures the tab buttons' geometry so the sliding
+	// accent pill and tip triangle can be positioned via inline styles.
+	const measureTabs = useCallback(() => {
+		const tablist = tablistRef.current;
+		const panel = panelRef.current;
+		if (!tablist || !panel) return;
+		const pr = panel.getBoundingClientRect();
+		const btns = Array.from(tablist.querySelectorAll("button"));
+		const centers = btns.map((b) => {
+			const r = b.getBoundingClientRect();
+			return Math.round(r.left - pr.left + r.width / 2);
+		});
+		const rects = btns.map((b) => ({
+			left: b.offsetLeft,
+			top: b.offsetTop,
+			width: b.offsetWidth,
+			height: b.offsetHeight,
+		}));
+		setTabCenters(centers);
+		setTabRects(rects);
+	}, []);
+
+	useEffect(() => {
+		measureTabs();
+		const onResize = () => {
+			setIsMobile(window.innerWidth < 880);
+			measureTabs();
+		};
+		onResize();
+		window.addEventListener("resize", onResize);
+		const timer = setTimeout(measureTabs, 350);
+		if (document.fonts?.ready) {
+			document.fonts.ready.then(() => measureTabs());
+		}
+		return () => {
+			window.removeEventListener("resize", onResize);
+			clearTimeout(timer);
+		};
+	}, [measureTabs]);
+
+	const idx = TAB_ORDER.findIndex((t) => t.tab === heroTab);
+	const activeChipKey = TAB_ORDER[idx].chipKey;
+	const activeChip = LANDING.hero.chips.find((c) => c.key === activeChipKey)!;
+
+	const pillBase: CSSProperties = {
+		position: "absolute",
+		background: "var(--sh-accent, #f4a93a)",
+		borderRadius: 999,
+		boxShadow: "0 6px 14px rgba(244,169,58,.32)",
+		transition:
+			"left .32s cubic-bezier(.4,0,.2,1),width .32s cubic-bezier(.4,0,.2,1),top .3s ease,height .3s ease",
+		zIndex: 0,
+		pointerEvents: "none",
+	};
+	const activeRect = tabRects?.[idx];
+	const pillStyle: CSSProperties = activeRect
+		? { ...pillBase, top: activeRect.top, left: activeRect.left, width: activeRect.width, height: activeRect.height }
+		: { ...pillBase, top: 5, left: 5, width: 0, height: 0 };
+
+	const tipLeft = tabCenters?.[idx] ?? 88;
+	const tipStyle: CSSProperties = {
+		position: "absolute",
+		top: -7,
+		left: tipLeft,
+		width: 15,
+		height: 15,
+		background: "rgba(255,255,255,.62)",
+		borderLeft: "1px solid rgba(255,255,255,.8)",
+		borderTop: "1px solid rgba(255,255,255,.8)",
+		transform: "translateX(-50%) rotate(45deg)",
+		backdropFilter: "blur(10px)",
+		WebkitBackdropFilter: "blur(10px)",
+		transition: "left .3s cubic-bezier(.4,0,.2,1)",
+	};
+
+	const desktop = !isMobile;
+	const mobile = isMobile;
+
+	const ratingBubble = (
+		width: string,
+		avatarSize: number,
+		avatarFontSize: string,
+		starSize: number,
+		ratingFontSize: string,
+		labelFontSize: string,
+		pointerEvents?: CSSProperties["pointerEvents"],
+	) => (
+		<div
+			style={{
+				pointerEvents: pointerEvents,
+				position: "relative",
+				overflow: "hidden",
+				width: width,
+				height: width,
+				borderRadius: "50%",
+				background:
+					"radial-gradient(circle at 30% 26%, rgba(255,255,255,.62), rgba(255,255,255,.26) 56%, rgba(255,255,255,.42))",
+				backdropFilter: "blur(14px) saturate(165%)",
+				WebkitBackdropFilter: "blur(14px) saturate(165%)",
+				border: "1px solid rgba(255,255,255,.7)",
+				boxShadow:
+					"inset 0 1px 12px rgba(255,255,255,.65), inset 0 -10px 22px rgba(124,196,184,.22), 0 18px 42px rgba(36,91,86,.22)",
+				display: "flex",
+				flexDirection: "column",
+				alignItems: "center",
+				justifyContent: "center",
+				textAlign: "center",
+				padding: 12,
+				animation: "sh-bubble 6.2s ease-in-out infinite",
+			}}
+		>
+			<span
+				aria-hidden="true"
+				style={{
+					position: "absolute",
+					top: "13%",
+					left: "17%",
+					width: "36%",
+					height: "27%",
+					borderRadius: "50%",
+					background: "radial-gradient(circle at 38% 38%, rgba(255,255,255,.95), rgba(255,255,255,0) 72%)",
+					pointerEvents: "none",
+				}}
+			></span>
+			<div style={{ display: "flex", position: "relative" }}>
+				<span
+					style={{
+						width: avatarSize,
+						height: avatarSize,
+						borderRadius: "50%",
+						border: "2px solid #fff",
+						background: "var(--sh-teal,#2f8f86)",
+						color: "#fff",
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+						fontFamily: "'Hanken Grotesk',sans-serif",
+						fontWeight: 800,
+						fontSize: avatarFontSize,
+					}}
+				>
+					MR
+				</span>
+				<span
+					style={{
+						width: avatarSize,
+						height: avatarSize,
+						borderRadius: "50%",
+						border: "2px solid #fff",
+						background: "var(--sh-accent,#f4a93a)",
+						color: "#fff",
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+						fontFamily: "'Hanken Grotesk',sans-serif",
+						fontWeight: 800,
+						fontSize: avatarFontSize,
+						marginLeft: -11,
+					}}
+				>
+					DO
+				</span>
+				<span
+					style={{
+						width: avatarSize,
+						height: avatarSize,
+						borderRadius: "50%",
+						border: "2px solid #fff",
+						background: "var(--sh-deep,#245b56)",
+						color: "#fff",
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+						fontFamily: "'Hanken Grotesk',sans-serif",
+						fontWeight: 800,
+						fontSize: avatarFontSize,
+						marginLeft: -11,
+					}}
+				>
+					PS
+				</span>
+			</div>
+			<div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 9 }}>
+				<svg width={starSize} height={starSize} viewBox="0 0 24 24" fill="var(--sh-accent,#f4a93a)" aria-hidden="true">
+					<path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.7 5.9 21l1.4-6.8L2.2 9l6.9-.7z"></path>
+				</svg>
+				<span
+					style={{
+						fontFamily: "'Hanken Grotesk',sans-serif",
+						fontWeight: 800,
+						fontSize: ratingFontSize,
+						color: "var(--sh-deep,#245b56)",
+					}}
+				>
+					4.9
+				</span>
+			</div>
+			<span
+				style={{
+					fontSize: labelFontSize,
+					color: "var(--sh-ink,#20413e)",
+					fontWeight: 700,
+					lineHeight: 1.2,
+					marginTop: 2,
+				}}
+			>
+				8,000+ families
+			</span>
+		</div>
+	);
+
+	const watchStoryBubble = (
+		width: string,
+		playSize: number,
+		iconSize: number,
+		labelFontSize: string,
+		pointerEvents?: CSSProperties["pointerEvents"],
+	) => (
+		<div
+			style={{
+				pointerEvents: pointerEvents,
+				position: "relative",
+				overflow: "hidden",
+				width: width,
+				height: width,
+				borderRadius: "50%",
+				background:
+					"radial-gradient(circle at 30% 26%, rgba(255,255,255,.62), rgba(255,255,255,.26) 56%, rgba(255,255,255,.42))",
+				backdropFilter: "blur(14px) saturate(165%)",
+				WebkitBackdropFilter: "blur(14px) saturate(165%)",
+				border: "1px solid rgba(255,255,255,.7)",
+				boxShadow:
+					"inset 0 1px 12px rgba(255,255,255,.65), inset 0 -10px 22px rgba(244,169,58,.18), 0 18px 42px rgba(36,91,86,.22)",
+				animation: "sh-bubble-b 7.4s ease-in-out infinite",
+			}}
+		>
+			<span
+				aria-hidden="true"
+				style={{
+					position: "absolute",
+					top: "13%",
+					left: "17%",
+					width: "36%",
+					height: "27%",
+					borderRadius: "50%",
+					background: "radial-gradient(circle at 38% 38%, rgba(255,255,255,.95), rgba(255,255,255,0) 72%)",
+					pointerEvents: "none",
+				}}
+			></span>
+			<button
+				aria-label="Watch our story"
+				className="sh-hero-watch"
+				style={{
+					position: "absolute",
+					inset: 0,
+					background: "none",
+					border: "none",
+					cursor: "pointer",
+					display: "flex",
+					flexDirection: "column",
+					alignItems: "center",
+					justifyContent: "center",
+					gap: 9,
+					transition: "transform .22s ease",
+				}}
+			>
+				<span
+					style={{
+						width: playSize,
+						height: playSize,
+						borderRadius: "50%",
+						background: "var(--sh-accent,#f4a93a)",
+						color: "var(--sh-accent-ink,#3a2a08)",
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+						boxShadow: "0 8px 18px rgba(244,169,58,.42)",
+					}}
+				>
+					<svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+						<path d="M8 5.5v13l11-6.5z"></path>
+					</svg>
+				</span>
+				<span
+					style={{
+						fontFamily: "'Hanken Grotesk',sans-serif",
+						fontWeight: 700,
+						fontSize: labelFontSize,
+						color: "var(--sh-deep,#245b56)",
+						lineHeight: 1.05,
+					}}
+				>
+					Watch Story
+				</span>
+			</button>
+		</div>
+	);
 
 	return (
-		<section id="top" className="relative overflow-hidden bg-teal-100 px-4 pt-14 pb-24 md:pt-20">
+		<section
+			ref={rootRef}
+			id="top"
+			style={{
+				position: "relative",
+				minHeight: "clamp(600px,93vh,920px)",
+				overflow: "hidden",
+				background: "var(--sh-tint,#e6f2ef)",
+				display: "flex",
+			}}
+		>
+			<div style={{ position: "absolute", inset: 0 }}>
+				<Image src="/brand/hero.jpg" alt="Educator caring for a child" fill priority style={{ objectFit: "cover" }} />
+			</div>
 			<div
 				aria-hidden="true"
-				className="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-blush-200/50 blur-3xl"
-			/>
+				style={{
+					position: "absolute",
+					inset: 0,
+					pointerEvents: "none",
+					background:
+						"linear-gradient(96deg, rgba(230,242,239,.97) 0%, rgba(230,242,239,.88) 24%, rgba(230,242,239,.52) 44%, rgba(230,242,239,.08) 62%, rgba(230,242,239,0) 76%)",
+				}}
+			></div>
 			<div
 				aria-hidden="true"
-				className="pointer-events-none absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-lavender-200/50 blur-3xl"
-			/>
-			<div className="relative mx-auto grid max-w-6xl items-start gap-10 md:grid-cols-2">
-				<div>
-					<p className="inline-block rounded-pill bg-white/80 px-3 py-1 text-xs font-bold uppercase tracking-brand text-teal-700 ring-1 ring-teal-300/60">
-						{hero.eyebrow}
-					</p>
-					<h1 className="mt-5 font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-navy-900 md:text-6xl [text-wrap:balance]">
-						{hero.h1}
-					</h1>
-					<p className="mt-5 max-w-xl text-lg text-slate-600">{hero.lede}</p>
-					<div className="mt-8 flex flex-wrap gap-2" role="group" aria-label="I am a">
-						{hero.chips.map((c, i) => (
-							<button
-								key={c.key}
-								type="button"
-								aria-pressed={i === active}
-								onClick={() => setActive(i)}
-								className={`rounded-pill px-4 py-2 text-sm font-semibold transition-colors ${
-									i === active
-										? "bg-blush-300 text-navy-950 shadow-sm"
-										: "bg-white/80 text-navy-800 ring-1 ring-navy-200 hover:bg-white"
-								}`}
-							>
-								{c.label}
-							</button>
-						))}
+				style={{
+					position: "absolute",
+					inset: 0,
+					pointerEvents: "none",
+					background: "linear-gradient(0deg, rgba(230,242,239,.4) 0%, transparent 26%)",
+				}}
+			></div>
+			<div
+				style={{
+					position: "relative",
+					pointerEvents: "none",
+					width: "100%",
+					maxWidth: 1180,
+					margin: "0 auto",
+					padding: "clamp(110px,15vh,180px) 22px clamp(80px,10vh,128px)",
+					display: "flex",
+					flexDirection: "column",
+					justifyContent: "center",
+				}}
+			>
+				<span
+					style={{
+						display: "inline-flex",
+						alignSelf: "flex-start",
+						alignItems: "center",
+						gap: 8,
+						fontFamily: "'Hanken Grotesk',sans-serif",
+						fontWeight: 700,
+						fontSize: ".78rem",
+						letterSpacing: ".13em",
+						textTransform: "uppercase",
+						color: "var(--sh-teal,#2f8f86)",
+						background: "rgba(255,255,255,.62)",
+						backdropFilter: "blur(6px)",
+						WebkitBackdropFilter: "blur(6px)",
+						border: "1px solid rgba(255,255,255,.75)",
+						padding: "8px 15px",
+						borderRadius: 999,
+					}}
+				>
+					{LANDING.hero.eyebrow}
+				</span>
+				<h1
+					style={{
+						fontFamily: "'Hanken Grotesk',sans-serif",
+						fontWeight: 800,
+						fontSize: "clamp(2.5rem,5.7vw,4.5rem)",
+						lineHeight: 1.01,
+						letterSpacing: "-.03em",
+						color: "var(--sh-deep,#1d4b47)",
+						margin: "20px 0 0",
+						maxWidth: 640,
+						textWrap: "balance",
+						textShadow: "0 2px 26px rgba(255,255,255,.5)",
+					}}
+				>
+					{LANDING.hero.h1}
+				</h1>
+				<p
+					style={{
+						fontSize: "clamp(1.06rem,1.5vw,1.24rem)",
+						lineHeight: 1.6,
+						color: "var(--sh-ink,#20413e)",
+						fontWeight: 500,
+						margin: "22px 0 0",
+						maxWidth: 500,
+					}}
+				>
+					{LANDING.hero.lede}
+				</p>
+				<div style={{ pointerEvents: "auto", marginTop: 30 }}>
+					<div
+						ref={tablistRef}
+						role="tablist"
+						aria-label="I am a"
+						style={{
+							position: "relative",
+							display: "inline-flex",
+							flexWrap: "wrap",
+							background: "rgba(255,255,255,.55)",
+							backdropFilter: "blur(8px)",
+							WebkitBackdropFilter: "blur(8px)",
+							border: "1px solid rgba(255,255,255,.8)",
+							borderRadius: 999,
+							padding: 5,
+							gap: 4,
+							boxShadow: "0 8px 22px rgba(36,91,86,.12)",
+						}}
+					>
+						<span aria-hidden="true" style={pillStyle}></span>
+						{TAB_ORDER.map(({ tab, chipKey }) => {
+							const chip = LANDING.hero.chips.find((c) => c.key === chipKey)!;
+							return (
+								<button
+									key={tab}
+									type="button"
+									role="tab"
+									aria-selected={heroTab === tab}
+									onClick={() => setHeroTab(tab)}
+									style={{
+										position: "relative",
+										zIndex: 1,
+										background: "transparent",
+										border: "none",
+										cursor: "pointer",
+										fontFamily: "'Hanken Grotesk',sans-serif",
+										fontWeight: 700,
+										fontSize: ".92rem",
+										padding: "11px 17px",
+										borderRadius: 999,
+										color: "var(--sh-deep,#245b56)",
+										whiteSpace: "nowrap",
+									}}
+								>
+									{chip.label}
+								</button>
+							);
+						})}
 					</div>
-					<div className="mt-4 max-w-md rounded-2xl bg-white p-5 shadow-md ring-1 ring-navy-100">
-						<p className="text-sm text-slate-600">{chip.hint}</p>
+					<div
+						ref={panelRef}
+						data-hint-panel="1"
+						style={{
+							position: "relative",
+							marginTop: 15,
+							maxWidth: 466,
+							minHeight: 180,
+							background: "rgba(255,255,255,.6)",
+							backdropFilter: "blur(10px)",
+							WebkitBackdropFilter: "blur(10px)",
+							border: "1px solid rgba(255,255,255,.8)",
+							borderRadius: 20,
+							padding: "18px 20px",
+							boxShadow: "0 12px 30px rgba(36,91,86,.13)",
+							display: "flex",
+							flexDirection: "column",
+							justifyContent: "space-between",
+							gap: 15,
+						}}
+					>
+						<span aria-hidden="true" style={tipStyle}></span>
+						<p style={{ margin: 0, color: "var(--sh-ink,#20413e)", fontSize: "1rem", lineHeight: 1.5, fontWeight: 500 }}>
+							{activeChip.hint}
+						</p>
 						<Link
-							href={chip.ctaHref}
-							className="mt-4 inline-flex items-center gap-2 rounded-pill bg-blush-300 px-5 py-2.5 text-sm font-bold text-navy-950 transition-colors hover:bg-blush-400"
+							href={activeChip.ctaHref}
+							className="sh-hero-cta"
+							style={{
+								alignSelf: "flex-start",
+								display: "inline-flex",
+								alignItems: "center",
+								justifyContent: "center",
+								gap: 9,
+								background: "var(--sh-accent,#f4a93a)",
+								color: "var(--sh-accent-ink,#3a2a08)",
+								fontFamily: "'Hanken Grotesk',sans-serif",
+								fontWeight: 800,
+								fontSize: "1.04rem",
+								padding: "14px 26px",
+								borderRadius: 999,
+								textDecoration: "none",
+								boxShadow: "0 12px 26px rgba(244,169,58,.34)",
+								transition: "transform .2s ease,box-shadow .2s ease",
+							}}
 						>
-							{chip.ctaLabel}
-							<ArrowRight className="h-4 w-4" aria-hidden="true" />
+							{activeChip.ctaLabel}
+							<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+								<path d="M5 12h14"></path>
+								<path d="M13 6l6 6-6 6"></path>
+							</svg>
 						</Link>
 					</div>
 				</div>
-				<div className="relative">
-					<div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-lg ring-1 ring-navy-100">
-						<Image
-							src={HOME.heroImage.src}
-							alt={HOME.heroImage.alt}
-							fill
-							priority
-							sizes="(max-width: 768px) 100vw, 560px"
-							className="object-cover"
-						/>
-					</div>
-					<Link
-						href="/about"
-						aria-label="Watch our story"
-						className="absolute -left-5 top-1/2 hidden -translate-y-1/2 flex-col items-center justify-center gap-1 rounded-full bg-white p-5 text-center shadow-lg ring-1 ring-navy-100 transition hover:shadow-xl md:flex"
+				{mobile && (
+					<div
+						style={{
+							pointerEvents: "auto",
+							display: "flex",
+							flexWrap: "wrap",
+							alignItems: "center",
+							gap: 16,
+							marginTop: "clamp(34px,5vh,58px)",
+						}}
 					>
-						<span className="flex h-10 w-10 items-center justify-center rounded-full bg-blush-300 text-navy-950">
-							<Play className="h-4 w-4 fill-current" aria-hidden="true" />
-						</span>
-						<span className="text-xs font-semibold text-navy-800">Watch Story</span>
-					</Link>
-					<div className="mt-4 flex items-center gap-3 rounded-2xl bg-white px-5 py-4 shadow-md ring-1 ring-navy-100 md:absolute md:-bottom-8 md:right-6 md:mt-0">
-						<div className="flex -space-x-2" aria-hidden="true">
-							{hero.rating.initials.map((ini, i) => (
-								<span
-									key={ini}
-									className={`flex h-9 w-9 items-center justify-center rounded-full ring-2 ring-white ${TILE_TONES[i]} text-xs font-bold text-navy-900`}
-								>
-									{ini}
-								</span>
-							))}
-						</div>
-						<div>
-							<p className="flex items-center gap-1 font-heading text-lg font-extrabold text-navy-900">
-								<Star className="h-4 w-4 fill-blush-400 text-blush-400" aria-hidden="true" />
-								{hero.rating.score}
-							</p>
-							<p className="text-xs text-slate-500">{hero.rating.note}</p>
-						</div>
+						{ratingBubble("clamp(142px,15vw,166px)", 34, ".7rem", 17, "1.2rem", ".74rem")}
+						{watchStoryBubble("clamp(142px,15vw,166px)", 46, 20, ".86rem")}
 					</div>
-				</div>
+				)}
 			</div>
-			<Wave className="fill-white" />
+
+			{desktop && (
+				<div
+					style={{
+						position: "absolute",
+						right: "clamp(20px,5vw,76px)",
+						top: 0,
+						bottom: 0,
+						display: "flex",
+						flexDirection: "column",
+						alignItems: "center",
+						justifyContent: "center",
+						gap: 22,
+						zIndex: 4,
+						pointerEvents: "none",
+					}}
+				>
+					{watchStoryBubble("clamp(150px,11vw,180px)", 48, 21, ".88rem", "auto")}
+					{ratingBubble("clamp(150px,11vw,180px)", 36, ".72rem", 18, "1.24rem", ".76rem", "auto")}
+				</div>
+			)}
 		</section>
 	);
 }
