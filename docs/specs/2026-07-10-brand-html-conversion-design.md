@@ -1,6 +1,6 @@
 # Brand HTML → React conversion — design
 
-Date: 2026-07-10 · Branch: `feat/brand-restyle` · Status: approved
+Date: 2026-07-10 · Branch: `feat/brand-restyle` · Status: implemented
 
 ## Goal
 

@@ -53,10 +53,6 @@ export const FOR_CENTRES = {
 	h1: "Same-day ratio cover, properly compliant.",
 	lede:
 		"Centres call us because they can't afford a non-compliant placement. Every educator we send has a current WWCC, HLTAID012, Police Check, and the qualifications the room actually needs.",
-	image: {
-		src: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1600&q=80",
-		alt: "A child concentrating on a learning activity in a bright early-learning room",
-	},
 	bullets: [
 		"Cert III, Diploma, ECT, Room Leader, and OSHC educators",
 		"≥95% shift fill rate; ≤4-hour response on emergencies",
@@ -71,10 +67,6 @@ export const FOR_FAMILIES = {
 	h1: "Vetted in-home childcare when life happens.",
 	lede:
 		"Sick days, after-school cover, school holidays, the morning shift you can't move. Safe Hands sends educators we have personally screened, with full compliance documentation.",
-	image: {
-		src: "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?auto=format&fit=crop&w=1600&q=80",
-		alt: "A young child holding an open picture book",
-	},
 	bullets: [
 		"Minimum 3-hour shift, $30 admin fee per booking",
 		"Same-day support where available",
@@ -87,10 +79,6 @@ export const FOR_EDUCATORS = {
 	h1: "Flexible shifts. Award-rate pay. Real support.",
 	lede:
 		"Safe Hands is built and run by someone who's worked in compliance. We pay the Children's Services Award with casual loading and a 30% agency uplift, and we don't book you onto shifts you can't safely cover.",
-	image: {
-		src: "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1600&q=80",
-		alt: "Rows of bookshelves in a library",
-	},
 	bullets: [
 		"Choose your suburbs and your hours",
 		"Cert III to Director-level positions",

@@ -4,8 +4,11 @@ import AxeBuilder from "@axe-core/playwright";
 const PAGES = [
 	"/",
 	"/for-centres",
+	"/for-centres/request",
 	"/for-families",
+	"/for-families/request",
 	"/for-educators",
+	"/for-educators/apply",
 	"/about",
 	"/compliance",
 	"/contact",
