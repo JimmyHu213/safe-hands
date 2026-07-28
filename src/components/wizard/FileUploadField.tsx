@@ -75,20 +75,20 @@ export function FileUploadField(props: {
 			className="flex flex-col gap-2 text-sm"
 			style={{
 				borderRadius: 16,
-				border: "1.5px dashed rgba(36,91,86,.3)",
-				background: "var(--sh-tint,#EAF0F1)",
+				border: "1.5px dashed rgba(var(--bb-shadow-rgb),.3)",
+				background: "var(--bb-surface-tint)",
 				padding: "16px 18px",
 			}}
 		>
-			<span className="sh-label">{props.label}</span>
+			<span className="bb-label">{props.label}</span>
 			<input
 				type="file"
 				accept="application/pdf,image/jpeg,image/png"
 				onChange={handleChange}
-				className="sh-field"
+				className="bb-field"
 				style={{ background: "#fff" }}
 			/>
-			{status === "uploading" ? <span className="text-xs" style={{ color: "var(--sh-muted,#456C6D)" }}>Uploading…</span> : null}
+			{status === "uploading" ? <span className="text-xs" style={{ color: "var(--bb-ink-muted)" }}>Uploading…</span> : null}
 			{status === "done" ? <span className="text-xs text-green-700">Uploaded ✓</span> : null}
 			{error ? <span className="text-xs text-red-700">{error}</span> : null}
 		</label>

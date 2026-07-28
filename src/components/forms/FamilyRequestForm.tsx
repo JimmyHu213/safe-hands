@@ -22,12 +22,12 @@ export function FamilyRequestForm({ siteKey }: { siteKey: string }) {
 			<Field name="postcode" label="Postcode" required pattern="\d{4}" inputMode="numeric" />
 			<Field name="childrenCount" label="Number of children" type="number" min="1" max="10" required />
 			<label className="md:col-span-2 flex flex-col gap-1">
-				<span className="sh-label">Children&apos;s ages (comma-separated, e.g. 3, 7) *</span>
-				<input name="childrenAges" type="text" required className="sh-field" />
+				<span className="bb-label">Children&apos;s ages (comma-separated, e.g. 3, 7) *</span>
+				<input name="childrenAges" type="text" required className="bb-field" />
 			</label>
 			<label className="flex flex-col gap-1">
-				<span className="sh-label">Care type</span>
-				<select name="careType" required className="sh-field">
+				<span className="bb-label">Care type</span>
+				<select name="careType" required className="bb-field">
 					{CARE_OPTIONS.map((o) => (
 						<option key={o.value} value={o.value}>{o.label}</option>
 					))}
@@ -41,12 +41,12 @@ export function FamilyRequestForm({ siteKey }: { siteKey: string }) {
 				My child(ren) need(s) special-needs experience
 			</label>
 			<label className="md:col-span-2 flex flex-col gap-1">
-				<span className="sh-label">Special-needs notes (optional)</span>
-				<textarea name="specialNeedsNotes" maxLength={2000} rows={3} className="sh-field" />
+				<span className="bb-label">Special-needs notes (optional)</span>
+				<textarea name="specialNeedsNotes" maxLength={2000} rows={3} className="bb-field" />
 			</label>
 			<label className="md:col-span-2 flex flex-col gap-1">
-				<span className="sh-label">Notes (optional, max 2000 chars)</span>
-				<textarea name="notes" maxLength={2000} rows={4} className="sh-field" />
+				<span className="bb-label">Notes (optional, max 2000 chars)</span>
+				<textarea name="notes" maxLength={2000} rows={4} className="bb-field" />
 			</label>
 			<label className="md:col-span-2 flex items-center gap-2 text-sm">
 				<input type="checkbox" name="privacyConsent" required />
@@ -58,7 +58,7 @@ export function FamilyRequestForm({ siteKey }: { siteKey: string }) {
 				<button
 					type="submit"
 					disabled={pending}
-					className="sh-btn-accent disabled:opacity-60"
+					className="bb-btn-accent disabled:opacity-60"
 				>
 					{pending ? "Submitting…" : "Submit request"}
 				</button>
@@ -80,7 +80,7 @@ function Field(props: {
 }) {
 	return (
 		<label className="flex flex-col gap-1">
-			<span className="sh-label">{props.label}{props.required ? " *" : ""}</span>
+			<span className="bb-label">{props.label}{props.required ? " *" : ""}</span>
 			<input
 				name={props.name}
 				type={props.type ?? "text"}
@@ -90,7 +90,7 @@ function Field(props: {
 				step={props.step}
 				min={props.min}
 				max={props.max}
-				className="sh-field"
+				className="bb-field"
 			/>
 		</label>
 	);

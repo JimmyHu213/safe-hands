@@ -16,7 +16,7 @@ export function PageHero({
 				position: "relative",
 				minHeight: "clamp(260px,38vh,380px)",
 				overflow: "hidden",
-				background: "var(--sh-tint,#e6f2ef)",
+				background: "var(--bb-surface-tint)",
 				display: "flex",
 			}}
 		>
@@ -27,7 +27,7 @@ export function PageHero({
 					inset: 0,
 					pointerEvents: "none",
 					background:
-						"linear-gradient(96deg, rgba(230,242,239,.97) 0%, rgba(230,242,239,.88) 24%, rgba(230,242,239,.52) 44%, rgba(230,242,239,.08) 62%, rgba(230,242,239,0) 76%)",
+						"linear-gradient(96deg, rgba(var(--bb-surface-tint-rgb),.97) 0%, rgba(var(--bb-surface-tint-rgb),.88) 24%, rgba(var(--bb-surface-tint-rgb),.52) 44%, rgba(var(--bb-surface-tint-rgb),.08) 62%, rgba(var(--bb-surface-tint-rgb),0) 76%)",
 				}}
 			></div>
 			<div
@@ -36,7 +36,7 @@ export function PageHero({
 					position: "absolute",
 					inset: 0,
 					pointerEvents: "none",
-					background: "linear-gradient(0deg, rgba(230,242,239,.4) 0%, transparent 26%)",
+					background: "linear-gradient(0deg, rgba(var(--bb-surface-tint-rgb),.4) 0%, transparent 26%)",
 				}}
 			></div>
 			<div
@@ -63,7 +63,7 @@ export function PageHero({
 							fontSize: ".78rem",
 							letterSpacing: ".13em",
 							textTransform: "uppercase",
-							color: "var(--sh-muted,#5f726f)",
+							color: "var(--bb-ink-muted)",
 							background: "rgba(255,255,255,.62)",
 							backdropFilter: "blur(6px)",
 							WebkitBackdropFilter: "blur(6px)",
@@ -82,7 +82,7 @@ export function PageHero({
 						fontSize: "clamp(2.5rem,5.7vw,4.5rem)",
 						lineHeight: 1.01,
 						letterSpacing: "-.03em",
-						color: "var(--sh-deep,#1d4b47)",
+						color: "var(--bb-ink-strong)",
 						margin: "20px 0 0",
 						maxWidth: 640,
 						textWrap: "balance",
@@ -96,7 +96,7 @@ export function PageHero({
 						style={{
 							fontSize: "clamp(1.06rem,1.5vw,1.24rem)",
 							lineHeight: 1.6,
-							color: "var(--sh-ink,#20413e)",
+							color: "var(--bb-ink)",
 							fontWeight: 500,
 							margin: "22px 0 0",
 							maxWidth: 500,

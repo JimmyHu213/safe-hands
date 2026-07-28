@@ -58,18 +58,18 @@ function WhyIconSeal() {
 }
 
 const WHY_ICONS = [
-	{ Icon: WhyIconVetting, tile: "var(--sh-tint,#e6f2ef)", color: "var(--sh-teal,#2f8f86)" },
-	{ Icon: WhyIconTrained, tile: "var(--sh-tint,#e6f2ef)", color: "var(--sh-teal,#2f8f86)" },
-	{ Icon: WhyIconHeart, tile: "var(--sh-accent-soft,#fce3bb)", color: "var(--sh-accent-dark,#e0902a)" },
-	{ Icon: WhyIconCalendar, tile: "var(--sh-tint,#e6f2ef)", color: "var(--sh-teal,#2f8f86)" },
-	{ Icon: WhyIconRefresh, tile: "var(--sh-tint,#e6f2ef)", color: "var(--sh-teal,#2f8f86)" },
-	{ Icon: WhyIconSeal, tile: "var(--sh-tint,#e6f2ef)", color: "var(--sh-teal,#2f8f86)" },
+	{ Icon: WhyIconVetting, tile: "var(--bb-surface-tint)", color: "var(--bb-ink-soft)" },
+	{ Icon: WhyIconTrained, tile: "var(--bb-surface-tint)", color: "var(--bb-ink-soft)" },
+	{ Icon: WhyIconHeart, tile: "var(--bb-amber-soft)", color: "var(--bb-amber-dark)" },
+	{ Icon: WhyIconCalendar, tile: "var(--bb-surface-tint)", color: "var(--bb-ink-soft)" },
+	{ Icon: WhyIconRefresh, tile: "var(--bb-surface-tint)", color: "var(--bb-ink-soft)" },
+	{ Icon: WhyIconSeal, tile: "var(--bb-surface-tint)", color: "var(--bb-ink-soft)" },
 ];
 
 export function WhyCards() {
 	const { why } = LANDING;
 	return (
-		<section id="why" style={{ position: "relative", padding: "clamp(64px,9vw,116px) 0", background: "var(--sh-cream,#fbf7f1)" }}>
+		<section id="why" style={{ position: "relative", padding: "clamp(64px,9vw,116px) 0", background: "var(--bb-surface)" }}>
 			<div
 				aria-hidden="true"
 				style={{
@@ -90,7 +90,7 @@ export function WhyCards() {
 				>
 					<path
 						d="M0,100 V56 C 38,56 52,31 96,28 C 132,26 141,55 186,54 C 214,53 221,13 286,10 C 341,8 352,47 393,49 C 431,51 442,29 489,26 C 521,24 530,59 586,56 C 641,54 650,17 706,14 C 746,12 761,51 809,53 C 851,54 860,33 906,30 C 947,28 956,61 1011,58 C 1071,55 1080,11 1141,8 C 1196,6 1206,45 1256,47 C 1301,48 1313,25 1371,22 C 1406,20 1421,51 1440,53 V100 Z"
-						fill="var(--sh-cream,#fbf7f1)"
+						fill="var(--bb-surface)"
 					></path>
 				</svg>
 			</div>
@@ -104,7 +104,7 @@ export function WhyCards() {
 							fontSize: ".78rem",
 							letterSpacing: ".13em",
 							textTransform: "uppercase",
-							color: "var(--sh-muted,#5f726f)",
+							color: "var(--bb-ink-muted)",
 						}}
 					>
 						{why.eyebrow}
@@ -116,7 +116,7 @@ export function WhyCards() {
 							fontSize: "clamp(1.9rem,3.6vw,2.8rem)",
 							lineHeight: 1.08,
 							letterSpacing: "-.022em",
-							color: "var(--sh-deep,#245b56)",
+							color: "var(--bb-ink-strong)",
 							margin: "14px 0 0",
 						}}
 					>
@@ -126,7 +126,7 @@ export function WhyCards() {
 						style={{
 							fontSize: "clamp(1.04rem,1.4vw,1.16rem)",
 							lineHeight: 1.6,
-							color: "var(--sh-muted,#5f726f)",
+							color: "var(--bb-ink-muted)",
 							margin: "16px 0 0",
 						}}
 					>
@@ -146,13 +146,13 @@ export function WhyCards() {
 						return (
 							<div
 								key={card.title}
-								className="sh-why-card"
+								className="bb-why-card"
 								style={{
 									background: "#fff",
-									border: "1px solid rgba(36,91,86,.07)",
+									border: "1px solid rgba(var(--bb-shadow-rgb),.07)",
 									borderRadius: 22,
 									padding: "30px 28px",
-									boxShadow: "0 2px 14px rgba(36,91,86,.05)",
+									boxShadow: "0 2px 14px rgba(var(--bb-shadow-rgb),.05)",
 									transition: "transform .25s ease,box-shadow .25s ease",
 								}}
 							>
@@ -175,13 +175,13 @@ export function WhyCards() {
 										fontFamily: "'Hanken Grotesk',sans-serif",
 										fontWeight: 700,
 										fontSize: "1.24rem",
-										color: "var(--sh-deep,#245b56)",
+										color: "var(--bb-ink-strong)",
 										margin: "18px 0 8px",
 									}}
 								>
 									{card.title}
 								</h3>
-								<p style={{ color: "var(--sh-muted,#5f726f)", lineHeight: 1.55, margin: 0 }}>{card.body}</p>
+								<p style={{ color: "var(--bb-ink-muted)", lineHeight: 1.55, margin: 0 }}>{card.body}</p>
 							</div>
 						);
 					})}

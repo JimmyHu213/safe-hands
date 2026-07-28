@@ -1,8 +1,8 @@
 {
-  "name": "safe-hands",
+  "name": "beebrightstaffing",
   "version": "0.1.0",
   "private": true,
-  "description": "Safe Hands Staffing Agency — Next.js on Cloudflare Workers",
+  "description": "Bee Bright Staffing Agency — Next.js on Cloudflare Workers",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

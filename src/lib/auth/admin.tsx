@@ -43,7 +43,7 @@ export async function sendMagicLink(input: SendMagicLinkInput): Promise<SendMagi
 		client: input.resend,
 		from: input.from,
 		to: input.adminEmail,
-		subject: "Sign in to Safe Hands admin",
+		subject: "Sign in to Bee Bright admin",
 		...email,
 	});
 	return { silentlyIgnored: false, plainToken };

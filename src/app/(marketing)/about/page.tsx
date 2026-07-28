@@ -14,7 +14,7 @@ export default function AboutPage() {
 							style={{
 								fontSize: "clamp(1.04rem,1.4vw,1.16rem)",
 								lineHeight: 1.6,
-								color: "var(--sh-muted,#5f726f)",
+								color: "var(--bb-ink-muted)",
 								margin: i === 0 ? 0 : "16px 0 0",
 							}}
 						>
@@ -35,9 +35,9 @@ export default function AboutPage() {
 								fontSize: ".78rem",
 								letterSpacing: ".13em",
 								textTransform: "uppercase",
-								color: "var(--sh-muted,#5f726f)",
-								background: "var(--sh-tint,#e6f2ef)",
-								border: "1px solid rgba(36,91,86,.08)",
+								color: "var(--bb-ink-muted)",
+								background: "var(--bb-surface-tint)",
+								border: "1px solid rgba(var(--bb-shadow-rgb),.08)",
 								padding: "8px 15px",
 								borderRadius: 999,
 							}}

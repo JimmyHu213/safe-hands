@@ -45,11 +45,11 @@ export function Header({ appLoginUrl }: HeaderProps) {
 		b.style.padding = scrolled ? "10px 14px 10px 20px" : "13px 22px";
 		b.style.background = scrolled ? "rgba(255,255,255,.92)" : "transparent";
 		b.style.borderRadius = scrolled ? "999px" : "0px";
-		b.style.boxShadow = scrolled ? "0 12px 32px rgba(20,60,55,.14)" : "none";
+		b.style.boxShadow = scrolled ? "0 12px 32px rgba(var(--bb-shadow-rgb),.14)" : "none";
 		b.style.backdropFilter = scrolled ? "saturate(170%) blur(12px)" : "none";
 		(b.style as CSSStyleDeclaration & { webkitBackdropFilter: string }).webkitBackdropFilter =
 			scrolled ? "saturate(170%) blur(12px)" : "none";
-		b.style.borderColor = scrolled ? "rgba(36,91,86,.06)" : "transparent";
+		b.style.borderColor = scrolled ? "rgba(var(--bb-shadow-rgb),.06)" : "transparent";
 	};
 
 	useEffect(() => {
@@ -119,7 +119,7 @@ export function Header({ appLoginUrl }: HeaderProps) {
 						}}
 					>
 						<Image
-							src="/brand/safehands-icon-192.png"
+							src="/brand/beebright-mark-192.png"
 							alt=""
 							width={36}
 							height={36}
@@ -131,7 +131,7 @@ export function Header({ appLoginUrl }: HeaderProps) {
 									fontFamily: "'Hanken Grotesk',sans-serif",
 									fontWeight: 800,
 									fontSize: "1.18rem",
-									color: "var(--sh-deep,#245b56)",
+									color: "var(--bb-ink-strong)",
 									letterSpacing: "-.02em",
 								}}
 							>
@@ -144,7 +144,7 @@ export function Header({ appLoginUrl }: HeaderProps) {
 									fontSize: ".64rem",
 									letterSpacing: ".14em",
 									textTransform: "uppercase",
-									color: "var(--sh-muted,#5f726f)",
+									color: "var(--bb-ink-muted)",
 								}}
 							>
 								Staffing Agency
@@ -159,9 +159,9 @@ export function Header({ appLoginUrl }: HeaderProps) {
 									<Link
 										key={link.href}
 										href={link.href}
-										className="sh-header-nav-link"
+										className="bb-header-nav-link"
 										style={{
-											color: "var(--sh-ink,#20413e)",
+											color: "var(--bb-ink)",
 											textDecoration: "none",
 											fontWeight: 600,
 											fontSize: ".97rem",
@@ -175,9 +175,9 @@ export function Header({ appLoginUrl }: HeaderProps) {
 							{appLoginUrl ? (
 								<a
 									href={appLoginUrl}
-									className="sh-header-nav-link"
+									className="bb-header-nav-link"
 									style={{
-										color: "var(--sh-ink,#20413e)",
+										color: "var(--bb-ink)",
 										textDecoration: "none",
 										fontWeight: 600,
 										fontSize: ".97rem",
@@ -189,20 +189,20 @@ export function Header({ appLoginUrl }: HeaderProps) {
 							) : null}
 							<Link
 								href="/for-families/request"
-								className="sh-header-cta"
+								className="bb-header-cta"
 								style={{
 									display: "inline-flex",
 									alignItems: "center",
 									gap: 8,
-									background: "var(--sh-btn-primary,#1A3B5E)",
-									color: "#fff",
+									background: "var(--bb-btn-primary)",
+									color: "var(--bb-ink-strong)",
 									fontFamily: "'Hanken Grotesk',sans-serif",
 									fontWeight: 800,
 									fontSize: ".98rem",
 									padding: "11px 21px",
 									borderRadius: 999,
 									textDecoration: "none",
-									boxShadow: "0 8px 18px rgba(26,59,94,.28)",
+									boxShadow: "0 8px 18px rgba(var(--bb-shadow-rgb),.28)",
 									transition: "transform .2s ease,box-shadow .2s ease",
 								}}
 							>
@@ -232,7 +232,7 @@ export function Header({ appLoginUrl }: HeaderProps) {
 									width: 26,
 									height: "2.6px",
 									borderRadius: 2,
-									background: "var(--sh-deep,#245b56)",
+									background: "var(--bb-ink-strong)",
 								}}
 							></span>
 							<span
@@ -241,7 +241,7 @@ export function Header({ appLoginUrl }: HeaderProps) {
 									width: 26,
 									height: "2.6px",
 									borderRadius: 2,
-									background: "var(--sh-deep,#245b56)",
+									background: "var(--bb-ink-strong)",
 								}}
 							></span>
 							<span
@@ -250,7 +250,7 @@ export function Header({ appLoginUrl }: HeaderProps) {
 									width: 26,
 									height: "2.6px",
 									borderRadius: 2,
-									background: "var(--sh-deep,#245b56)",
+									background: "var(--bb-ink-strong)",
 								}}
 							></span>
 						</button>
@@ -261,8 +261,8 @@ export function Header({ appLoginUrl }: HeaderProps) {
 					<div
 						style={{
 							background: "#fff",
-							borderBottom: "1px solid rgba(36,91,86,.1)",
-							boxShadow: "0 14px 30px rgba(36,91,86,.1)",
+							borderBottom: "1px solid rgba(var(--bb-shadow-rgb),.1)",
+							boxShadow: "0 14px 30px rgba(var(--bb-shadow-rgb),.1)",
 						}}
 					>
 						<div
@@ -281,12 +281,12 @@ export function Header({ appLoginUrl }: HeaderProps) {
 									href={link.href}
 									onClick={closeMenu}
 									style={{
-										color: "var(--sh-ink,#20413e)",
+										color: "var(--bb-ink)",
 										textDecoration: "none",
 										fontWeight: 700,
 										fontSize: "1.05rem",
 										padding: "13px 4px",
-										borderBottom: "1px solid rgba(36,91,86,.07)",
+										borderBottom: "1px solid rgba(var(--bb-shadow-rgb),.07)",
 									}}
 								>
 									{link.label}
@@ -297,12 +297,12 @@ export function Header({ appLoginUrl }: HeaderProps) {
 									href={appLoginUrl}
 									onClick={closeMenu}
 									style={{
-										color: "var(--sh-ink,#20413e)",
+										color: "var(--bb-ink)",
 										textDecoration: "none",
 										fontWeight: 700,
 										fontSize: "1.05rem",
 										padding: "13px 4px",
-										borderBottom: "1px solid rgba(36,91,86,.07)",
+										borderBottom: "1px solid rgba(var(--bb-shadow-rgb),.07)",
 									}}
 								>
 									Access the app
@@ -317,8 +317,8 @@ export function Header({ appLoginUrl }: HeaderProps) {
 									alignItems: "center",
 									justifyContent: "center",
 									gap: 8,
-									background: "var(--sh-btn-primary,#1A3B5E)",
-									color: "#fff",
+									background: "var(--bb-btn-primary)",
+									color: "var(--bb-ink-strong)",
 									fontFamily: "'Hanken Grotesk',sans-serif",
 									fontWeight: 800,
 									fontSize: "1.05rem",

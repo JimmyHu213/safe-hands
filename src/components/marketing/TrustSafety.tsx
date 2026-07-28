@@ -53,17 +53,17 @@ function TrustIconRefresh() {
 }
 
 const TRUST_ICONS = [
-	{ Icon: TrustIconIdentity, tile: "var(--sh-tint,#e6f2ef)", color: "var(--sh-teal,#2f8f86)" },
-	{ Icon: TrustIconShield, tile: "var(--sh-tint,#e6f2ef)", color: "var(--sh-teal,#2f8f86)" },
-	{ Icon: TrustIconDocument, tile: "var(--sh-tint,#e6f2ef)", color: "var(--sh-teal,#2f8f86)" },
-	{ Icon: TrustIconBadge, tile: "var(--sh-tint,#e6f2ef)", color: "var(--sh-teal,#2f8f86)" },
-	{ Icon: TrustIconRefresh, tile: "var(--sh-accent-soft,#fce3bb)", color: "var(--sh-accent-dark,#e0902a)" },
+	{ Icon: TrustIconIdentity, tile: "var(--bb-surface-tint)", color: "var(--bb-ink-soft)" },
+	{ Icon: TrustIconShield, tile: "var(--bb-surface-tint)", color: "var(--bb-ink-soft)" },
+	{ Icon: TrustIconDocument, tile: "var(--bb-surface-tint)", color: "var(--bb-ink-soft)" },
+	{ Icon: TrustIconBadge, tile: "var(--bb-surface-tint)", color: "var(--bb-ink-soft)" },
+	{ Icon: TrustIconRefresh, tile: "var(--bb-amber-soft)", color: "var(--bb-amber-dark)" },
 ];
 
 export function TrustSafety() {
 	const { trust } = LANDING;
 	return (
-		<section id="trust" style={{ position: "relative", padding: "clamp(64px,9vw,116px) 0", background: "var(--sh-cream,#fbf7f1)" }}>
+		<section id="trust" style={{ position: "relative", padding: "clamp(64px,9vw,116px) 0", background: "var(--bb-surface)" }}>
 			<div
 				aria-hidden="true"
 				style={{
@@ -84,7 +84,7 @@ export function TrustSafety() {
 				>
 					<path
 						d="M0,100 V56 C 38,56 52,31 96,28 C 132,26 141,55 186,54 C 214,53 221,13 286,10 C 341,8 352,47 393,49 C 431,51 442,29 489,26 C 521,24 530,59 586,56 C 641,54 650,17 706,14 C 746,12 761,51 809,53 C 851,54 860,33 906,30 C 947,28 956,61 1011,58 C 1071,55 1080,11 1141,8 C 1196,6 1206,45 1256,47 C 1301,48 1313,25 1371,22 C 1406,20 1421,51 1440,53 V100 Z"
-						fill="var(--sh-cream,#fbf7f1)"
+						fill="var(--bb-surface)"
 					></path>
 				</svg>
 			</div>
@@ -98,7 +98,7 @@ export function TrustSafety() {
 							fontSize: ".78rem",
 							letterSpacing: ".13em",
 							textTransform: "uppercase",
-							color: "var(--sh-muted,#5f726f)",
+							color: "var(--bb-ink-muted)",
 						}}
 					>
 						{trust.eyebrow}
@@ -110,13 +110,13 @@ export function TrustSafety() {
 							fontSize: "clamp(1.9rem,3.6vw,2.8rem)",
 							lineHeight: 1.08,
 							letterSpacing: "-.022em",
-							color: "var(--sh-deep,#245b56)",
+							color: "var(--bb-ink-strong)",
 							margin: "14px 0 0",
 						}}
 					>
 						{trust.title}
 					</h2>
-					<p style={{ fontSize: "clamp(1.04rem,1.4vw,1.16rem)", lineHeight: 1.6, color: "var(--sh-muted,#5f726f)", margin: "16px 0 0" }}>
+					<p style={{ fontSize: "clamp(1.04rem,1.4vw,1.16rem)", lineHeight: 1.6, color: "var(--bb-ink-muted)", margin: "16px 0 0" }}>
 						{trust.lede}
 					</p>
 				</div>
@@ -133,7 +133,7 @@ export function TrustSafety() {
 						return (
 							<div
 								key={card.title}
-								style={{ background: "#fff", border: "1px solid rgba(36,91,86,.07)", borderRadius: 20, padding: "26px 22px" }}
+								style={{ background: "#fff", border: "1px solid rgba(var(--bb-shadow-rgb),.07)", borderRadius: 20, padding: "26px 22px" }}
 							>
 								<span
 									style={{
@@ -154,13 +154,13 @@ export function TrustSafety() {
 										fontFamily: "'Hanken Grotesk',sans-serif",
 										fontWeight: 700,
 										fontSize: "1.08rem",
-										color: "var(--sh-deep,#245b56)",
+										color: "var(--bb-ink-strong)",
 										margin: "16px 0 6px",
 									}}
 								>
 									{card.title}
 								</h3>
-								<p style={{ color: "var(--sh-muted,#5f726f)", lineHeight: 1.5, margin: 0, fontSize: ".94rem" }}>{card.body}</p>
+								<p style={{ color: "var(--bb-ink-muted)", lineHeight: 1.5, margin: 0, fontSize: ".94rem" }}>{card.body}</p>
 							</div>
 						);
 					})}

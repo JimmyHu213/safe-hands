@@ -39,7 +39,7 @@ export default async function SubmissionDetailPage({ params }: Props) {
 					accountId: env.R2_ACCOUNT_ID,
 					accessKeyId: env.R2_ACCESS_KEY_ID,
 					secretAccessKey: env.R2_SECRET_ACCESS_KEY,
-					bucket: "safe-hands-educator-docs",
+					bucket: "beebrightstaffing-educator-docs",
 					key: d.r2Key,
 					expiresInSeconds: 24 * 3600,
 				}),

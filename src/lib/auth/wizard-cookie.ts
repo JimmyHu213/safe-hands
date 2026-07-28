@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-const COOKIE = "sh_educator_draft";
+const COOKIE = "bb_educator_draft";
 
 export async function setWizardCookie(applicationId: string) {
 	const jar = await cookies();

@@ -10,14 +10,14 @@ export function WizardProgress({ current }: { current: 1 | 2 | 3 | 4 }) {
 		<ol className="flex items-center justify-between gap-2" aria-label="Application progress">
 			{STEPS.map((s) => {
 				const state = s.num < current ? "done" : s.num === current ? "current" : "todo";
-				// Decorative fills only (var(--sh-teal)/var(--sh-deep)/rgba(36,91,86,.18)) —
+				// Decorative fills only (var(--bb-ink-soft)/var(--bb-ink-strong)/rgba(var(--bb-shadow-rgb),.18)) —
 				// step label text below always uses a readable ink/deep/muted token.
 				const fill =
 					state === "done"
-						? "var(--sh-deep,#1A3B5E)"
+						? "var(--bb-ink-strong)"
 						: state === "current"
-							? "var(--sh-deep,#1A3B5E)"
-							: "rgba(36,91,86,.18)";
+							? "var(--bb-ink-strong)"
+							: "rgba(var(--bb-shadow-rgb),.18)";
 				return (
 					<li key={s.num} className="flex flex-1 items-center gap-2">
 						<span
@@ -33,7 +33,7 @@ export function WizardProgress({ current }: { current: 1 | 2 | 3 | 4 }) {
 								fontWeight: 800,
 								fontSize: ".78rem",
 								background: fill,
-								color: state === "todo" ? "var(--sh-deep,#1A3B5E)" : "#fff",
+								color: state === "todo" ? "var(--bb-ink-strong)" : "#fff",
 							}}
 							aria-current={state === "current" ? "step" : undefined}
 						>
@@ -44,7 +44,7 @@ export function WizardProgress({ current }: { current: 1 | 2 | 3 | 4 }) {
 							style={{
 								fontFamily: "'Hanken Grotesk',sans-serif",
 								fontWeight: 700,
-								color: state === "todo" ? "var(--sh-muted,#456C6D)" : "var(--sh-deep,#1A3B5E)",
+								color: state === "todo" ? "var(--bb-ink-muted)" : "var(--bb-ink-strong)",
 							}}
 						>
 							{s.label}

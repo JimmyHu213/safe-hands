@@ -23,8 +23,8 @@ export function CentreRequestForm({ siteKey }: { siteKey: string }) {
 			<Field name="suburb" label="Suburb" required />
 			<Field name="postcode" label="Postcode" required pattern="\d{4}" inputMode="numeric" />
 			<label className="flex flex-col gap-1">
-				<span className="sh-label">Role needed</span>
-				<select name="roleNeeded" required className="sh-field">
+				<span className="bb-label">Role needed</span>
+				<select name="roleNeeded" required className="bb-field">
 					{ROLE_OPTIONS.map((o) => (
 						<option key={o.value} value={o.value}>{o.label}</option>
 					))}
@@ -38,8 +38,8 @@ export function CentreRequestForm({ siteKey }: { siteKey: string }) {
 				Educator should have special-needs / behavioural-support experience
 			</label>
 			<label className="md:col-span-2 flex flex-col gap-1">
-				<span className="sh-label">Notes (optional, max 2000 chars)</span>
-				<textarea name="notes" maxLength={2000} rows={4} className="sh-field" />
+				<span className="bb-label">Notes (optional, max 2000 chars)</span>
+				<textarea name="notes" maxLength={2000} rows={4} className="bb-field" />
 			</label>
 			<label className="md:col-span-2 flex items-center gap-2 text-sm">
 				<input type="checkbox" name="privacyConsent" required />
@@ -51,7 +51,7 @@ export function CentreRequestForm({ siteKey }: { siteKey: string }) {
 				<button
 					type="submit"
 					disabled={pending}
-					className="sh-btn-accent disabled:opacity-60"
+					className="bb-btn-accent disabled:opacity-60"
 				>
 					{pending ? "Submitting…" : "Submit request"}
 				</button>
@@ -72,7 +72,7 @@ function Field(props: {
 }) {
 	return (
 		<label className="flex flex-col gap-1">
-			<span className="sh-label">{props.label}{props.required ? " *" : ""}</span>
+			<span className="bb-label">{props.label}{props.required ? " *" : ""}</span>
 			<input
 				name={props.name}
 				type={props.type ?? "text"}
@@ -81,7 +81,7 @@ function Field(props: {
 				inputMode={props.inputMode}
 				step={props.step}
 				min={props.min}
-				className="sh-field"
+				className="bb-field"
 			/>
 		</label>
 	);

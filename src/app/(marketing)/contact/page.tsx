@@ -33,7 +33,7 @@ const CONTACT_CARDS = [
 		title: "Phone",
 		body: "For centres and families needing a shift filled — we answer the phone.",
 		content: (
-			<a href={`tel:${SITE.phoneTel}`} style={{ color: "var(--sh-deep,#1d4b47)", fontWeight: 700 }}>
+			<a href={`tel:${SITE.phoneTel}`} style={{ color: "var(--bb-ink-strong)", fontWeight: 700 }}>
 				{SITE.phone}
 			</a>
 		),
@@ -44,10 +44,10 @@ const CONTACT_CARDS = [
 		body: "Bookings, recruitment, or general questions — write to the right inbox.",
 		content: (
 			<div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-				<a href={`mailto:${SITE.emailBookings}`} style={{ color: "var(--sh-deep,#1d4b47)", fontWeight: 700 }}>
+				<a href={`mailto:${SITE.emailBookings}`} style={{ color: "var(--bb-ink-strong)", fontWeight: 700 }}>
 					{SITE.emailBookings}
 				</a>
-				<a href={`mailto:${SITE.emailRecruitment}`} style={{ color: "var(--sh-deep,#1d4b47)", fontWeight: 700 }}>
+				<a href={`mailto:${SITE.emailRecruitment}`} style={{ color: "var(--bb-ink-strong)", fontWeight: 700 }}>
 					{SITE.emailRecruitment}
 				</a>
 			</div>
@@ -57,7 +57,7 @@ const CONTACT_CARDS = [
 		Icon: ContactIconClock,
 		title: "Hours",
 		body: `Service area: ${SITE.serviceArea}.`,
-		content: <p style={{ margin: 0, color: "var(--sh-ink,#20413e)", fontWeight: 600 }}>{SITE.hours}</p>,
+		content: <p style={{ margin: 0, color: "var(--bb-ink)", fontWeight: 600 }}>{SITE.hours}</p>,
 	},
 ];
 
@@ -80,13 +80,13 @@ export default function ContactPage() {
 					{CONTACT_CARDS.map(({ Icon, title, body, content }) => (
 						<div
 							key={title}
-							className="sh-why-card"
+							className="bb-why-card"
 							style={{
 								background: "#fff",
-								border: "1px solid rgba(36,91,86,.07)",
+								border: "1px solid rgba(var(--bb-shadow-rgb),.07)",
 								borderRadius: 22,
 								padding: "30px 28px",
-								boxShadow: "0 2px 14px rgba(36,91,86,.05)",
+								boxShadow: "0 2px 14px rgba(var(--bb-shadow-rgb),.05)",
 								transition: "transform .25s ease,box-shadow .25s ease",
 							}}
 						>
@@ -98,8 +98,8 @@ export default function ContactPage() {
 									width: 56,
 									height: 56,
 									borderRadius: 16,
-									background: "var(--sh-tint,#e6f2ef)",
-									color: "var(--sh-teal,#2f8f86)",
+									background: "var(--bb-surface-tint)",
+									color: "var(--bb-ink-soft)",
 								}}
 							>
 								<Icon />
@@ -109,13 +109,13 @@ export default function ContactPage() {
 									fontFamily: "'Hanken Grotesk',sans-serif",
 									fontWeight: 700,
 									fontSize: "1.24rem",
-									color: "var(--sh-deep,#245b56)",
+									color: "var(--bb-ink-strong)",
 									margin: "18px 0 8px",
 								}}
 							>
 								{title}
 							</h2>
-							<p style={{ color: "var(--sh-muted,#5f726f)", lineHeight: 1.55, margin: "0 0 16px" }}>{body}</p>
+							<p style={{ color: "var(--bb-ink-muted)", lineHeight: 1.55, margin: "0 0 16px" }}>{body}</p>
 							{content}
 						</div>
 					))}

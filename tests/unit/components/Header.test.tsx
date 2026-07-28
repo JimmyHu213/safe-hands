@@ -19,10 +19,10 @@ describe("Header", () => {
 	it("renders the brand name", () => {
 		render(<Header appLoginUrl="" />);
 		// Home/brand link — distinguish from other links by href
-		const links = screen.getAllByRole("link", { name: /safe hands/i });
+		const links = screen.getAllByRole("link", { name: /bee bright/i });
 		const brand = links.find((l) => l.getAttribute("href") === "/");
 		expect(brand).toBeDefined();
-		expect(brand).toHaveTextContent(/safe hands/i);
+		expect(brand).toHaveTextContent(/bee bright/i);
 	});
 
 	it("renders the Request an Educator CTA", () => {
@@ -34,10 +34,10 @@ describe("Header", () => {
 	});
 
 	it("renders the Access the app link when appLoginUrl is set", () => {
-		render(<Header appLoginUrl="https://app.safehandsstaffing.com.au" />);
+		render(<Header appLoginUrl="https://app.beebrightstaffing.com" />);
 		expect(screen.getByRole("link", { name: /access the app/i })).toHaveAttribute(
 			"href",
-			"https://app.safehandsstaffing.com.au",
+			"https://app.beebrightstaffing.com",
 		);
 	});
 

@@ -1,19 +1,19 @@
 import { LANDING } from "@/lib/cms/content";
 
 const STAT_COLOR: Record<(typeof LANDING.stats)[number]["tone"], string> = {
-	blush: "var(--sh-accent-dark,#e0902a)",
-	teal: "var(--sh-muted,#5f726f)",
-	navy: "var(--sh-deep,#245b56)",
+	blush: "var(--bb-amber-dark)",
+	teal: "var(--bb-ink-muted)",
+	navy: "var(--bb-ink-strong)",
 };
 
 export function StatsBand() {
 	return (
 		<section
-			aria-label="Safe Hands by the numbers"
+			aria-label="Bee Bright by the numbers"
 			style={{
 				position: "relative",
 				background: "#fff",
-				borderBottom: "1px solid rgba(36,91,86,.06)",
+				borderBottom: "1px solid rgba(var(--bb-shadow-rgb),.06)",
 			}}
 		>
 			<div
@@ -56,7 +56,7 @@ export function StatsBand() {
 						style={{
 							textAlign: "center",
 							padding: "6px 12px",
-							...(i > 0 ? { borderLeft: "1px solid rgba(36,91,86,.08)" } : {}),
+							...(i > 0 ? { borderLeft: "1px solid rgba(var(--bb-shadow-rgb),.08)" } : {}),
 						}}
 					>
 						<div
@@ -73,7 +73,7 @@ export function StatsBand() {
 						<div
 							style={{
 								marginTop: 8,
-								color: "var(--sh-muted,#5f726f)",
+								color: "var(--bb-ink-muted)",
 								fontWeight: 600,
 								fontSize: ".97rem",
 							}}

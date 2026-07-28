@@ -5,10 +5,10 @@ const h2Style = {
 	fontFamily: "'Hanken Grotesk',sans-serif",
 	fontWeight: 700,
 	fontSize: "1.24rem",
-	color: "var(--sh-deep,#245b56)",
+	color: "var(--bb-ink-strong)",
 	margin: "32px 0 8px",
 };
-const pStyle = { color: "var(--sh-muted,#5f726f)", lineHeight: 1.6, margin: "0 0 8px" };
+const pStyle = { color: "var(--bb-ink-muted)", lineHeight: 1.6, margin: "0 0 8px" };
 
 export default function TermsPage() {
 	return (
@@ -51,7 +51,7 @@ export default function TermsPage() {
 						Questions about these terms can be sent to{" "}
 						<a
 							href={`mailto:${SITE.emailGeneral}`}
-							style={{ color: "var(--sh-deep,#1d4b47)", textDecoration: "underline" }}
+							style={{ color: "var(--bb-ink-strong)", textDecoration: "underline" }}
 						>
 							{SITE.emailGeneral}
 						</a>

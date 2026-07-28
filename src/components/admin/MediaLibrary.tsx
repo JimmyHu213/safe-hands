@@ -12,7 +12,7 @@ export function MediaLibrary({ items, publicBaseUrl }: { items: MediaItem[]; pub
 							// eslint-disable-next-line @next/next/no-img-element
 							<img src={url} alt={m.altText ?? ""} className="aspect-video w-full rounded object-cover" />
 						) : null}
-						<p className="mt-2 text-xs text-slate-500">{m.originalFilename}</p>
+						<p className="mt-2 text-xs text-ink-500">{m.originalFilename}</p>
 						<p className="mt-1 break-all text-xs"><code>{url}</code></p>
 						<form action={updateAltAction} className="mt-2 flex gap-2 text-xs">
 							<input type="hidden" name="id" value={m.id} />
@@ -31,7 +31,7 @@ export function MediaLibrary({ items, publicBaseUrl }: { items: MediaItem[]; pub
 					</li>
 				);
 			})}
-			{items.length === 0 ? <li className="text-sm text-slate-500">No media uploaded yet.</li> : null}
+			{items.length === 0 ? <li className="text-sm text-ink-500">No media uploaded yet.</li> : null}
 		</ul>
 	);
 }

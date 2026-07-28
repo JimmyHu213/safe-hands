@@ -14,13 +14,13 @@ const sectionTitleStyle = {
 	fontFamily: "'Hanken Grotesk',sans-serif",
 	fontWeight: 700,
 	fontSize: "1.24rem",
-	color: "var(--sh-deep,#245b56)",
+	color: "var(--bb-ink-strong)",
 	margin: "0 0 16px",
 } as const;
 
 const cardStyle = {
 	background: "#fff",
-	border: "1px solid rgba(36,91,86,.07)",
+	border: "1px solid rgba(var(--bb-shadow-rgb),.07)",
 	borderRadius: 20,
 	padding: "26px 22px",
 } as const;
@@ -50,8 +50,8 @@ export default function CompliancePage() {
 									width: 48,
 									height: 48,
 									borderRadius: 14,
-									background: "var(--sh-tint,#e6f2ef)",
-									color: "var(--sh-teal,#2f8f86)",
+									background: "var(--bb-surface-tint)",
+									color: "var(--bb-ink-soft)",
 								}}
 							>
 								<ComplianceCheckIcon />
@@ -61,13 +61,13 @@ export default function CompliancePage() {
 									fontFamily: "'Hanken Grotesk',sans-serif",
 									fontWeight: 700,
 									fontSize: "1.08rem",
-									color: "var(--sh-deep,#245b56)",
+									color: "var(--bb-ink-strong)",
 									margin: "16px 0 6px",
 								}}
 							>
 								{d.name}
 							</h3>
-							<p style={{ color: "var(--sh-muted,#5f726f)", lineHeight: 1.5, margin: 0, fontSize: ".94rem" }}>
+							<p style={{ color: "var(--bb-ink-muted)", lineHeight: 1.5, margin: 0, fontSize: ".94rem" }}>
 								Renewal: {d.renewal}
 							</p>
 						</div>
@@ -75,7 +75,7 @@ export default function CompliancePage() {
 				</div>
 			</section>
 
-			<section style={{ position: "relative", padding: "clamp(48px,7vw,80px) 0", background: "var(--sh-cream,#fbf7f1)" }}>
+			<section style={{ position: "relative", padding: "clamp(48px,7vw,80px) 0", background: "var(--bb-surface)" }}>
 				<div style={{ maxWidth: 1080, margin: "0 auto", padding: "0 22px" }}>
 					<h2 style={sectionTitleStyle}>Frameworks we operate under</h2>
 					<div
@@ -96,15 +96,15 @@ export default function CompliancePage() {
 										width: 48,
 										height: 48,
 										borderRadius: 14,
-										background: "var(--sh-tint,#e6f2ef)",
-										color: "var(--sh-teal,#2f8f86)",
+										background: "var(--bb-surface-tint)",
+										color: "var(--bb-ink-soft)",
 									}}
 								>
 									<ComplianceCheckIcon />
 								</span>
 								<p
 									style={{
-										color: "var(--sh-ink,#20413e)",
+										color: "var(--bb-ink)",
 										lineHeight: 1.5,
 										margin: "16px 0 0",
 										fontWeight: 600,

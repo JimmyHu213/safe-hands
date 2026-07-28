@@ -7,54 +7,36 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Safe Hands brand palette — extracted from brand icon (Web Toolkit 2026-07-09).
- * Exact brand hexes: navy-800, teal-400, blush-300, lavender-300.
+ * Bee Bright brand palette — sampled from the BeeBright logo.
+ * Exact brand hexes: amber-500 #FCB607, ink-950 #101010.
+ * Semantic tokens for the marketing site live in brand.css (--bb-*).
  */
 @theme {
-	--color-navy-50: #F4F7FB;
-	--color-navy-100: #E5EDF6;
-	--color-navy-200: #CADBEC;
-	--color-navy-300: #A4C1DF;
-	--color-navy-400: #6FA2D7;
-	--color-navy-500: #4385CB;
-	--color-navy-600: #316EB0;
-	--color-navy-700: #27588C;
-	--color-navy-800: #1A3B5E;
-	--color-navy-900: #193048;
-	--color-navy-950: #112131;
-	--color-teal-50: #F6F9F9;
-	--color-teal-100: #EAF0F1;
-	--color-teal-200: #D5E2E2;
-	--color-teal-300: #B6CDCD;
-	--color-teal-400: #84B0B1;
-	--color-teal-500: #6CA1A2;
-	--color-teal-600: #578889;
-	--color-teal-700: #456C6D;
-	--color-teal-800: #385152;
-	--color-teal-900: #27393A;
-	--color-teal-950: #1B2727;
-	--color-blush-50: #FBF4F4;
-	--color-blush-100: #F5E6E6;
-	--color-blush-200: #EACECC;
-	--color-blush-300: #E4B1AE;
-	--color-blush-400: #D17A75;
-	--color-blush-500: #C3524B;
-	--color-blush-600: #A83E38;
-	--color-blush-700: #86322D;
-	--color-blush-800: #622B28;
-	--color-blush-900: #451E1C;
-	--color-blush-950: #2F1513;
-	--color-lavender-50: #F7F7F8;
-	--color-lavender-100: #ECECEF;
-	--color-lavender-200: #D9D8DE;
-	--color-lavender-300: #B5B3C1;
-	--color-lavender-400: #9D9AAD;
-	--color-lavender-500: #7E7B93;
-	--color-lavender-600: #68657C;
-	--color-lavender-700: #535062;
-	--color-lavender-800: #413F4B;
-	--color-lavender-900: #2D2C35;
-	--color-lavender-950: #1F1E24;
+	/* Amber scale — anchored on the BeeBright logo amber (#FCB607 = amber-500).
+	   amber-700 is the lightest step that passes AA for text on white. */
+	--color-amber-50: #FFFBF0;
+	--color-amber-100: #FFF3D6;
+	--color-amber-200: #FFE9A8;
+	--color-amber-300: #FFDA6E;
+	--color-amber-400: #FEC93A;
+	--color-amber-500: #FCB607;
+	--color-amber-600: #E0A106;
+	--color-amber-700: #A66A00;
+	--color-amber-800: #7A4E00;
+	--color-amber-900: #543600;
+	--color-amber-950: #3D2A00;
+	/* Ink scale — warm neutrals grading to the logo black (#101010 = ink-950). */
+	--color-ink-50: #FFFDF7;
+	--color-ink-100: #FFF8E7;
+	--color-ink-200: #E8DFC9;
+	--color-ink-300: #CFC6B0;
+	--color-ink-400: #9C9384;
+	--color-ink-500: #6B6257;
+	--color-ink-600: #574F45;
+	--color-ink-700: #4A4238;
+	--color-ink-800: #302A22;
+	--color-ink-900: #1F1B14;
+	--color-ink-950: #101010;
 	--tracking-brand: 0.18em;
 	--radius-pill: 999px;
 }

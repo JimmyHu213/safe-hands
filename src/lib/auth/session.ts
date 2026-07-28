@@ -1,4 +1,4 @@
-export const SESSION_COOKIE_NAME = "sh_admin_session";
+export const SESSION_COOKIE_NAME = "bb_admin_session";
 
 export interface BuildSessionCookieInput {
   token: string;

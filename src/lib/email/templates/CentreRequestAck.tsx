@@ -1,4 +1,5 @@
 import { Body, Container, Head, Heading, Html, Preview, Section, Text } from "@react-email/components";
+import { SITE } from "@/lib/cms/content";
 
 export interface CentreRequestAckProps {
 	contactName: string;
@@ -23,13 +24,13 @@ export default function CentreRequestAck(props: CentreRequestAckProps) {
 							{props.shiftDate} at {props.shiftStart}.
 						</Text>
 						<Text>
-							A Safe Hands operator will be in touch within 4 business hours to confirm coverage or
+							A {SITE.shortName} operator will be in touch within 4 business hours to confirm coverage or
 							ask any clarifying questions.
 						</Text>
 						<Text>
-							If you need an immediate response, please call <strong>1300 SAFE HANDS</strong>.
+							If you need an immediate response, please call <strong>{SITE.phone}</strong>.
 						</Text>
-						<Text>— Safe Hands Staffing</Text>
+						<Text>— {SITE.shortName} Staffing</Text>
 					</Section>
 				</Container>
 			</Body>

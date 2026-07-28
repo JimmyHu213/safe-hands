@@ -5,11 +5,11 @@ const h2Style = {
 	fontFamily: "'Hanken Grotesk',sans-serif",
 	fontWeight: 700,
 	fontSize: "1.24rem",
-	color: "var(--sh-deep,#245b56)",
+	color: "var(--bb-ink-strong)",
 	margin: "32px 0 8px",
 };
-const pStyle = { color: "var(--sh-muted,#5f726f)", lineHeight: 1.6, margin: "0 0 8px" };
-const liStyle = { color: "var(--sh-muted,#5f726f)", lineHeight: 1.6, margin: "0 0 4px" };
+const pStyle = { color: "var(--bb-ink-muted)", lineHeight: 1.6, margin: "0 0 8px" };
+const liStyle = { color: "var(--bb-ink-muted)", lineHeight: 1.6, margin: "0 0 4px" };
 
 export default function PrivacyPage() {
 	return (
@@ -27,17 +27,17 @@ export default function PrivacyPage() {
 					<h2 style={h2Style}>2. What we collect</h2>
 					<ul style={{ margin: 0, paddingLeft: 20 }}>
 						<li style={liStyle}>
-							<strong style={{ color: "var(--sh-ink,#20413e)" }}>From centres and families submitting a request:</strong> business /
+							<strong style={{ color: "var(--bb-ink)" }}>From centres and families submitting a request:</strong> business /
 							parent name, contact details, suburb, postcode, the shift details you supply.
 						</li>
 						<li style={liStyle}>
-							<strong style={{ color: "var(--sh-ink,#20413e)" }}>From educators applying to join our bench:</strong> identity,
+							<strong style={{ color: "var(--bb-ink)" }}>From educators applying to join our bench:</strong> identity,
 							contact, suburb, qualifications, work history, availability, and the compliance
 							documents you upload (Working With Children Check, First Aid, qualification
 							certificates, ID, references).
 						</li>
 						<li style={liStyle}>
-							<strong style={{ color: "var(--sh-ink,#20413e)" }}>Technical:</strong> we hash your IP address with a daily-rotated
+							<strong style={{ color: "var(--bb-ink)" }}>Technical:</strong> we hash your IP address with a daily-rotated
 							salt for rate limiting and abuse prevention. We do not store raw IP addresses.
 						</li>
 					</ul>
@@ -61,7 +61,7 @@ export default function PrivacyPage() {
 						You may request access to or deletion of your personal information by emailing{" "}
 						<a
 							href={`mailto:${SITE.emailGeneral}`}
-							style={{ color: "var(--sh-deep,#1d4b47)", textDecoration: "underline" }}
+							style={{ color: "var(--bb-ink-strong)", textDecoration: "underline" }}
 						>
 							{SITE.emailGeneral}
 						</a>
@@ -80,7 +80,7 @@ export default function PrivacyPage() {
 						Privacy questions can be sent to{" "}
 						<a
 							href={`mailto:${SITE.emailGeneral}`}
-							style={{ color: "var(--sh-deep,#1d4b47)", textDecoration: "underline" }}
+							style={{ color: "var(--bb-ink-strong)", textDecoration: "underline" }}
 						>
 							{SITE.emailGeneral}
 						</a>

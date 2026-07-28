@@ -7,12 +7,12 @@ describe("presignPutUrl", () => {
       accountId: "acct123",
       accessKeyId: "k",
       secretAccessKey: "s",
-      bucket: "safe-hands-educator-docs",
+      bucket: "beebrightstaffing-educator-docs",
       key: "educator-docs/app_1/wwcc-x.pdf",
       contentType: "application/pdf",
       expiresInSeconds: 300,
     });
-    expect(url).toContain("safe-hands-educator-docs");
+    expect(url).toContain("beebrightstaffing-educator-docs");
     expect(url).toContain("educator-docs/app_1/wwcc-x.pdf");
     expect(url).toMatch(/X-Amz-(Signature|Expires|Credential)/);
   });
@@ -38,11 +38,11 @@ describe("presignGetUrl", () => {
       accountId: "acct123",
       accessKeyId: "k",
       secretAccessKey: "s",
-      bucket: "safe-hands-educator-docs",
+      bucket: "beebrightstaffing-educator-docs",
       key: "educator-docs/app_1/wwcc-x.pdf",
       expiresInSeconds: 3600,
     });
-    expect(url).toContain("safe-hands-educator-docs");
+    expect(url).toContain("beebrightstaffing-educator-docs");
     expect(url).toMatch(/X-Amz-Signature/);
   });
 });

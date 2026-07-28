@@ -1,10 +1,10 @@
 ADMIN_EMAIL=
 RESEND_API_KEY=
-RESEND_FROM_ADDRESS=no-reply@mail.safehandsstaffing.com.au
+RESEND_FROM_ADDRESS=no-reply@mail.beebrightstaffing.com
 TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=
 APP_LOGIN_URL=
-SESSION_COOKIE_DOMAIN=safehandsstaffing.com.au
+SESSION_COOKIE_DOMAIN=beebrightstaffing.com
 IP_HASH_SALT_ROTATION=
 PUBLIC_SITE_URL=http://localhost:3000
 R2_ACCOUNT_ID=

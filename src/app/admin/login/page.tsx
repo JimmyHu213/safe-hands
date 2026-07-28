@@ -8,10 +8,10 @@ export default function AdminLoginPage() {
 		{ ok: false },
 	);
 	return (
-		<div className="min-h-screen bg-slate-50">
+		<div className="min-h-screen bg-ink-50">
 			<div className="mx-auto max-w-md px-4 py-16">
-				<h1 className="text-2xl font-semibold tracking-tight">Safe Hands admin</h1>
-				<p className="mt-2 text-sm text-slate-600">
+				<h1 className="text-2xl font-semibold tracking-tight">Bee Bright admin</h1>
+				<p className="mt-2 text-sm text-ink-600">
 					Enter your admin email and we will send you a sign-in link.
 				</p>
 				<form action={action} className="mt-8 space-y-4">
@@ -28,11 +28,11 @@ export default function AdminLoginPage() {
 					<button
 						type="submit"
 						disabled={pending}
-						className="w-full rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
+						className="w-full rounded-md bg-ink-950 px-4 py-2 text-sm font-medium text-white disabled:opacity-60"
 					>
 						{pending ? "Sending…" : "Send sign-in link"}
 					</button>
-					{state.message ? <p className="text-sm text-slate-600">{state.message}</p> : null}
+					{state.message ? <p className="text-sm text-ink-600">{state.message}</p> : null}
 				</form>
 			</div>
 		</div>

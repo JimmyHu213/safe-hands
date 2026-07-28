@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "Safe Hands Staffing Agency — Trusted childcare staff",
+	title: "Bee Bright Staffing Agency — Trusted childcare staff",
 	description:
 		"Vetted, compliant childcare educators for centres and families across NSW — casual relief, ratio cover and in-home care, usually within 48 hours.",
 };
@@ -32,8 +32,8 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={`${mulish.variable} ${hanken.variable} ${geistMono.variable}`}>
 			<head>
-				<link rel="icon" href="/brand/safehands-icon-32.png" type="image/png" sizes="32x32"></link>
-				<link rel="apple-touch-icon" href="/brand/safehands-icon-192.png"></link>
+				<link rel="icon" href="/brand/beebright-mark-32.png" type="image/png" sizes="32x32"></link>
+				<link rel="apple-touch-icon" href="/brand/beebright-mark-192.png"></link>
 			</head>
 			<body className="antialiased">{children}</body>
 		</html>

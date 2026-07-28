@@ -12,7 +12,7 @@ export function RequestCta() {
 					position: "relative",
 					overflow: "hidden",
 					borderRadius: 32,
-					background: "linear-gradient(130deg,var(--sh-deep,#245b56) 0%, var(--sh-teal,#2f8f86) 100%)",
+					background: "linear-gradient(130deg,var(--bb-ink-strong) 0%, var(--bb-ink-soft) 100%)",
 					padding: "clamp(40px,6vw,72px) clamp(28px,5vw,64px)",
 					textAlign: "center",
 				}}
@@ -38,7 +38,7 @@ export function RequestCta() {
 						width: 260,
 						height: 260,
 						borderRadius: "50%",
-						background: "var(--sh-accent,#f4a93a)",
+						background: "var(--bb-amber)",
 						opacity: 0.18,
 					}}
 				></div>
@@ -71,14 +71,14 @@ export function RequestCta() {
 					<div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center", marginTop: 34 }}>
 						<Link
 							href={request.primary.href}
-							className="sh-request-cta-primary"
+							className="bb-request-cta-primary"
 							style={{
 								display: "inline-flex",
 								alignItems: "center",
 								justifyContent: "center",
 								gap: 9,
 								background: "#fff",
-								color: "var(--sh-deep,#1A3B5E)",
+								color: "var(--bb-ink-strong)",
 								fontFamily: "'Hanken Grotesk',sans-serif",
 								fontWeight: 800,
 								fontSize: "1.08rem",
@@ -106,7 +106,7 @@ export function RequestCta() {
 						</Link>
 						<Link
 							href={request.secondary.href}
-							className="sh-request-cta-secondary"
+							className="bb-request-cta-secondary"
 							style={{
 								display: "inline-flex",
 								alignItems: "center",

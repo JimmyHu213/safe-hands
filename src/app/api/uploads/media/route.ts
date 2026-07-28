@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
 		accountId: env.R2_ACCOUNT_ID,
 		accessKeyId: env.R2_ACCESS_KEY_ID,
 		secretAccessKey: env.R2_SECRET_ACCESS_KEY,
-		bucket: "safe-hands-public-media",
+		bucket: "beebrightstaffing-public-media",
 		key: r2Key,
 		contentType: parsed.mimeType,
 		expiresInSeconds: 300,

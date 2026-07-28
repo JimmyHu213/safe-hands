@@ -31,7 +31,7 @@ export function FaqEditor({ entries }: { entries: FaqEntry[] }) {
 						<textarea name="answer" required rows={4} maxLength={10000} className="rounded-md border px-3 py-2" />
 					</label>
 					<div className="md:col-span-2">
-						<button type="submit" className="rounded-md bg-slate-900 px-3 py-1.5 text-sm text-white">
+						<button type="submit" className="rounded-md bg-ink-950 px-3 py-1.5 text-sm text-white">
 							Add
 						</button>
 					</div>
@@ -43,9 +43,9 @@ export function FaqEditor({ entries }: { entries: FaqEntry[] }) {
 				<ul className="mt-3 space-y-3">
 					{entries.map((e) => (
 						<li key={e.id} className="rounded-md border bg-white p-4">
-							<p className="text-xs uppercase tracking-wide text-slate-500">{e.audience}</p>
+							<p className="text-xs uppercase tracking-wide text-ink-500">{e.audience}</p>
 							<p className="mt-1 font-medium">{e.question}</p>
-							<p className="mt-1 whitespace-pre-line text-sm text-slate-700">{e.answer}</p>
+							<p className="mt-1 whitespace-pre-line text-sm text-ink-700">{e.answer}</p>
 							<div className="mt-3 flex items-center gap-3 text-sm">
 								<form action={togglePublishedAction}>
 									<input type="hidden" name="id" value={e.id} />
@@ -60,11 +60,11 @@ export function FaqEditor({ entries }: { entries: FaqEntry[] }) {
 										Delete
 									</button>
 								</form>
-								<span className="text-slate-500">sort: {e.sortOrder}</span>
+								<span className="text-ink-500">sort: {e.sortOrder}</span>
 							</div>
 						</li>
 					))}
-					{entries.length === 0 ? <li className="text-sm text-slate-500">No FAQ entries yet.</li> : null}
+					{entries.length === 0 ? <li className="text-sm text-ink-500">No FAQ entries yet.</li> : null}
 				</ul>
 			</section>
 		</div>

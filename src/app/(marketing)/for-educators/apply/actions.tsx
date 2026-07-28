@@ -63,7 +63,7 @@ export async function educatorStep1Action(
 			client: resend,
 			from: env.RESEND_FROM_ADDRESS,
 			to: parsed.email,
-			subject: "Resume your Safe Hands application",
+			subject: "Resume your Bee Bright application",
 			...email,
 		});
 	} catch (err) {
@@ -164,7 +164,7 @@ export async function educatorStep4Action(
 				accountId: env.R2_ACCOUNT_ID,
 				accessKeyId: env.R2_ACCESS_KEY_ID,
 				secretAccessKey: env.R2_SECRET_ACCESS_KEY,
-				bucket: "safe-hands-educator-docs",
+				bucket: "beebrightstaffing-educator-docs",
 				key: d.r2Key,
 				expiresInSeconds: 24 * 3600,
 			}),
@@ -192,14 +192,14 @@ export async function educatorStep4Action(
 			client: resend,
 			from: env.RESEND_FROM_ADDRESS,
 			to: app.email,
-			subject: "Your Safe Hands application has been submitted",
+			subject: "Your Bee Bright application has been submitted",
 			...ack,
 		});
 		await sendEmail({
 			client: resend,
 			from: env.RESEND_FROM_ADDRESS,
 			to: env.ADMIN_EMAIL,
-			subject: `[Safe Hands] Educator application — ${app.firstName} ${app.lastName}`,
+			subject: `[Bee Bright] Educator application — ${app.firstName} ${app.lastName}`,
 			...notify,
 		});
 	} catch (err) {

@@ -56,7 +56,7 @@ export function AudienceCards() {
 	const educatorCard = audience.cards.find((c) => c.key === "educator")!;
 
 	return (
-		<section id="audience" style={{ position: "relative", padding: "clamp(64px,9vw,116px) 0", background: "var(--sh-tint,#e6f2ef)" }}>
+		<section id="audience" style={{ position: "relative", padding: "clamp(64px,9vw,116px) 0", background: "var(--bb-surface-tint)" }}>
 			<div
 				aria-hidden="true"
 				style={{
@@ -77,7 +77,7 @@ export function AudienceCards() {
 				>
 					<path
 						d="M0,100 V56 C 38,56 52,31 96,28 C 132,26 141,55 186,54 C 214,53 221,13 286,10 C 341,8 352,47 393,49 C 431,51 442,29 489,26 C 521,24 530,59 586,56 C 641,54 650,17 706,14 C 746,12 761,51 809,53 C 851,54 860,33 906,30 C 947,28 956,61 1011,58 C 1071,55 1080,11 1141,8 C 1196,6 1206,45 1256,47 C 1301,48 1313,25 1371,22 C 1406,20 1421,51 1440,53 V100 Z"
-						fill="var(--sh-tint,#e6f2ef)"
+						fill="var(--bb-surface-tint)"
 					></path>
 				</svg>
 			</div>
@@ -91,7 +91,7 @@ export function AudienceCards() {
 							fontSize: ".78rem",
 							letterSpacing: ".13em",
 							textTransform: "uppercase",
-							color: "var(--sh-muted,#5f726f)",
+							color: "var(--bb-ink-muted)",
 						}}
 					>
 						{audience.eyebrow}
@@ -103,7 +103,7 @@ export function AudienceCards() {
 							fontSize: "clamp(1.9rem,3.6vw,2.8rem)",
 							lineHeight: 1.08,
 							letterSpacing: "-.022em",
-							color: "var(--sh-deep,#245b56)",
+							color: "var(--bb-ink-strong)",
 							margin: "14px 0 0",
 						}}
 					>
@@ -113,7 +113,7 @@ export function AudienceCards() {
 						style={{
 							fontSize: "clamp(1.04rem,1.4vw,1.16rem)",
 							lineHeight: 1.6,
-							color: "var(--sh-muted,#5f726f)",
+							color: "var(--bb-ink-muted)",
 							margin: "16px 0 0",
 						}}
 					>
@@ -134,12 +134,12 @@ export function AudienceCards() {
 							background: "#fff",
 							borderRadius: 24,
 							overflow: "hidden",
-							boxShadow: "0 6px 24px rgba(36,91,86,.07)",
+							boxShadow: "0 6px 24px rgba(var(--bb-shadow-rgb),.07)",
 							display: "flex",
 							flexDirection: "column",
 						}}
 					>
-						<div style={{ height: 8, background: "var(--sh-teal,#2f8f86)" }}></div>
+						<div style={{ height: 8, background: "var(--bb-ink-soft)" }}></div>
 						<div style={{ padding: "30px 28px", display: "flex", flexDirection: "column", flex: 1 }}>
 							<span
 								style={{
@@ -149,8 +149,8 @@ export function AudienceCards() {
 									width: 52,
 									height: 52,
 									borderRadius: 14,
-									background: "var(--sh-tint,#e6f2ef)",
-									color: "var(--sh-teal,#2f8f86)",
+									background: "var(--bb-surface-tint)",
+									color: "var(--bb-ink-soft)",
 								}}
 							>
 								<AudienceIconHouse />
@@ -160,37 +160,37 @@ export function AudienceCards() {
 									fontFamily: "'Hanken Grotesk',sans-serif",
 									fontWeight: 800,
 									fontSize: "1.42rem",
-									color: "var(--sh-deep,#245b56)",
+									color: "var(--bb-ink-strong)",
 									margin: "16px 0 4px",
 								}}
 							>
 								{familyCard.title}
 							</h3>
-							<p style={{ color: "var(--sh-muted,#5f726f)", lineHeight: 1.5, margin: "0 0 18px", fontWeight: 600 }}>
+							<p style={{ color: "var(--bb-ink-muted)", lineHeight: 1.5, margin: "0 0 18px", fontWeight: 600 }}>
 								{familyCard.sub}
 							</p>
 							<ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px", display: "flex", flexDirection: "column", gap: 12 }}>
 								{familyCard.bullets.map((b) => (
 									<li
 										key={b}
-										style={{ display: "flex", gap: 10, alignItems: "flex-start", color: "var(--sh-ink,#20413e)", lineHeight: 1.45 }}
+										style={{ display: "flex", gap: 10, alignItems: "flex-start", color: "var(--bb-ink)", lineHeight: 1.45 }}
 									>
-										<BulletCheck color="var(--sh-teal,#2f8f86)" />
+										<BulletCheck color="var(--bb-ink-soft)" />
 										{b}
 									</li>
 								))}
 							</ul>
 							<Link
 								href={familyCard.ctaHref}
-								className="sh-audience-cta"
+								className="bb-audience-cta"
 								style={{
 									marginTop: "auto",
 									display: "inline-flex",
 									alignItems: "center",
 									justifyContent: "center",
 									gap: 8,
-									background: "var(--sh-btn-primary,#1A3B5E)",
-									color: "#fff",
+									background: "var(--bb-btn-primary)",
+									color: "var(--bb-ink-strong)",
 									fontFamily: "'Hanken Grotesk',sans-serif",
 									fontWeight: 800,
 									fontSize: "1rem",
@@ -211,12 +211,12 @@ export function AudienceCards() {
 							background: "#fff",
 							borderRadius: 24,
 							overflow: "hidden",
-							boxShadow: "0 6px 24px rgba(36,91,86,.07)",
+							boxShadow: "0 6px 24px rgba(var(--bb-shadow-rgb),.07)",
 							display: "flex",
 							flexDirection: "column",
 						}}
 					>
-						<div style={{ height: 8, background: "var(--sh-deep,#245b56)" }}></div>
+						<div style={{ height: 8, background: "var(--bb-ink-strong)" }}></div>
 						<div style={{ padding: "30px 28px", display: "flex", flexDirection: "column", flex: 1 }}>
 							<span
 								style={{
@@ -226,8 +226,8 @@ export function AudienceCards() {
 									width: 52,
 									height: 52,
 									borderRadius: 14,
-									background: "var(--sh-tint,#e6f2ef)",
-									color: "var(--sh-deep,#245b56)",
+									background: "var(--bb-surface-tint)",
+									color: "var(--bb-ink-strong)",
 								}}
 							>
 								<AudienceIconBuilding />
@@ -237,36 +237,36 @@ export function AudienceCards() {
 									fontFamily: "'Hanken Grotesk',sans-serif",
 									fontWeight: 800,
 									fontSize: "1.42rem",
-									color: "var(--sh-deep,#245b56)",
+									color: "var(--bb-ink-strong)",
 									margin: "16px 0 4px",
 								}}
 							>
 								{centreCard.title}
 							</h3>
-							<p style={{ color: "var(--sh-muted,#5f726f)", lineHeight: 1.5, margin: "0 0 18px", fontWeight: 600 }}>
+							<p style={{ color: "var(--bb-ink-muted)", lineHeight: 1.5, margin: "0 0 18px", fontWeight: 600 }}>
 								{centreCard.sub}
 							</p>
 							<ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px", display: "flex", flexDirection: "column", gap: 12 }}>
 								{centreCard.bullets.map((b) => (
 									<li
 										key={b}
-										style={{ display: "flex", gap: 10, alignItems: "flex-start", color: "var(--sh-ink,#20413e)", lineHeight: 1.45 }}
+										style={{ display: "flex", gap: 10, alignItems: "flex-start", color: "var(--bb-ink)", lineHeight: 1.45 }}
 									>
-										<BulletCheck color="var(--sh-teal,#2f8f86)" />
+										<BulletCheck color="var(--bb-ink-soft)" />
 										{b}
 									</li>
 								))}
 							</ul>
 							<Link
 								href={centreCard.ctaHref}
-								className="sh-audience-cta"
+								className="bb-audience-cta"
 								style={{
 									marginTop: "auto",
 									display: "inline-flex",
 									alignItems: "center",
 									justifyContent: "center",
 									gap: 8,
-									background: "var(--sh-deep,#245b56)",
+									background: "var(--bb-ink-strong)",
 									color: "#fff",
 									fontFamily: "'Hanken Grotesk',sans-serif",
 									fontWeight: 800,
@@ -289,12 +289,12 @@ export function AudienceCards() {
 							background: "#fff",
 							borderRadius: 24,
 							overflow: "hidden",
-							boxShadow: "0 6px 24px rgba(36,91,86,.07)",
+							boxShadow: "0 6px 24px rgba(var(--bb-shadow-rgb),.07)",
 							display: "flex",
 							flexDirection: "column",
 						}}
 					>
-						<div style={{ height: 8, background: "var(--sh-accent,#f4a93a)" }}></div>
+						<div style={{ height: 8, background: "var(--bb-amber)" }}></div>
 						<div style={{ padding: "30px 28px", display: "flex", flexDirection: "column", flex: 1 }}>
 							<span
 								style={{
@@ -304,8 +304,8 @@ export function AudienceCards() {
 									width: 52,
 									height: 52,
 									borderRadius: 14,
-									background: "var(--sh-accent-soft,#fce3bb)",
-									color: "var(--sh-accent-dark,#e0902a)",
+									background: "var(--bb-amber-soft)",
+									color: "var(--bb-amber-dark)",
 								}}
 							>
 								<AudienceIconPeople />
@@ -315,29 +315,29 @@ export function AudienceCards() {
 									fontFamily: "'Hanken Grotesk',sans-serif",
 									fontWeight: 800,
 									fontSize: "1.42rem",
-									color: "var(--sh-deep,#245b56)",
+									color: "var(--bb-ink-strong)",
 									margin: "16px 0 4px",
 								}}
 							>
 								{educatorCard.title}
 							</h3>
-							<p style={{ color: "var(--sh-muted,#5f726f)", lineHeight: 1.5, margin: "0 0 18px", fontWeight: 600 }}>
+							<p style={{ color: "var(--bb-ink-muted)", lineHeight: 1.5, margin: "0 0 18px", fontWeight: 600 }}>
 								{educatorCard.sub}
 							</p>
 							<ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px", display: "flex", flexDirection: "column", gap: 12 }}>
 								{educatorCard.bullets.map((b) => (
 									<li
 										key={b}
-										style={{ display: "flex", gap: 10, alignItems: "flex-start", color: "var(--sh-ink,#20413e)", lineHeight: 1.45 }}
+										style={{ display: "flex", gap: 10, alignItems: "flex-start", color: "var(--bb-ink)", lineHeight: 1.45 }}
 									>
-										<BulletCheck color="var(--sh-accent-dark,#e0902a)" />
+										<BulletCheck color="var(--bb-amber-dark)" />
 										{b}
 									</li>
 								))}
 							</ul>
 							<Link
 								href={educatorCard.ctaHref}
-								className="sh-audience-cta-outline"
+								className="bb-audience-cta-outline"
 								style={{
 									marginTop: "auto",
 									display: "inline-flex",
@@ -345,14 +345,14 @@ export function AudienceCards() {
 									justifyContent: "center",
 									gap: 8,
 									background: "#fff",
-									color: "var(--sh-deep,#245b56)",
+									color: "var(--bb-ink-strong)",
 									fontFamily: "'Hanken Grotesk',sans-serif",
 									fontWeight: 700,
 									fontSize: "1rem",
 									padding: "13px 22px",
 									borderRadius: 999,
 									textDecoration: "none",
-									border: "2px solid var(--sh-soft,#7cc4b8)",
+									border: "2px solid var(--bb-border)",
 									transition: "transform .2s,border-color .2s",
 								}}
 							>

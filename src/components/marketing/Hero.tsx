@@ -80,9 +80,9 @@ export function Hero() {
 
 	const pillBase: CSSProperties = {
 		position: "absolute",
-		background: "var(--sh-accent, #f4a93a)",
+		background: "var(--bb-amber)",
 		borderRadius: 999,
-		boxShadow: "0 6px 14px rgba(228,177,174,.5)",
+		boxShadow: "0 6px 14px rgba(var(--bb-amber-rgb),.5)",
 		transition:
 			"left .32s cubic-bezier(.4,0,.2,1),width .32s cubic-bezier(.4,0,.2,1),top .3s ease,height .3s ease",
 		zIndex: 0,
@@ -135,14 +135,14 @@ export function Hero() {
 				WebkitBackdropFilter: "blur(14px) saturate(165%)",
 				border: "1px solid rgba(255,255,255,.7)",
 				boxShadow:
-					"inset 0 1px 12px rgba(255,255,255,.65), inset 0 -10px 22px rgba(124,196,184,.22), 0 18px 42px rgba(36,91,86,.22)",
+					"inset 0 1px 12px rgba(255,255,255,.65), inset 0 -10px 22px rgba(var(--bb-amber-rgb),.22), 0 18px 42px rgba(var(--bb-shadow-rgb),.22)",
 				display: "flex",
 				flexDirection: "column",
 				alignItems: "center",
 				justifyContent: "center",
 				textAlign: "center",
 				padding: 12,
-				animation: "sh-bubble 6.2s ease-in-out infinite",
+				animation: "bb-bubble 6.2s ease-in-out infinite",
 			}}
 		>
 			<span
@@ -165,8 +165,8 @@ export function Hero() {
 						height: avatarSize,
 						borderRadius: "50%",
 						border: "2px solid #fff",
-						background: "var(--sh-teal,#2f8f86)",
-						color: "var(--sh-ink,#20413e)",
+						background: "var(--bb-border)",
+						color: "var(--bb-ink)",
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "center",
@@ -183,8 +183,8 @@ export function Hero() {
 						height: avatarSize,
 						borderRadius: "50%",
 						border: "2px solid #fff",
-						background: "var(--sh-accent,#f4a93a)",
-						color: "var(--sh-ink,#20413e)",
+						background: "var(--bb-amber)",
+						color: "var(--bb-ink)",
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "center",
@@ -202,8 +202,8 @@ export function Hero() {
 						height: avatarSize,
 						borderRadius: "50%",
 						border: "2px solid #fff",
-						background: "var(--sh-lavender,#B5B3C1)",
-						color: "var(--sh-ink,#20413e)",
+						background: "var(--bb-decor)",
+						color: "var(--bb-ink)",
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "center",
@@ -217,7 +217,7 @@ export function Hero() {
 				</span>
 			</div>
 			<div style={{ display: "flex", alignItems: "center", gap: 5, marginTop: 9 }}>
-				<svg width={starSize} height={starSize} viewBox="0 0 24 24" fill="var(--sh-accent,#f4a93a)" aria-hidden="true">
+				<svg width={starSize} height={starSize} viewBox="0 0 24 24" fill="var(--bb-amber)" aria-hidden="true">
 					<path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.7 5.9 21l1.4-6.8L2.2 9l6.9-.7z"></path>
 				</svg>
 				<span
@@ -225,7 +225,7 @@ export function Hero() {
 						fontFamily: "'Hanken Grotesk',sans-serif",
 						fontWeight: 800,
 						fontSize: ratingFontSize,
-						color: "var(--sh-deep,#245b56)",
+						color: "var(--bb-ink-strong)",
 					}}
 				>
 					4.9
@@ -234,7 +234,7 @@ export function Hero() {
 			<span
 				style={{
 					fontSize: labelFontSize,
-					color: "var(--sh-ink,#20413e)",
+					color: "var(--bb-ink)",
 					fontWeight: 700,
 					lineHeight: 1.2,
 					marginTop: 2,
@@ -266,8 +266,8 @@ export function Hero() {
 				WebkitBackdropFilter: "blur(14px) saturate(165%)",
 				border: "1px solid rgba(255,255,255,.7)",
 				boxShadow:
-					"inset 0 1px 12px rgba(255,255,255,.65), inset 0 -10px 22px rgba(228,177,174,.28), 0 18px 42px rgba(36,91,86,.22)",
-				animation: "sh-bubble-b 7.4s ease-in-out infinite",
+					"inset 0 1px 12px rgba(255,255,255,.65), inset 0 -10px 22px rgba(var(--bb-amber-rgb),.28), 0 18px 42px rgba(var(--bb-shadow-rgb),.22)",
+				animation: "bb-bubble-b 7.4s ease-in-out infinite",
 			}}
 		>
 			<span
@@ -285,7 +285,7 @@ export function Hero() {
 			></span>
 			<button
 				aria-label="Watch our story"
-				className="sh-hero-watch"
+				className="bb-hero-watch"
 				style={{
 					position: "absolute",
 					inset: 0,
@@ -305,12 +305,12 @@ export function Hero() {
 						width: playSize,
 						height: playSize,
 						borderRadius: "50%",
-						background: "var(--sh-accent,#f4a93a)",
-						color: "var(--sh-accent-ink,#3a2a08)",
+						background: "var(--bb-amber)",
+						color: "var(--bb-amber-ink)",
 						display: "flex",
 						alignItems: "center",
 						justifyContent: "center",
-						boxShadow: "0 8px 18px rgba(228,177,174,.55)",
+						boxShadow: "0 8px 18px rgba(var(--bb-amber-rgb),.55)",
 					}}
 				>
 					<svg width={iconSize} height={iconSize} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -322,7 +322,7 @@ export function Hero() {
 						fontFamily: "'Hanken Grotesk',sans-serif",
 						fontWeight: 700,
 						fontSize: labelFontSize,
-						color: "var(--sh-deep,#245b56)",
+						color: "var(--bb-ink-strong)",
 						lineHeight: 1.05,
 					}}
 				>
@@ -340,7 +340,7 @@ export function Hero() {
 				position: "relative",
 				minHeight: "clamp(600px,93vh,920px)",
 				overflow: "hidden",
-				background: "var(--sh-tint,#e6f2ef)",
+				background: "var(--bb-surface-tint)",
 				display: "flex",
 			}}
 		>
@@ -354,7 +354,7 @@ export function Hero() {
 					inset: 0,
 					pointerEvents: "none",
 					background:
-						"linear-gradient(96deg, rgba(230,242,239,.97) 0%, rgba(230,242,239,.88) 24%, rgba(230,242,239,.52) 44%, rgba(230,242,239,.08) 62%, rgba(230,242,239,0) 76%)",
+						"linear-gradient(96deg, rgba(var(--bb-surface-tint-rgb),.97) 0%, rgba(var(--bb-surface-tint-rgb),.88) 24%, rgba(var(--bb-surface-tint-rgb),.52) 44%, rgba(var(--bb-surface-tint-rgb),.08) 62%, rgba(var(--bb-surface-tint-rgb),0) 76%)",
 				}}
 			></div>
 			<div
@@ -363,7 +363,7 @@ export function Hero() {
 					position: "absolute",
 					inset: 0,
 					pointerEvents: "none",
-					background: "linear-gradient(0deg, rgba(230,242,239,.4) 0%, transparent 26%)",
+					background: "linear-gradient(0deg, rgba(var(--bb-surface-tint-rgb),.4) 0%, transparent 26%)",
 				}}
 			></div>
 			<div
@@ -390,7 +390,7 @@ export function Hero() {
 						fontSize: ".78rem",
 						letterSpacing: ".13em",
 						textTransform: "uppercase",
-						color: "var(--sh-muted,#5f726f)",
+						color: "var(--bb-ink-muted)",
 						background: "rgba(255,255,255,.62)",
 						backdropFilter: "blur(6px)",
 						WebkitBackdropFilter: "blur(6px)",
@@ -408,7 +408,7 @@ export function Hero() {
 						fontSize: "clamp(2.5rem,5.7vw,4.5rem)",
 						lineHeight: 1.01,
 						letterSpacing: "-.03em",
-						color: "var(--sh-deep,#1d4b47)",
+						color: "var(--bb-ink-strong)",
 						margin: "20px 0 0",
 						maxWidth: 640,
 						textWrap: "balance",
@@ -421,7 +421,7 @@ export function Hero() {
 					style={{
 						fontSize: "clamp(1.06rem,1.5vw,1.24rem)",
 						lineHeight: 1.6,
-						color: "var(--sh-ink,#20413e)",
+						color: "var(--bb-ink)",
 						fontWeight: 500,
 						margin: "22px 0 0",
 						maxWidth: 500,
@@ -445,7 +445,7 @@ export function Hero() {
 							borderRadius: 999,
 							padding: 5,
 							gap: 4,
-							boxShadow: "0 8px 22px rgba(36,91,86,.12)",
+							boxShadow: "0 8px 22px rgba(var(--bb-shadow-rgb),.12)",
 						}}
 					>
 						<span aria-hidden="true" style={pillStyle}></span>
@@ -469,7 +469,7 @@ export function Hero() {
 										fontSize: ".92rem",
 										padding: "11px 17px",
 										borderRadius: 999,
-										color: "var(--sh-deep,#245b56)",
+										color: "var(--bb-ink-strong)",
 										whiteSpace: "nowrap",
 									}}
 								>
@@ -492,7 +492,7 @@ export function Hero() {
 							border: "1px solid rgba(255,255,255,.8)",
 							borderRadius: 20,
 							padding: "18px 20px",
-							boxShadow: "0 12px 30px rgba(36,91,86,.13)",
+							boxShadow: "0 12px 30px rgba(var(--bb-shadow-rgb),.13)",
 							display: "flex",
 							flexDirection: "column",
 							justifyContent: "space-between",
@@ -500,27 +500,27 @@ export function Hero() {
 						}}
 					>
 						<span aria-hidden="true" style={tipStyle}></span>
-						<p style={{ margin: 0, color: "var(--sh-ink,#20413e)", fontSize: "1rem", lineHeight: 1.5, fontWeight: 500 }}>
+						<p style={{ margin: 0, color: "var(--bb-ink)", fontSize: "1rem", lineHeight: 1.5, fontWeight: 500 }}>
 							{activeChip.hint}
 						</p>
 						<Link
 							href={activeChip.ctaHref}
-							className="sh-hero-cta"
+							className="bb-hero-cta"
 							style={{
 								alignSelf: "flex-start",
 								display: "inline-flex",
 								alignItems: "center",
 								justifyContent: "center",
 								gap: 9,
-								background: "var(--sh-btn-primary,#1A3B5E)",
-								color: "#fff",
+								background: "var(--bb-btn-primary)",
+								color: "var(--bb-ink-strong)",
 								fontFamily: "'Hanken Grotesk',sans-serif",
 								fontWeight: 800,
 								fontSize: "1.04rem",
 								padding: "14px 26px",
 								borderRadius: 999,
 								textDecoration: "none",
-								boxShadow: "0 12px 26px rgba(26,59,94,.3)",
+								boxShadow: "0 12px 26px rgba(var(--bb-shadow-rgb),.3)",
 								transition: "transform .2s ease,box-shadow .2s ease",
 							}}
 						>

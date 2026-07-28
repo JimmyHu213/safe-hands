@@ -16,22 +16,22 @@ function TestimonialQuoteIcon({ fill, ghost = false }: { fill: string; ghost?: b
 
 const TESTIMONIAL_STYLES = [
 	{
-		iconFill: "var(--sh-accent,#f4a93a)",
+		iconFill: "var(--bb-amber)",
 		ghost: true,
-		avatarBg: "var(--sh-tint,#e6f2ef)",
-		avatarColor: "var(--sh-muted,#5f726f)",
+		avatarBg: "var(--bb-surface-tint)",
+		avatarColor: "var(--bb-ink-muted)",
 	},
 	{
-		iconFill: "var(--sh-teal,#2f8f86)",
+		iconFill: "var(--bb-ink-soft)",
 		ghost: false,
-		avatarBg: "var(--sh-tint,#e6f2ef)",
-		avatarColor: "var(--sh-deep,#245b56)",
+		avatarBg: "var(--bb-surface-tint)",
+		avatarColor: "var(--bb-ink-strong)",
 	},
 	{
-		iconFill: "var(--sh-accent,#f4a93a)",
+		iconFill: "var(--bb-amber)",
 		ghost: false,
-		avatarBg: "var(--sh-lavender,#B5B3C1)",
-		avatarColor: "var(--sh-ink,#20413e)",
+		avatarBg: "var(--bb-decor)",
+		avatarColor: "var(--bb-ink)",
 	},
 ];
 
@@ -40,7 +40,7 @@ export function Testimonials() {
 	return (
 		<section
 			id="testimonials"
-			style={{ padding: "clamp(64px,9vw,116px) 0", background: "var(--sh-deep,#245b56)", position: "relative", overflow: "hidden" }}
+			style={{ padding: "clamp(64px,9vw,116px) 0", background: "var(--bb-ink-strong)", position: "relative", overflow: "hidden" }}
 		>
 			<div
 				aria-hidden="true"
@@ -56,7 +56,7 @@ export function Testimonials() {
 							fontSize: ".78rem",
 							letterSpacing: ".13em",
 							textTransform: "uppercase",
-							color: "var(--sh-soft,#7cc4b8)",
+							color: "var(--bb-border)",
 						}}
 					>
 						{testimonials.eyebrow}
@@ -92,7 +92,7 @@ export function Testimonials() {
 							>
 								<TestimonialQuoteIcon fill={iconFill} ghost={ghost} />
 								<blockquote
-									style={{ margin: "16px 0 0", fontSize: "1.12rem", lineHeight: 1.55, color: "var(--sh-ink,#20413e)", fontWeight: 500 }}
+									style={{ margin: "16px 0 0", fontSize: "1.12rem", lineHeight: 1.55, color: "var(--bb-ink)", fontWeight: 500 }}
 								>
 									&ldquo;{t.quote}&rdquo;
 								</blockquote>
@@ -114,10 +114,10 @@ export function Testimonials() {
 										{t.initials}
 									</span>
 									<span>
-										<span style={{ display: "block", fontFamily: "'Hanken Grotesk',sans-serif", fontWeight: 700, color: "var(--sh-deep,#245b56)" }}>
+										<span style={{ display: "block", fontFamily: "'Hanken Grotesk',sans-serif", fontWeight: 700, color: "var(--bb-ink-strong)" }}>
 											{t.name}
 										</span>
-										<span style={{ display: "block", color: "var(--sh-muted,#5f726f)", fontSize: ".9rem" }}>{t.role}</span>
+										<span style={{ display: "block", color: "var(--bb-ink-muted)", fontSize: ".9rem" }}>{t.role}</span>
 									</span>
 								</figcaption>
 							</figure>

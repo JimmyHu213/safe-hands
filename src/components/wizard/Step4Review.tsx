@@ -43,7 +43,7 @@ export async function Step4Review() {
 			<form action={submitAction}>
 				<button
 					type="submit"
-					className="sh-btn-accent"
+					className="bb-btn-accent"
 				>
 					Submit application
 				</button>
@@ -57,12 +57,12 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 		<div
 			style={{
 				borderRadius: 12,
-				border: "1px solid rgba(36,91,86,.18)",
+				border: "1px solid rgba(var(--bb-shadow-rgb),.18)",
 				padding: 16,
 			}}
 		>
-			<h3 className="sh-label" style={{ textTransform: "uppercase", letterSpacing: ".06em" }}>{title}</h3>
-			<div className="mt-2 space-y-1" style={{ color: "var(--sh-ink,#193048)" }}>{children}</div>
+			<h3 className="bb-label" style={{ textTransform: "uppercase", letterSpacing: ".06em" }}>{title}</h3>
+			<div className="mt-2 space-y-1" style={{ color: "var(--bb-ink)" }}>{children}</div>
 		</div>
 	);
 }
@@ -70,7 +70,7 @@ function Section({ title, children }: { title: string; children: React.ReactNode
 function Row({ label, value }: { label: string; value: string }) {
 	return (
 		<p>
-			<span className="font-medium" style={{ color: "var(--sh-deep,#1A3B5E)" }}>{label}:</span> {value}
+			<span className="font-medium" style={{ color: "var(--bb-ink-strong)" }}>{label}:</span> {value}
 		</p>
 	);
 }

@@ -10,7 +10,7 @@ const sectionTitleStyle = {
 	fontFamily: "'Hanken Grotesk',sans-serif",
 	fontWeight: 700,
 	fontSize: "1.24rem",
-	color: "var(--sh-deep,#245b56)",
+	color: "var(--bb-ink-strong)",
 	margin: "0 0 16px",
 } as const;
 
@@ -42,20 +42,20 @@ export default async function FaqPage() {
 							<div key={s.key}>
 								<h2 style={sectionTitleStyle}>{s.title}</h2>
 								<Accordion
-									className="sh-faq-accordion"
+									className="bb-faq-accordion"
 									style={{
 										background: "#fff",
-										border: "1px solid rgba(36,91,86,.07)",
+										border: "1px solid rgba(var(--bb-shadow-rgb),.07)",
 										borderRadius: 22,
-										boxShadow: "0 2px 14px rgba(36,91,86,.05)",
+										boxShadow: "0 2px 14px rgba(var(--bb-shadow-rgb),.05)",
 										padding: "4px 26px",
 									}}
 								>
 									{items.map((e) => (
-										<AccordionItem key={e.id} value={e.id} style={{ borderColor: "rgba(36,91,86,.08)" }}>
+										<AccordionItem key={e.id} value={e.id} style={{ borderColor: "rgba(var(--bb-shadow-rgb),.08)" }}>
 											<AccordionTrigger
 												style={{
-													color: "var(--sh-ink,#20413e)",
+													color: "var(--bb-ink)",
 													fontFamily: "'Hanken Grotesk',sans-serif",
 													fontWeight: 700,
 													fontSize: "1.02rem",
@@ -65,7 +65,7 @@ export default async function FaqPage() {
 												{e.question}
 											</AccordionTrigger>
 											<AccordionContent
-												style={{ color: "var(--sh-muted,#5f726f)", lineHeight: 1.6, whiteSpace: "pre-line" }}
+												style={{ color: "var(--bb-ink-muted)", lineHeight: 1.6, whiteSpace: "pre-line" }}
 											>
 												{e.answer}
 											</AccordionContent>
@@ -77,7 +77,7 @@ export default async function FaqPage() {
 					})}
 
 					{entries.length === 0 ? (
-						<p style={{ color: "var(--sh-muted,#5f726f)" }}>
+						<p style={{ color: "var(--bb-ink-muted)" }}>
 							No FAQ entries yet — please contact us directly.
 						</p>
 					) : null}

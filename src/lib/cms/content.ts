@@ -1,12 +1,12 @@
 export const SITE = {
-	name: "Safe Hands Staffing Agency",
-	shortName: "Safe Hands",
+	name: "Bee Bright Staffing Agency",
+	shortName: "Bee Bright",
 	tagline: "Reliable, safe, and compassionate childcare workers you can trust.",
-	phone: "1300 SAFE HANDS",
+	phone: "[1300 number to be confirmed]",
 	phoneTel: "1300723343",
-	emailGeneral: "hello@safehandsstaffing.com.au",
-	emailBookings: "bookings@safehandsstaffing.com.au",
-	emailRecruitment: "recruitment@safehandsstaffing.com.au",
+	emailGeneral: "hello@beebrightstaffing.com",
+	emailBookings: "bookings@beebrightstaffing.com",
+	emailRecruitment: "recruitment@beebrightstaffing.com",
 	abn: "[ABN to be registered]",
 	acn: "[ACN to be issued]",
 	serviceArea: "Greater Sydney + selected regional NSW",
@@ -37,7 +37,7 @@ export const FOR_CENTRES = {
 export const FOR_FAMILIES = {
 	h1: "Vetted in-home childcare when life happens.",
 	lede:
-		"Sick days, after-school cover, school holidays, the morning shift you can't move. Safe Hands sends educators we have personally screened, with full compliance documentation.",
+		"Sick days, after-school cover, school holidays, the morning shift you can't move. Bee Bright sends educators we have personally screened, with full compliance documentation.",
 	bullets: [
 		"Minimum 3-hour shift, $30 admin fee per booking",
 		"Same-day support where available",
@@ -49,7 +49,7 @@ export const FOR_FAMILIES = {
 export const FOR_EDUCATORS = {
 	h1: "Flexible shifts. Award-rate pay. Real support.",
 	lede:
-		"Safe Hands is built and run by someone who's worked in compliance. We pay the Children's Services Award with casual loading and a 30% agency uplift, and we don't book you onto shifts you can't safely cover.",
+		"Bee Bright is built and run by someone who's worked in compliance. We pay the Children's Services Award with casual loading and a 30% agency uplift, and we don't book you onto shifts you can't safely cover.",
 	bullets: [
 		"Choose your suburbs and your hours",
 		"Cert III to Director-level positions",
@@ -61,7 +61,7 @@ export const FOR_EDUCATORS = {
 export const ABOUT = {
 	h1: "Built by someone who's spent their career on compliance.",
 	paragraphs: [
-		"Safe Hands was founded in 2026 by a healthcare and compliance professional. Most relief agencies treat compliance as paperwork. We treat it as the product.",
+		"Bee Bright was founded in 2026 by a healthcare and compliance professional. Most relief agencies treat compliance as paperwork. We treat it as the product.",
 		"Our founder has spent over a decade running compliance frameworks in regulated environments. That discipline is what we bring to childcare staffing — written policies, tracked expiries, documented incident response, and a refusal to place an educator whose clearances are anything less than current.",
 	],
 	values: ["Safety", "Trust", "Compassion", "Reliability", "Professionalism"],
@@ -91,7 +91,7 @@ export const COMPLIANCE = {
 };
 
 // Landing-page copy ported 1:1 from the Figma design (reference/Safe Hand
-// Website - Figma Import.html), localised: Safe Hands, AU spelling, real
+// Website - Figma Import.html), localised: Bee Bright, AU spelling, real
 // contact details. Stats and testimonials are the design's placeholder
 // content — replace with real figures before launch.
 export const LANDING = {
@@ -99,7 +99,7 @@ export const LANDING = {
 		eyebrow: "Childcare staffing",
 		h1: "Trusted childcare staff, ready when you need them",
 		lede:
-			"Safe Hands matches families and childcare centres with vetted, qualified, and genuinely caring childcare staff — often within 48 hours.",
+			"Bee Bright matches families and childcare centres with vetted, qualified, and genuinely caring childcare staff — often within 48 hours.",
 		chips: [
 			{
 				key: "family" as const,
@@ -158,10 +158,10 @@ export const LANDING = {
 		],
 	},
 	why: {
-		eyebrow: "Why Safe Hands",
+		eyebrow: "Why Bee Bright",
 		title: "Care you can trust, without the worry",
 		lede:
-			"Every part of Safe Hands is built around one promise: the people we send are people you'd happily welcome into your home or facility.",
+			"Every part of Bee Bright is built around one promise: the people we send are people you'd happily welcome into your home or facility.",
 		cards: [
 			{
 				title: "Rigorous vetting",
@@ -193,7 +193,7 @@ export const LANDING = {
 		eyebrow: "One platform, three sides",
 		title: "Built for every side of childcare",
 		lede:
-			"Whether you're a family, a childcare centre, or an educator, Safe Hands is designed around what you need most.",
+			"Whether you're a family, a childcare centre, or an educator, Bee Bright is designed around what you need most.",
 		cards: [
 			{
 				key: "educator" as const,
@@ -249,7 +249,7 @@ export const LANDING = {
 			},
 			{
 				quote:
-					"Safe Hands fills our ratios with qualified people I'd actually hire myself. It's taken the panic out of staffing.",
+					"Bee Bright fills our ratios with qualified people I'd actually hire myself. It's taken the panic out of staffing.",
 				initials: "DO",
 				name: "Daniel O.",
 				role: "Nursery Manager · Centres",
@@ -267,7 +267,7 @@ export const LANDING = {
 		eyebrow: "Trust & safety",
 		title: "Safety isn't a feature. It's the whole point.",
 		lede:
-			"Before any educator joins Safe Hands, they pass a five-stage screening process — and we keep checking long after they're approved.",
+			"Before any educator joins Bee Bright, they pass a five-stage screening process — and we keep checking long after they're approved.",
 		cards: [
 			{
 				title: "Identity & right to work",

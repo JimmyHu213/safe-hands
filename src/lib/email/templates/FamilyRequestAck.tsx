@@ -17,9 +17,9 @@ export default function FamilyRequestAck(props: {
 							We have received your care request for {props.shiftDate} at {props.shiftStart}.
 						</Text>
 						<Text>
-							A Safe Hands operator will be in touch within 4 business hours to discuss next steps.
+							A Bee Bright operator will be in touch within 4 business hours to discuss next steps.
 						</Text>
-						<Text>— Safe Hands Staffing</Text>
+						<Text>— Bee Bright Staffing</Text>
 					</Section>
 				</Container>
 			</Body>

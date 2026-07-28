@@ -90,7 +90,7 @@ export async function submitCentreRequest(_prev: ActionState, fd: FormData): Pro
 			client: resend,
 			from: env.RESEND_FROM_ADDRESS,
 			to: env.ADMIN_EMAIL,
-			subject: `[Safe Hands] Centre request — ${parsed.centreName}`,
+			subject: `[Bee Bright] Centre request — ${parsed.centreName}`,
 			...notify,
 		});
 	} catch (err) {

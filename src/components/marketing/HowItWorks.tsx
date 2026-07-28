@@ -53,7 +53,7 @@ export function HowItWorks() {
 			style={{
 				position: "relative",
 				padding: "clamp(64px,9vw,116px) 0",
-				background: "var(--sh-tint,#e6f2ef)",
+				background: "var(--bb-surface-tint)",
 			}}
 		>
 			<div
@@ -76,7 +76,7 @@ export function HowItWorks() {
 				>
 					<path
 						d="M0,100 V56 C 38,56 52,31 96,28 C 132,26 141,55 186,54 C 214,53 221,13 286,10 C 341,8 352,47 393,49 C 431,51 442,29 489,26 C 521,24 530,59 586,56 C 641,54 650,17 706,14 C 746,12 761,51 809,53 C 851,54 860,33 906,30 C 947,28 956,61 1011,58 C 1071,55 1080,11 1141,8 C 1196,6 1206,45 1256,47 C 1301,48 1313,25 1371,22 C 1406,20 1421,51 1440,53 V100 Z"
-						fill="var(--sh-tint,#e6f2ef)"
+						fill="var(--bb-surface-tint)"
 					></path>
 				</svg>
 			</div>
@@ -90,7 +90,7 @@ export function HowItWorks() {
 							fontSize: ".78rem",
 							letterSpacing: ".13em",
 							textTransform: "uppercase",
-							color: "var(--sh-muted,#5f726f)",
+							color: "var(--bb-ink-muted)",
 						}}
 					>
 						{how.eyebrow}
@@ -102,7 +102,7 @@ export function HowItWorks() {
 							fontSize: "clamp(1.9rem,3.6vw,2.8rem)",
 							lineHeight: 1.08,
 							letterSpacing: "-.022em",
-							color: "var(--sh-deep,#245b56)",
+							color: "var(--bb-ink-strong)",
 							margin: "14px 0 0",
 						}}
 					>
@@ -112,7 +112,7 @@ export function HowItWorks() {
 						style={{
 							fontSize: "clamp(1.04rem,1.4vw,1.16rem)",
 							lineHeight: 1.6,
-							color: "var(--sh-muted,#5f726f)",
+							color: "var(--bb-ink-muted)",
 							margin: "16px 0 0",
 						}}
 					>
@@ -137,12 +137,12 @@ export function HowItWorks() {
 									background: "#fff",
 									borderRadius: 22,
 									padding: "28px 26px",
-									boxShadow: "0 2px 14px rgba(36,91,86,.05)",
+									boxShadow: "0 2px 14px rgba(var(--bb-shadow-rgb),.05)",
 								}}
 							>
 								<span
 									aria-hidden="true"
-									className="sh-decorative-numeral"
+									className="bb-decorative-numeral"
 									style={{
 										position: "absolute",
 										top: 22,
@@ -150,7 +150,7 @@ export function HowItWorks() {
 										fontFamily: "'Hanken Grotesk',sans-serif",
 										fontWeight: 800,
 										fontSize: "2.4rem",
-										color: "var(--sh-tint,#e6f2ef)",
+										color: "var(--bb-surface-tint)",
 										lineHeight: 1,
 									}}
 								>
@@ -164,8 +164,8 @@ export function HowItWorks() {
 										width: 54,
 										height: 54,
 										borderRadius: 16,
-										background: "var(--sh-tint,#e6f2ef)",
-										color: "var(--sh-teal,#2f8f86)",
+										background: "var(--bb-surface-tint)",
+										color: "var(--bb-ink-soft)",
 									}}
 								>
 									<StepIcon />
@@ -175,7 +175,7 @@ export function HowItWorks() {
 										fontFamily: "'Hanken Grotesk',sans-serif",
 										fontWeight: 700,
 										fontSize: "1.2rem",
-										color: "var(--sh-deep,#245b56)",
+										color: "var(--bb-ink-strong)",
 										margin: "18px 0 8px",
 									}}
 								>
@@ -183,7 +183,7 @@ export function HowItWorks() {
 								</h3>
 								<p
 									style={{
-										color: "var(--sh-muted,#5f726f)",
+										color: "var(--bb-ink-muted)",
 										lineHeight: 1.55,
 										margin: 0,
 										fontSize: ".99rem",
