@@ -39,7 +39,7 @@ export function Footer() {
 									padding: 4,
 								}}
 							>
-								<Image src="/brand/beebright-mark-192.png" alt="" width={26} height={26} />
+								<Image src="/brand/beebright-mark-192.109a3f49.png" alt="" width={26} height={26} />
 							</span>
 							<span style={{ display: "flex", flexDirection: "column", lineHeight: 1.1 }}>
 								<span

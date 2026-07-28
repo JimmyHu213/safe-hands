@@ -119,7 +119,7 @@ export function Header({ appLoginUrl }: HeaderProps) {
 						}}
 					>
 						<Image
-							src="/brand/beebright-mark-192.png"
+							src="/brand/beebright-mark-192.109a3f49.png"
 							alt=""
 							width={36}
 							height={36}

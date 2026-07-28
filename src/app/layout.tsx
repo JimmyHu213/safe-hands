@@ -32,8 +32,8 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={`${mulish.variable} ${hanken.variable} ${geistMono.variable}`}>
 			<head>
-				<link rel="icon" href="/brand/beebright-mark-32.png" type="image/png" sizes="32x32"></link>
-				<link rel="apple-touch-icon" href="/brand/beebright-mark-192.png"></link>
+				<link rel="icon" href="/brand/beebright-mark-32.fb9b7ca3.png" type="image/png" sizes="32x32"></link>
+				<link rel="apple-touch-icon" href="/brand/beebright-mark-192.109a3f49.png"></link>
 			</head>
 			<body className="antialiased">{children}</body>
 		</html>
