@@ -24,7 +24,7 @@ export default async function AdminDashboard() {
 				<h2 className="mb-2 text-lg font-semibold">Latest activity</h2>
 				<div className="rounded-md border bg-white">
 					<table className="w-full text-sm">
-						<thead className="border-b text-left text-slate-600">
+						<thead className="border-b text-left text-ink-600">
 							<tr><th className="p-3">Type</th><th className="p-3">Name</th><th className="p-3">Email</th><th className="p-3">Status</th><th className="p-3">Date</th></tr>
 						</thead>
 						<tbody>
@@ -36,13 +36,13 @@ export default async function AdminDashboard() {
 											{r.primaryName}
 										</Link>
 									</td>
-									<td className="p-3 text-slate-600">{r.contactEmail}</td>
+									<td className="p-3 text-ink-600">{r.contactEmail}</td>
 									<td className="p-3 capitalize">{r.status}</td>
-									<td className="p-3 text-slate-500">{new Date(r.createdAt).toLocaleString("en-AU")}</td>
+									<td className="p-3 text-ink-500">{new Date(r.createdAt).toLocaleString("en-AU")}</td>
 								</tr>
 							))}
 							{recent.length === 0 ? (
-								<tr><td colSpan={5} className="p-6 text-center text-slate-500">No submissions yet.</td></tr>
+								<tr><td colSpan={5} className="p-6 text-center text-ink-500">No submissions yet.</td></tr>
 							) : null}
 						</tbody>
 					</table>
@@ -54,8 +54,8 @@ export default async function AdminDashboard() {
 
 function Card({ title, value, href }: { title: string; value: number; href: string }) {
 	return (
-		<Link href={href} className="rounded-md border bg-white p-4 hover:border-slate-400">
-			<p className="text-sm text-slate-600">{title}</p>
+		<Link href={href} className="rounded-md border bg-white p-4 hover:border-ink-300">
+			<p className="text-sm text-ink-600">{title}</p>
 			<p className="mt-1 text-3xl font-semibold">{value}</p>
 		</Link>
 	);

@@ -81,3 +81,23 @@ For multi-step tasks, state a brief plan with verification at each step.
 <!-- - Describe your directory structure conventions here -->
 - Co-locate related files.
 - Avoid deep nesting.
+
+## 10. Debugging & Verification
+
+**Do not use Chrome browser automation (`mcp__claude-in-chrome__*`) by default.**
+
+Verify with the cheapest tool that actually proves the point:
+- `npx tsc --noEmit`, `npx vitest run`, `npm run build` — correctness and compilation.
+- `curl` against a running server — what the server actually sends. Set an
+  explicit `Accept` header when the response varies by content negotiation.
+- Inspect build output on disk (`.next/static`) — what will really ship.
+- Server logs and `console.log` over live DOM inspection.
+
+Only launch the browser when I explicitly ask for it ("open the browser",
+"screenshot it"), or when the question is genuinely visual and nothing else can
+answer it — rendered layout, computed styles, contrast against real backgrounds.
+
+When you do use it, remember the browser lies about assets: a stale HTTP cache
+or `.next/cache/images` entry will happily serve an old file under an unchanged
+URL. Confirm against the server or the file on disk before concluding the code
+is wrong.

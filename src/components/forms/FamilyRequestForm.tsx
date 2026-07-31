@@ -21,13 +21,13 @@ export function FamilyRequestForm({ siteKey }: { siteKey: string }) {
 			<Field name="suburb" label="Suburb" required />
 			<Field name="postcode" label="Postcode" required pattern="\d{4}" inputMode="numeric" />
 			<Field name="childrenCount" label="Number of children" type="number" min="1" max="10" required />
-			<label className="md:col-span-2 flex flex-col gap-1 text-sm">
-				<span className="font-medium">Children&apos;s ages (comma-separated, e.g. 3, 7) *</span>
-				<input name="childrenAges" type="text" required className="rounded-md border px-3 py-2" />
+			<label className="md:col-span-2 flex flex-col gap-1">
+				<span className="bb-label">Children&apos;s ages (comma-separated, e.g. 3, 7) *</span>
+				<input name="childrenAges" type="text" required className="bb-field" />
 			</label>
-			<label className="flex flex-col gap-1 text-sm">
-				<span className="font-medium">Care type</span>
-				<select name="careType" required className="rounded-md border px-3 py-2">
+			<label className="flex flex-col gap-1">
+				<span className="bb-label">Care type</span>
+				<select name="careType" required className="bb-field">
 					{CARE_OPTIONS.map((o) => (
 						<option key={o.value} value={o.value}>{o.label}</option>
 					))}
@@ -40,13 +40,13 @@ export function FamilyRequestForm({ siteKey }: { siteKey: string }) {
 				<input type="checkbox" name="specialNeedsFlag" />
 				My child(ren) need(s) special-needs experience
 			</label>
-			<label className="md:col-span-2 flex flex-col gap-1 text-sm">
-				<span className="font-medium">Special-needs notes (optional)</span>
-				<textarea name="specialNeedsNotes" maxLength={2000} rows={3} className="rounded-md border px-3 py-2" />
+			<label className="md:col-span-2 flex flex-col gap-1">
+				<span className="bb-label">Special-needs notes (optional)</span>
+				<textarea name="specialNeedsNotes" maxLength={2000} rows={3} className="bb-field" />
 			</label>
-			<label className="md:col-span-2 flex flex-col gap-1 text-sm">
-				<span className="font-medium">Notes (optional, max 2000 chars)</span>
-				<textarea name="notes" maxLength={2000} rows={4} className="rounded-md border px-3 py-2" />
+			<label className="md:col-span-2 flex flex-col gap-1">
+				<span className="bb-label">Notes (optional, max 2000 chars)</span>
+				<textarea name="notes" maxLength={2000} rows={4} className="bb-field" />
 			</label>
 			<label className="md:col-span-2 flex items-center gap-2 text-sm">
 				<input type="checkbox" name="privacyConsent" required />
@@ -58,7 +58,7 @@ export function FamilyRequestForm({ siteKey }: { siteKey: string }) {
 				<button
 					type="submit"
 					disabled={pending}
-					className="rounded-md bg-slate-900 px-5 py-2 text-sm font-medium text-white disabled:opacity-60"
+					className="bb-btn-accent disabled:opacity-60"
 				>
 					{pending ? "Submitting…" : "Submit request"}
 				</button>
@@ -79,8 +79,8 @@ function Field(props: {
 	max?: string;
 }) {
 	return (
-		<label className="flex flex-col gap-1 text-sm">
-			<span className="font-medium">{props.label}{props.required ? " *" : ""}</span>
+		<label className="flex flex-col gap-1">
+			<span className="bb-label">{props.label}{props.required ? " *" : ""}</span>
 			<input
 				name={props.name}
 				type={props.type ?? "text"}
@@ -90,7 +90,7 @@ function Field(props: {
 				step={props.step}
 				min={props.min}
 				max={props.max}
-				className="rounded-md border px-3 py-2"
+				className="bb-field"
 			/>
 		</label>
 	);

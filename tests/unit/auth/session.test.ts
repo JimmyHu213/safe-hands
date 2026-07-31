@@ -5,14 +5,14 @@ describe("buildSessionCookie", () => {
   it("returns a Set-Cookie value with HttpOnly, Secure, SameSite=Lax", () => {
     const v = buildSessionCookie({
       token: "abc",
-      domain: "safehandsstaffing.com.au",
+      domain: "beebrightstaffing.com",
       maxAgeSeconds: 60,
     });
     expect(v).toContain(`${SESSION_COOKIE_NAME}=abc`);
     expect(v).toContain("HttpOnly");
     expect(v).toContain("Secure");
     expect(v).toContain("SameSite=Lax");
-    expect(v).toContain("Domain=safehandsstaffing.com.au");
+    expect(v).toContain("Domain=beebrightstaffing.com");
     expect(v).toContain("Max-Age=60");
     expect(v).toContain("Path=/");
   });

@@ -13,9 +13,9 @@ export function Step2Qualifications() {
 	);
 	return (
 		<form action={action} className="space-y-6">
-			<label className="flex flex-col gap-1 text-sm">
-				<span className="font-medium">Highest qualification *</span>
-				<select name="qualificationLevel" required className="rounded-md border px-3 py-2">
+			<label className="flex flex-col gap-1">
+				<span className="bb-label">Highest qualification *</span>
+				<select name="qualificationLevel" required className="bb-field">
 					<option value="cert3">Cert III ECEC</option>
 					<option value="diploma">Diploma</option>
 					<option value="ect">Early Childhood Teacher (ECT)</option>
@@ -23,34 +23,34 @@ export function Step2Qualifications() {
 					<option value="other">Other</option>
 				</select>
 			</label>
-			<label className="flex flex-col gap-1 text-sm">
-				<span className="font-medium">If "Other", specify</span>
-				<input name="qualificationOther" type="text" className="rounded-md border px-3 py-2" />
+			<label className="flex flex-col gap-1">
+				<span className="bb-label">If "Other", specify</span>
+				<input name="qualificationOther" type="text" className="bb-field" />
 			</label>
 			<div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-				<label className="flex flex-col gap-1 text-sm">
-					<span className="font-medium">Years of experience *</span>
-					<input name="yearsExperience" type="number" min={0} max={60} required className="rounded-md border px-3 py-2" />
+				<label className="flex flex-col gap-1">
+					<span className="bb-label">Years of experience *</span>
+					<input name="yearsExperience" type="number" min={0} max={60} required className="bb-field" />
 				</label>
-				<label className="flex flex-col gap-1 text-sm">
-					<span className="font-medium">Travel radius (km) *</span>
-					<input name="travelRadiusKm" type="number" min={0} max={200} required className="rounded-md border px-3 py-2" />
+				<label className="flex flex-col gap-1">
+					<span className="bb-label">Travel radius (km) *</span>
+					<input name="travelRadiusKm" type="number" min={0} max={200} required className="bb-field" />
 				</label>
 			</div>
-			<label className="flex items-center gap-2 text-sm">
+			<label className="flex items-center gap-2 text-sm" style={{ color: "var(--bb-ink)" }}>
 				<input type="checkbox" name="hasOwnTransport" /> I have my own transport
 			</label>
-			<label className="flex items-center gap-2 text-sm">
+			<label className="flex items-center gap-2 text-sm" style={{ color: "var(--bb-ink)" }}>
 				<input type="checkbox" name="specialNeedsExperience" /> I have special-needs / behavioural-support experience
 			</label>
-			<label className="flex flex-col gap-1 text-sm">
-				<span className="font-medium">Special-needs experience notes (optional)</span>
-				<textarea name="specialNeedsNotes" rows={3} maxLength={2000} className="rounded-md border px-3 py-2" />
+			<label className="flex flex-col gap-1">
+				<span className="bb-label">Special-needs experience notes (optional)</span>
+				<textarea name="specialNeedsNotes" rows={3} maxLength={2000} className="bb-field" />
 			</label>
 			<fieldset>
-				<legend className="text-sm font-medium">Availability</legend>
+				<legend className="bb-label">Availability</legend>
 				<div className="mt-2 overflow-x-auto">
-					<table className="w-full text-sm">
+					<table className="w-full text-sm" style={{ color: "var(--bb-ink)" }}>
 						<thead><tr><th></th><th className="px-2">AM</th><th className="px-2">PM</th></tr></thead>
 						<tbody>
 							{DAYS.map((d) => (
@@ -68,7 +68,7 @@ export function Step2Qualifications() {
 			<button
 				type="submit"
 				disabled={pending}
-				className="rounded-md bg-slate-900 px-5 py-2 text-sm font-medium text-white disabled:opacity-60"
+				className="bb-btn-accent disabled:opacity-60"
 			>
 				{pending ? "Saving…" : "Save and continue"}
 			</button>

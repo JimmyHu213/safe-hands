@@ -1,0 +1,148 @@
+/* BeeBright brand tokens — the single source of truth for site colour.
+   Change a value here and it propagates to every call site; no colour
+   literals or var() fallbacks are permitted outside this block.
+
+   Sampled from the BeeBright logo: amber #FCB607, near-black #101010.
+   Contrast note: #FCB607 on white is 1.79:1 and CANNOT carry text. Use
+   --bb-amber for fills/backgrounds only; use --bb-amber-dark for amber
+   text and icons (4.52:1 on white). */
+:root {
+	/* Brand */
+	--bb-amber: #FCB607;       /* logo amber — backgrounds, CTA fills, decorative */
+	--bb-amber-dark: #A66A00;  /* amber text & icons        (4.52:1 on white, AA) */
+	--bb-amber-soft: #FFF3D6;  /* amber tile background */
+	--bb-amber-ink: #3D2A00;   /* text sitting on amber     (7.68:1 on amber) */
+
+	/* Ink — text and structure */
+	--bb-ink-strong: #101010;  /* logo black — headings     (19.6:1 on white) */
+	--bb-ink: #1F1B14;         /* body text                 (~17:1 on white) */
+	--bb-ink-soft: #4A4238;    /* tile icons                (9.31:1 on tint) */
+	--bb-ink-muted: #6B6257;   /* secondary text            (6.09:1 on white) */
+
+	/* Surfaces */
+	--bb-surface: #FFFDF7;     /* lightest surface */
+	--bb-surface-tint: #FFF8E7;/* warm cream section background */
+	--bb-border: #E8DFC9;      /* hairlines */
+	--bb-decor: #FFE9A8;       /* decorative shapes */
+
+	/* Buttons */
+	--bb-btn-primary: #FCB607;
+	--bb-btn-primary-hover: #E0A106;
+
+	/* Raw channels, so callers can apply their own alpha via rgba(). Used for
+	   hairlines, shadows and gradient fades. The shadow tint is warm
+	   near-black — a cool navy shadow reads wrong against amber. */
+	--bb-shadow-rgb: 31, 27, 20;
+	--bb-amber-rgb: 252, 182, 7;
+	--bb-surface-tint-rgb: 255, 248, 231;
+}
+
+/* Verbatim from reference base-style.css (second <style> block) */
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 90px;
+}
+@keyframes bb-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-13px); } }
+@keyframes bb-float-b { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(11px); } }
+@keyframes bb-drift { 0%, 100% { transform: translate(0, 0) rotate(0); } 50% { transform: translate(0, -10px) rotate(4deg); } }
+@keyframes bb-bubble { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-13px) rotate(1.6deg); } }
+@keyframes bb-bubble-b { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-17px) rotate(-2deg); } }
+
+/* Hover rules appended per component during conversion (rule 3). */
+.bb-header-nav-link:hover {
+	color: var(--bb-ink-muted);
+}
+.bb-header-cta:hover {
+	transform: translateY(-2px);
+	background: var(--bb-btn-primary-hover);
+	box-shadow: 0 12px 24px rgba(var(--bb-shadow-rgb), 0.35);
+}
+.bb-hero-cta:hover {
+	transform: translateY(-2px);
+	background: var(--bb-btn-primary-hover);
+	box-shadow: 0 18px 34px rgba(var(--bb-shadow-rgb), 0.38);
+}
+.bb-hero-watch:hover {
+	transform: scale(1.06);
+}
+.bb-why-card:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 24px 42px rgba(var(--bb-shadow-rgb), 0.12);
+}
+.bb-audience-cta:hover {
+	transform: translateY(-2px);
+}
+.bb-audience-cta-outline:hover {
+	transform: translateY(-2px);
+	border-color: var(--bb-btn-primary);
+}
+.bb-request-cta-primary:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 20px 38px rgba(var(--bb-shadow-rgb), 0.26);
+}
+.bb-request-cta-secondary:hover {
+	background: rgba(255, 255, 255, 0.2);
+	transform: translateY(-2px);
+}
+.bb-footer-social:hover {
+	background: var(--bb-amber);
+}
+.bb-footer-link:hover {
+	color: #fff;
+}
+.bb-footer-bottom-link:hover {
+	color: #fff;
+}
+
+/* FAQ accordion (Task 11): expand/collapse chevron is decorative — the
+   shadcn accordion primitive sets its own icon colour via a
+   text-muted-foreground utility, so it needs a targeted override. */
+.bb-faq-accordion [data-slot="accordion-trigger-icon"] {
+	color: var(--bb-ink-soft);
+}
+
+/* Intake forms (Task 12): field/label/button tokens derived from the
+   reference's card/button styles (the reference has no form inputs). */
+.bb-field {
+	width: 100%;
+	border: 1px solid var(--bb-border);
+	border-radius: 12px;
+	background: #fff;
+	padding: 12px 14px;
+	font-size: 1rem;
+	color: var(--bb-ink);
+}
+.bb-field:focus {
+	outline: 2px solid var(--bb-amber-dark);
+	outline-offset: 1px;
+	border-color: var(--bb-amber-dark);
+}
+.bb-label {
+	font-family: "Hanken Grotesk", sans-serif;
+	font-weight: 700;
+	font-size: 0.92rem;
+	color: var(--bb-ink-strong);
+}
+/* Primary button: amber fill with near-black text (10.7:1, AAA). */
+.bb-btn-accent {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 9px;
+	background: var(--bb-btn-primary);
+	color: var(--bb-ink-strong);
+	font-family: "Hanken Grotesk", sans-serif;
+	font-weight: 800;
+	font-size: 1.08rem;
+	padding: 17px 32px;
+	border-radius: 999px;
+	border: 0;
+	cursor: pointer;
+	box-shadow: 0 14px 30px rgba(var(--bb-shadow-rgb), 0.18);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.bb-btn-accent:hover {
+	transform: translateY(-2px);
+	background: var(--bb-btn-primary-hover);
+	box-shadow: 0 20px 38px rgba(var(--bb-shadow-rgb), 0.26);
+}

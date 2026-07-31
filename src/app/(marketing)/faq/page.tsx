@@ -1,59 +1,88 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { db } from "@/lib/db/client";
 import { listPublishedFaq, groupByAudience } from "@/lib/cms/faq";
+import { PageHero } from "@/components/marketing/PageHero";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 export const dynamic = "force-dynamic";
 
+const sectionTitleStyle = {
+	fontFamily: "'Hanken Grotesk',sans-serif",
+	fontWeight: 700,
+	fontSize: "1.24rem",
+	color: "var(--bb-ink-strong)",
+	margin: "0 0 16px",
+} as const;
+
 export default async function FaqPage() {
-  const { env } = getCloudflareContext();
-  const entries = await listPublishedFaq(db(env.DB));
-  const grouped = groupByAudience(entries);
+	const { env } = getCloudflareContext();
+	const entries = await listPublishedFaq(db(env.DB));
+	const grouped = groupByAudience(entries);
 
-  const sections: { key: keyof typeof grouped; title: string }[] = [
-    { key: "general", title: "General" },
-    { key: "centre", title: "For centres" },
-    { key: "family", title: "For families" },
-    { key: "educator", title: "For educators" },
-  ];
+	const sections: { key: keyof typeof grouped; title: string }[] = [
+		{ key: "general", title: "General" },
+		{ key: "centre", title: "For centres" },
+		{ key: "family", title: "For families" },
+		{ key: "educator", title: "For educators" },
+	];
 
-  return (
-    <>
-      <section className="border-b bg-slate-50 px-4 py-16">
-        <div className="mx-auto max-w-3xl">
-          <h1 className="text-4xl font-semibold tracking-tight">Frequently asked questions</h1>
-          <p className="mt-4 text-lg text-slate-700">
-            Answers to the questions we hear most. If yours is not here, give us a call.
-          </p>
-        </div>
-      </section>
+	return (
+		<>
+			<PageHero
+				eyebrow="FAQ"
+				title="Frequently asked questions"
+				lede="Answers to the questions we hear most. If yours is not here, give us a call."
+			/>
+			<section style={{ padding: "clamp(48px,7vw,80px) 22px", maxWidth: 860, margin: "0 auto" }}>
+				<div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
+					{sections.map((s) => {
+						const items = grouped[s.key];
+						if (items.length === 0) return null;
+						return (
+							<div key={s.key}>
+								<h2 style={sectionTitleStyle}>{s.title}</h2>
+								<Accordion
+									className="bb-faq-accordion"
+									style={{
+										background: "#fff",
+										border: "1px solid rgba(var(--bb-shadow-rgb),.07)",
+										borderRadius: 22,
+										boxShadow: "0 2px 14px rgba(var(--bb-shadow-rgb),.05)",
+										padding: "4px 26px",
+									}}
+								>
+									{items.map((e) => (
+										<AccordionItem key={e.id} value={e.id} style={{ borderColor: "rgba(var(--bb-shadow-rgb),.08)" }}>
+											<AccordionTrigger
+												style={{
+													color: "var(--bb-ink)",
+													fontFamily: "'Hanken Grotesk',sans-serif",
+													fontWeight: 700,
+													fontSize: "1.02rem",
+													padding: "18px 0",
+												}}
+											>
+												{e.question}
+											</AccordionTrigger>
+											<AccordionContent
+												style={{ color: "var(--bb-ink-muted)", lineHeight: 1.6, whiteSpace: "pre-line" }}
+											>
+												{e.answer}
+											</AccordionContent>
+										</AccordionItem>
+									))}
+								</Accordion>
+							</div>
+						);
+					})}
 
-      <section className="px-4 py-12">
-        <div className="mx-auto max-w-3xl space-y-10">
-          {sections.map((s) => {
-            const items = grouped[s.key];
-            if (items.length === 0) return null;
-            return (
-              <div key={s.key}>
-                <h2 className="text-xl font-semibold">{s.title}</h2>
-                <dl className="mt-4 divide-y border-y">
-                  {items.map((e) => (
-                    <div key={e.id} className="py-4">
-                      <dt className="font-medium">{e.question}</dt>
-                      <dd className="mt-2 whitespace-pre-line text-sm text-slate-700">
-                        {e.answer}
-                      </dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            );
-          })}
-
-          {entries.length === 0 ? (
-            <p className="text-sm text-slate-600">No FAQ entries yet — please contact us directly.</p>
-          ) : null}
-        </div>
-      </section>
-    </>
-  );
+					{entries.length === 0 ? (
+						<p style={{ color: "var(--bb-ink-muted)" }}>
+							No FAQ entries yet — please contact us directly.
+						</p>
+					) : null}
+				</div>
+			</section>
+		</>
+	);
 }

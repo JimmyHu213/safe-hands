@@ -1,8 +1,8 @@
 {
-  "name": "safe-hands",
+  "name": "beebrightstaffing",
   "version": "0.1.0",
   "private": true,
-  "description": "Safe Hands Staffing Agency — Next.js on Cloudflare Workers",
+  "description": "Bee Bright Staffing Agency — Next.js on Cloudflare Workers",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -54,7 +54,7 @@
     "@vitest/coverage-v8": "^4.1.8",
     "better-sqlite3": "^12.10.0",
     "drizzle-kit": "^0.31.10",
-    "eslint": "^10",
+    "eslint": "^9.39.5",
     "eslint-config-next": "16.2.7",
     "jsdom": "^29.1.1",
     "miniflare": "^4.20260529.0",

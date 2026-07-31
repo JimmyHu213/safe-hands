@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 const PAGES = [
-	{ path: "/", h1: /reliable/i },
+	{ path: "/", h1: /trusted childcare staff/i },
 	{ path: "/for-centres", h1: /same-day ratio cover/i },
 	{ path: "/for-families", h1: /vetted in-home/i },
 	{ path: "/for-educators", h1: /flexible shifts/i },
@@ -22,7 +22,8 @@ for (const p of PAGES) {
 
 test("home page has three audience cards", async ({ page }) => {
 	await page.goto("/");
-	await expect(page.getByRole("link", { name: /centre/i }).first()).toBeVisible();
-	await expect(page.getByRole("link", { name: /family/i }).first()).toBeVisible();
-	await expect(page.getByRole("link", { name: /educator/i }).first()).toBeVisible();
+	const audience = page.locator("#audience");
+	await expect(audience.getByRole("link", { name: /staff my centre/i })).toBeVisible();
+	await expect(audience.getByRole("link", { name: /request an educator/i })).toBeVisible();
+	await expect(audience.getByRole("link", { name: /join as an educator/i })).toBeVisible();
 });

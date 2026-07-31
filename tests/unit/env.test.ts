@@ -3,14 +3,14 @@ import { envSchema } from "@/lib/env";
 
 describe("envSchema", () => {
   const validEnv = {
-    ADMIN_EMAIL: "founder@safehandsstaffing.com.au",
+    ADMIN_EMAIL: "founder@beebrightstaffing.com",
     RESEND_API_KEY: "re_test_123",
-    RESEND_FROM_ADDRESS: "no-reply@mail.safehandsstaffing.com.au",
+    RESEND_FROM_ADDRESS: "no-reply@mail.beebrightstaffing.com",
     TURNSTILE_SITE_KEY: "1x00000000000000000000AA",
     TURNSTILE_SECRET_KEY: "1x0000000000000000000000000000000AA",
-    SESSION_COOKIE_DOMAIN: "safehandsstaffing.com.au",
+    SESSION_COOKIE_DOMAIN: "beebrightstaffing.com",
     IP_HASH_SALT_ROTATION: "base-salt-value-32-chars-or-more!",
-    PUBLIC_SITE_URL: "https://safehandsstaffing.com.au",
+    PUBLIC_SITE_URL: "https://beebrightstaffing.com",
     R2_ACCOUNT_ID: "test_account_id",
     R2_ACCESS_KEY_ID: "test_access_key",
     R2_SECRET_ACCESS_KEY: "test_secret_key",

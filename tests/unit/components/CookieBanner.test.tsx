@@ -16,7 +16,7 @@ describe("CookieBanner", () => {
 	});
 
 	it("does not render when consent is already stored", () => {
-		localStorage.setItem("sh_cookie_consent", "1");
+		localStorage.setItem("bb_cookie_consent", "1");
 		render(<CookieBanner />);
 		expect(screen.queryByRole("button", { name: /accept/i })).toBeNull();
 	});
@@ -25,7 +25,7 @@ describe("CookieBanner", () => {
 		const user = userEvent.setup();
 		render(<CookieBanner />);
 		await user.click(screen.getByRole("button", { name: /accept/i }));
-		expect(localStorage.getItem("sh_cookie_consent")).toBe("1");
+		expect(localStorage.getItem("bb_cookie_consent")).toBe("1");
 		expect(screen.queryByRole("button", { name: /accept/i })).toBeNull();
 	});
 });

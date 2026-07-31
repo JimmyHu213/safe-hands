@@ -66,7 +66,7 @@ export async function submitFamilyRequest(_p: ActionState, fd: FormData): Promis
 			client: resend,
 			from: env.RESEND_FROM_ADDRESS,
 			to: env.ADMIN_EMAIL,
-			subject: `[Safe Hands] Family request — ${parsed.parentName}`,
+			subject: `[Bee Bright] Family request — ${parsed.parentName}`,
 			...notify,
 		});
 	} catch (err) {

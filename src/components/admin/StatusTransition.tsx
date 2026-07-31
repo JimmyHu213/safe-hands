@@ -31,7 +31,7 @@ export function StatusTransition({
 			<button
 				type="submit"
 				disabled={pending}
-				className="rounded-md bg-slate-900 px-3 py-1 text-white disabled:opacity-60"
+				className="rounded-md bg-ink-950 px-3 py-1 text-white disabled:opacity-60"
 			>
 				{pending ? "Saving…" : "Update"}
 			</button>

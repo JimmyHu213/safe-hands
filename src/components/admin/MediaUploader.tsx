@@ -44,7 +44,7 @@ export function MediaUploader() {
 				onChange={handleChange}
 				className="rounded-md border px-3 py-2"
 			/>
-			{status === "uploading" ? <span className="text-xs text-slate-500">Uploading…</span> : null}
+			{status === "uploading" ? <span className="text-xs text-ink-500">Uploading…</span> : null}
 			{status === "done" ? <span className="text-xs text-green-700">Uploaded ✓</span> : null}
 			{status === "error" ? <span className="text-xs text-red-700">Upload failed</span> : null}
 		</label>

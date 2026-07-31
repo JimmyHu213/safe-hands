@@ -9,7 +9,7 @@ export const dynamic = "force-dynamic";
 export default async function AdminMediaPage() {
 	const env = bindings();
 	const items = await listMedia(db(env.DB));
-	const publicBaseUrl = `https://${env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com/safe-hands-public-media`;
+	const publicBaseUrl = `https://${env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com/beebrightstaffing-public-media`;
 	return (
 		<div className="space-y-6">
 			<h1 className="text-2xl font-semibold">Media</h1>

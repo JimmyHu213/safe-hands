@@ -1,6 +1,6 @@
-# Safe Hands Staffing Agency
+# Bee Bright Staffing Agency
 
-Marketing and intake website for Safe Hands Staffing Agency Pty Ltd — built on Next.js 16 + Cloudflare Workers via OpenNext.
+Marketing and intake website for Bee Bright Staffing Agency Pty Ltd — built on Next.js 16 + Cloudflare Workers via OpenNext.
 
 The current scope (Spec 1) ships a public marketing site, three audience-specific intake flows (centre booking, family booking, educator multi-step application), and a magic-link-gated `/admin` portal for the founder.
 
@@ -27,11 +27,11 @@ All env vars are validated via `src/lib/env.ts`. Copy `.dev.vars.example` to `.d
 |:---|:---|:---|
 | `ADMIN_EMAIL` | yes | Only email allowed to log in to `/admin` |
 | `RESEND_API_KEY` | yes | Resend API key (transactional email) |
-| `RESEND_FROM_ADDRESS` | yes | Verified Resend sender (e.g. `no-reply@mail.safehandsstaffing.com.au`) |
+| `RESEND_FROM_ADDRESS` | yes | Verified Resend sender (e.g. `no-reply@mail.beebrightstaffing.com`) |
 | `TURNSTILE_SITE_KEY` | yes | Cloudflare Turnstile site key (public) |
 | `TURNSTILE_SECRET_KEY` | yes | Cloudflare Turnstile secret key |
 | `APP_LOGIN_URL` | no | If set, the marketing nav and homepage hero show an "Access the app" CTA pointing here |
-| `SESSION_COOKIE_DOMAIN` | yes | Cookie `Domain=` attribute for `sh_admin_session` |
+| `SESSION_COOKIE_DOMAIN` | yes | Cookie `Domain=` attribute for `bb_admin_session` |
 | `IP_HASH_SALT_ROTATION` | yes | Base salt (≥32 chars) — daily-rotated for IP hashing |
 | `PUBLIC_SITE_URL` | yes | Public base URL used in transactional emails |
 | `R2_ACCOUNT_ID` | yes | Cloudflare account ID for R2 S3 endpoint |
@@ -54,8 +54,8 @@ Defined in `wrangler.jsonc`. Names match what the application code expects.
 
 ```bash
 npx drizzle-kit generate                                        # generate SQL from src/lib/db/schema.ts
-npx wrangler d1 migrations apply safe-hands-db --local          # apply to local D1
-npx wrangler d1 migrations apply safe-hands-db --remote         # apply to production D1
+npx wrangler d1 migrations apply beebrightstaffing-db --local          # apply to local D1
+npx wrangler d1 migrations apply beebrightstaffing-db --remote         # apply to production D1
 ```
 
 ## Tests
@@ -93,21 +93,21 @@ npm run deploy            # opennextjs-cloudflare build + deploy
 
 1. **Enable R2** in the [Cloudflare dashboard](https://dash.cloudflare.com/) (one-time ToS acceptance), then create the two buckets:
    ```bash
-   npx wrangler r2 bucket create safe-hands-educator-docs
-   npx wrangler r2 bucket create safe-hands-public-media
+   npx wrangler r2 bucket create beebrightstaffing-educator-docs
+   npx wrangler r2 bucket create beebrightstaffing-public-media
    ```
    Add them to `wrangler.jsonc` under `r2_buckets` with bindings `EDUCATOR_DOCS` and `PUBLIC_MEDIA`.
 
 2. **Apply migrations** to the production D1:
    ```bash
-   npx wrangler d1 migrations apply safe-hands-db --remote
+   npx wrangler d1 migrations apply beebrightstaffing-db --remote
    ```
 
 3. **Provision an R2 API token** (Cloudflare dashboard → R2 → Manage R2 API Tokens). Grants needed: Object Read & Write on both buckets. Capture the Access Key ID and Secret Access Key.
 
-4. **Verify Resend sending domain**: in the [Resend dashboard](https://resend.com/domains), add `mail.safehandsstaffing.com.au`. Add the SPF, DKIM, and DMARC DNS records Resend generates to Cloudflare DNS. Wait for verification.
+4. **Verify Resend sending domain**: in the [Resend dashboard](https://resend.com/domains), add `mail.beebrightstaffing.com`. Add the SPF, DKIM, and DMARC DNS records Resend generates to Cloudflare DNS. Wait for verification.
 
-5. **Configure Turnstile**: in the [Cloudflare Turnstile dashboard](https://dash.cloudflare.com/?to=/:account/turnstile), create a site for `safehandsstaffing.com.au`. Capture the site key (public) and secret key.
+5. **Configure Turnstile**: in the [Cloudflare Turnstile dashboard](https://dash.cloudflare.com/?to=/:account/turnstile), create a site for `beebrightstaffing.com`. Capture the site key (public) and secret key.
 
 6. **Set all Worker secrets** (paste values when prompted):
    ```bash
@@ -117,9 +117,9 @@ npm run deploy            # opennextjs-cloudflare build + deploy
    npx wrangler secret put TURNSTILE_SITE_KEY
    npx wrangler secret put TURNSTILE_SECRET_KEY
    npx wrangler secret put APP_LOGIN_URL          # leave empty to hide the "Access the app" CTA
-   npx wrangler secret put SESSION_COOKIE_DOMAIN  # e.g. safehandsstaffing.com.au
+   npx wrangler secret put SESSION_COOKIE_DOMAIN  # e.g. beebrightstaffing.com
    npx wrangler secret put IP_HASH_SALT_ROTATION  # any 32+ char random string
-   npx wrangler secret put PUBLIC_SITE_URL        # https://safehandsstaffing.com.au
+   npx wrangler secret put PUBLIC_SITE_URL        # https://beebrightstaffing.com
    npx wrangler secret put R2_ACCOUNT_ID
    npx wrangler secret put R2_ACCESS_KEY_ID
    npx wrangler secret put R2_SECRET_ACCESS_KEY
@@ -131,16 +131,16 @@ npm run deploy            # opennextjs-cloudflare build + deploy
    npm run deploy
    ```
 
-8. **Add custom domain**: in the Worker overview → Custom Domains → add `safehandsstaffing.com.au` (Cloudflare proxy enabled).
+8. **Add custom domain**: in the Worker overview → Custom Domains → add `beebrightstaffing.com` (Cloudflare proxy enabled).
 
-9. **Smoke test**: visit `https://safehandsstaffing.com.au/`. Submit a centre booking with your own email; confirm the founder receives the notify and the submitter receives the ack. Then visit `/admin/login`, enter `ADMIN_EMAIL`, follow the magic link, and verify the submission appears in the dashboard.
+9. **Smoke test**: visit `https://beebrightstaffing.com/`. Submit a centre booking with your own email; confirm the founder receives the notify and the submitter receives the ack. Then visit `/admin/login`, enter `ADMIN_EMAIL`, follow the magic link, and verify the submission appears in the dashboard.
 
 ### Subsequent deploys
 
 ```bash
 # Generate + apply migration if the Drizzle schema changed:
 npx drizzle-kit generate
-npx wrangler d1 migrations apply safe-hands-db --remote
+npx wrangler d1 migrations apply beebrightstaffing-db --remote
 
 # Then ship:
 npm run deploy

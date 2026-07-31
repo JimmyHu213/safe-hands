@@ -20,7 +20,7 @@ export function Step3Documents() {
 
 	return (
 		<div className="space-y-6">
-			<p className="text-sm text-slate-700">
+			<p className="text-sm" style={{ color: "var(--bb-ink)" }}>
 				Upload each document below as PDF, JPG, or PNG (max 10MB). Files upload directly to secure
 				storage; we only keep a reference.
 			</p>
@@ -33,7 +33,15 @@ export function Step3Documents() {
 				/>
 			))}
 			{uploaded.length > 0 ? (
-				<ul className="rounded-md bg-slate-50 p-3 text-sm">
+				<ul
+					className="text-sm"
+					style={{
+						borderRadius: 12,
+						background: "var(--bb-surface-tint)",
+						padding: "12px 14px",
+						color: "var(--bb-ink)",
+					}}
+				>
 					{uploaded.map((u, i) => (
 						<li key={i}>✓ {u.docType} — {u.originalFilename}</li>
 					))}
@@ -44,7 +52,7 @@ export function Step3Documents() {
 				<button
 					type="submit"
 					disabled={pending}
-					className="rounded-md bg-slate-900 px-5 py-2 text-sm font-medium text-white disabled:opacity-60"
+					className="bb-btn-accent disabled:opacity-60"
 				>
 					{pending ? "Checking…" : "Continue to review"}
 				</button>

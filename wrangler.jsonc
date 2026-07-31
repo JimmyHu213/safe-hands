@@ -4,7 +4,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "safe-hands",
+	"name": "beebrightstaffing",
 	"account_id": "4924ab379f57b5151619e298aef12389",
 	"main": ".open-next/worker.js",
 	"compatibility_date": "2026-05-26",
@@ -26,7 +26,7 @@
 			// Self-reference service binding, the service name must match the worker name
 			// see https://opennext.js.org/cloudflare/caching
 			"binding": "WORKER_SELF_REFERENCE",
-			"service": "safe-hands"
+			"service": "beebrightstaffing"
 		}
 	],
 	"observability": {
@@ -36,7 +36,7 @@
 	"d1_databases": [
 		{
 			"binding": "DB",
-			"database_name": "safe-hands-db",
+			"database_name": "beebrightstaffing-db",
 			"database_id": "0b047549-3569-44b0-9a10-ad828431cd84",
 			"migrations_dir": "drizzle/migrations"
 		}

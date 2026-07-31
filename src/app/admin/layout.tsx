@@ -22,7 +22,7 @@ export default async function AdminLayout({ children }: { children: ReactNode })
 	if (!session) return <>{children}</>;
 
 	return (
-		<div className="min-h-screen bg-slate-50">
+		<div className="min-h-screen bg-ink-50">
 			<AdminNav email={session.email} />
 			<main className="mx-auto max-w-6xl px-4 py-8">{children}</main>
 		</div>

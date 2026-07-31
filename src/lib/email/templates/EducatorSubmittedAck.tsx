@@ -4,7 +4,7 @@ export default function EducatorSubmittedAck({ firstName }: { firstName: string 
 	return (
 		<Html>
 			<Head />
-			<Preview>Your Safe Hands application has been submitted</Preview>
+			<Preview>Your Bee Bright application has been submitted</Preview>
 			<Body style={{ fontFamily: "ui-sans-serif, system-ui", color: "#0f172a" }}>
 				<Container style={{ maxWidth: 560, padding: 24 }}>
 					<Heading as="h1" style={{ fontSize: 20 }}>Application received, {firstName}.</Heading>
@@ -13,7 +13,7 @@ export default function EducatorSubmittedAck({ firstName }: { firstName: string 
 							Thanks for completing your application. Our recruitment team will review it and be in
 							touch within 5 business days to arrange a phone screen.
 						</Text>
-						<Text>— Safe Hands Staffing</Text>
+						<Text>— Bee Bright Staffing</Text>
 					</Section>
 				</Container>
 			</Body>

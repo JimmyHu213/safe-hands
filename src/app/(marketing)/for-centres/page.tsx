@@ -1,60 +1,178 @@
 import Link from "next/link";
 import { FOR_CENTRES, SITE } from "@/lib/cms/content";
-import { PageBanner } from "@/components/marketing/PageBanner";
+import { PageHero } from "@/components/marketing/PageHero";
+
+function BenefitIconCheck() {
+	return (
+		<svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+			<circle cx="12" cy="12" r="8.5"></circle>
+			<path d="M8.5 12.3l2.4 2.4 4.6-4.9"></path>
+		</svg>
+	);
+}
+
+function ArrowIcon() {
+	return (
+		<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+			<path d="M5 12h14"></path>
+			<path d="M13 6l6 6-6 6"></path>
+		</svg>
+	);
+}
 
 export default function ForCentresPage() {
-  return (
-    <>
-      <section className="border-b bg-slate-50 px-4 py-16">
-        <div className="mx-auto max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">For Centres</p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight">{FOR_CENTRES.h1}</h1>
-          <p className="mt-4 text-lg text-slate-700">{FOR_CENTRES.lede}</p>
-          <PageBanner src={FOR_CENTRES.image.src} alt={FOR_CENTRES.image.alt} />
-        </div>
-      </section>
+	return (
+		<>
+			<PageHero eyebrow="For Centres" title={FOR_CENTRES.h1} lede={FOR_CENTRES.lede} />
 
-      <section className="px-4 py-12">
-        <div className="mx-auto max-w-3xl">
-          <ul className="space-y-3 text-base text-slate-800">
-            {FOR_CENTRES.bullets.map((b) => (
-              <li key={b} className="flex gap-2">
-                <span aria-hidden>•</span>
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+			<section style={{ padding: "clamp(48px,7vw,80px) 22px", maxWidth: 1080, margin: "0 auto" }}>
+				<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(290px,1fr))", gap: 22 }}>
+					{FOR_CENTRES.bullets.map((b) => (
+						<div
+							key={b}
+							className="bb-why-card"
+							style={{
+								background: "#fff",
+								border: "1px solid rgba(var(--bb-shadow-rgb),.07)",
+								borderRadius: 22,
+								padding: "30px 28px",
+								boxShadow: "0 2px 14px rgba(var(--bb-shadow-rgb),.05)",
+								transition: "transform .25s ease,box-shadow .25s ease",
+							}}
+						>
+							<span
+								style={{
+									display: "inline-flex",
+									alignItems: "center",
+									justifyContent: "center",
+									width: 56,
+									height: 56,
+									borderRadius: 16,
+									background: "var(--bb-surface-tint)",
+									color: "var(--bb-ink-soft)",
+								}}
+							>
+								<BenefitIconCheck />
+							</span>
+							<p style={{ color: "var(--bb-ink)", lineHeight: 1.55, margin: "18px 0 0", fontWeight: 600 }}>{b}</p>
+						</div>
+					))}
+				</div>
+			</section>
 
-      <section className="bg-slate-900 px-4 py-12 text-white">
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
-          <h2 className="text-2xl font-semibold md:text-3xl">Centres talk to us first.</h2>
-          <p className="text-slate-200">
-            We do not ask centres to fill in a form to start. Call our booking line or email — we
-            answer the phone.
-          </p>
-          <div className="mt-2 flex flex-col gap-2 md:flex-row">
-            <a
-              href={`tel:${SITE.phoneTel}`}
-              className="rounded-md bg-white px-5 py-2 text-sm font-medium text-slate-900"
-            >
-              {FOR_CENTRES.ctaPhone}: {SITE.phone}
-            </a>
-            <a
-              href={`mailto:${SITE.emailBookings}`}
-              className="rounded-md border border-white/30 px-5 py-2 text-sm font-medium text-white"
-            >
-              {FOR_CENTRES.ctaEmail}
-            </a>
-          </div>
-          <p className="mt-4 text-sm text-slate-300">
-            Prefer a structured request? <Link href="/for-centres/request" className="underline">
-              Submit a booking request →
-            </Link>
-          </p>
-        </div>
-      </section>
-    </>
-  );
+			<section style={{ padding: "clamp(28px,4vw,56px) 22px clamp(60px,8vw,90px)" }}>
+				<div
+					style={{
+						maxWidth: 1080,
+						margin: "0 auto",
+						position: "relative",
+						overflow: "hidden",
+						borderRadius: 32,
+						background: "linear-gradient(130deg,var(--bb-ink-strong) 0%, var(--bb-ink-soft) 100%)",
+						padding: "clamp(40px,6vw,72px) clamp(28px,5vw,64px)",
+						textAlign: "center",
+					}}
+				>
+					<div
+						aria-hidden="true"
+						style={{ position: "absolute", top: -70, left: -50, width: 240, height: 240, borderRadius: "50%", background: "rgba(255,255,255,.07)" }}
+					></div>
+					<div
+						aria-hidden="true"
+						style={{
+							position: "absolute",
+							bottom: -90,
+							right: -40,
+							width: 260,
+							height: 260,
+							borderRadius: "50%",
+							background: "var(--bb-amber)",
+							opacity: 0.18,
+						}}
+					></div>
+					<div style={{ position: "relative" }}>
+						<h2
+							style={{
+								fontFamily: "'Hanken Grotesk',sans-serif",
+								fontWeight: 800,
+								fontSize: "clamp(2rem,4vw,3.2rem)",
+								lineHeight: 1.06,
+								letterSpacing: "-.025em",
+								color: "#fff",
+								margin: 0,
+								textWrap: "balance",
+							}}
+						>
+							Centres talk to us first.
+						</h2>
+						<p
+							style={{
+								fontSize: "clamp(1.06rem,1.5vw,1.22rem)",
+								lineHeight: 1.55,
+								color: "rgba(255,255,255,.85)",
+								margin: "18px auto 0",
+								maxWidth: 540,
+							}}
+						>
+							We do not ask centres to fill in a form to start. Call our booking line or email — we answer
+							the phone.
+						</p>
+						<div style={{ display: "flex", flexWrap: "wrap", gap: 14, justifyContent: "center", marginTop: 34 }}>
+							<a
+								href={`tel:${SITE.phoneTel}`}
+								className="bb-request-cta-primary"
+								style={{
+									display: "inline-flex",
+									alignItems: "center",
+									justifyContent: "center",
+									gap: 9,
+									background: "#fff",
+									color: "var(--bb-ink-strong)",
+									fontFamily: "'Hanken Grotesk',sans-serif",
+									fontWeight: 800,
+									fontSize: "1.08rem",
+									padding: "17px 32px",
+									borderRadius: 999,
+									textDecoration: "none",
+									boxShadow: "0 14px 30px rgba(0,0,0,.18)",
+									transition: "transform .2s ease,box-shadow .2s ease",
+								}}
+							>
+								{FOR_CENTRES.ctaPhone}: {SITE.phone}
+								<ArrowIcon />
+							</a>
+							<a
+								href={`mailto:${SITE.emailBookings}`}
+								className="bb-request-cta-secondary"
+								style={{
+									display: "inline-flex",
+									alignItems: "center",
+									justifyContent: "center",
+									gap: 8,
+									background: "rgba(255,255,255,.12)",
+									color: "#fff",
+									fontFamily: "'Hanken Grotesk',sans-serif",
+									fontWeight: 700,
+									fontSize: "1.08rem",
+									padding: "16px 30px",
+									borderRadius: 999,
+									textDecoration: "none",
+									border: "1.5px solid rgba(255,255,255,.4)",
+									transition: "background .2s,transform .2s",
+								}}
+							>
+								{FOR_CENTRES.ctaEmail}
+							</a>
+						</div>
+						<p style={{ margin: "24px 0 0", color: "rgba(255,255,255,.8)", fontSize: ".94rem", fontWeight: 600 }}>
+							Prefer a structured request?{" "}
+							<Link href="/for-centres/request" style={{ color: "#fff", textDecoration: "underline" }}>
+								Submit a booking request →
+							</Link>
+						</p>
+					</div>
+				</div>
+			</section>
+		</>
+	);
 }
