@@ -29,13 +29,13 @@
 			"service": "beebrightstaffing"
 		}
 	],
-	// Custom domains are attached once the zone's placeholder DNS records are
-	// removed — Cloudflare returns 409 Conflict while an A/CNAME already exists
-	// for the same hostname. Re-add and deploy to bind beebrightstaffing.com:
-	//   "routes": [
-	//     { "pattern": "beebrightstaffing.com", "custom_domain": true },
-	//     { "pattern": "www.beebrightstaffing.com", "custom_domain": true }
-	//   ],
+	// Cloudflare creates and manages the DNS records for these hostnames. It
+	// returns 409 Conflict if a plain A/CNAME already exists for the same name,
+	// so the zone must not have its own record for them.
+	"routes": [
+		{ "pattern": "beebrightstaffing.com", "custom_domain": true },
+		{ "pattern": "www.beebrightstaffing.com", "custom_domain": true }
+	],
 	"observability": {
 		"enabled": true
 	},
