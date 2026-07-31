@@ -5,7 +5,7 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "beebrightstaffing",
-	"account_id": "4924ab379f57b5151619e298aef12389",
+	"account_id": "d0c742fe9fd0203a40689dc3fe49462b",
 	"main": ".open-next/worker.js",
 	"compatibility_date": "2026-05-26",
 	"compatibility_flags": [
@@ -29,6 +29,13 @@
 			"service": "beebrightstaffing"
 		}
 	],
+	// Custom domains are attached once the zone's placeholder DNS records are
+	// removed — Cloudflare returns 409 Conflict while an A/CNAME already exists
+	// for the same hostname. Re-add and deploy to bind beebrightstaffing.com:
+	//   "routes": [
+	//     { "pattern": "beebrightstaffing.com", "custom_domain": true },
+	//     { "pattern": "www.beebrightstaffing.com", "custom_domain": true }
+	//   ],
 	"observability": {
 		"enabled": true
 	},
@@ -37,14 +44,14 @@
 		{
 			"binding": "DB",
 			"database_name": "beebrightstaffing-db",
-			"database_id": "0b047549-3569-44b0-9a10-ad828431cd84",
+			"database_id": "7c90be9c-c38a-4ea9-9eee-9ad5ad617c11",
 			"migrations_dir": "drizzle/migrations"
 		}
 	],
 	"kv_namespaces": [
 		{
 			"binding": "RATE_LIMITS",
-			"id": "544ec0ebd8cb4f8ebe65d4c53332e599"
+			"id": "84698c3b96f643b6a914cb434041836a"
 		}
 	],
 	"triggers": {
