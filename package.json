@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
-    "@opennextjs/cloudflare": "^1.19.9",
+    "@opennextjs/cloudflare": "^1.20.2",
     "@react-email/components": "^1.0.12",
     "@react-email/render": "^2.0.8",
     "aws4fetch": "^1.0.20",
